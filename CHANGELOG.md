@@ -2,6 +2,14 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v6.3 « Aspiration » — 17 août 2026
+
+- Une trentaine de petites allusions à la course automobile glissées dans les textes, FR et EN: grille de départ, tour de reconnaissance, télémétrie, muret des puits, drapeau vert, aspiration, chrono, carburant
+
+## v6.2 « Silverstone » — 17 août 2026
+
+- L'anglais devient la langue par défaut de pista.ca, le français est servi aux navigateurs en français
+
 ## v6.1 « Écurie » — 17 août 2026
 
 - Retrait de toute mention du fondateur sur le site
