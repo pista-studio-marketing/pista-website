@@ -1,0 +1,53 @@
+# Pista Studio — Journal des versions
+
+Chaque version porte un nom tiré de la course, comme il se doit.
+
+## v6.0 « Slicks » — 17 août 2026
+
+- Retrait de toutes les photos du site
+- Retrait de toute mention du domaine pistastudio.ca, remplacé par pista.ca, courriel hello@pista.ca
+- Retrait des traits décoratifs génériques, règles rouges et bandes damier
+- Nouveau panneau « La piste »: tracé de circuit animé au chargement, point rouge qui parcourt la piste en boucle, mot Pista en contour qui se remplit au survol
+- Feux de départ animés dans les héros des pages principales
+- Le point signature suit le curseur et grossit sur les liens (ordinateur seulement)
+- Barre de progression rouge en haut de page pendant le défilement
+- Toutes les animations respectent le réglage « réduire les animations » du système
+
+## v5.1 « Parc fermé » — 17 août 2026
+
+- Retrait de tout contenu en attente de validation
+- Aucun client direct nommé sur le site
+- Section clients remplacée par les logos Audi et Nissan, monochromes, dessinés en SVG
+
+## v5.0 « Drapeau vert » — 17 août 2026
+
+- Retrait de la page Réalisations (FR et EN)
+- Page À propos enrichie: architecture de marque PSM, principes en chiffres
+- Page Contact enrichie: le déroulement en trois étapes
+- Accueil enrichi: les six leviers en un coup d'œil, liens vers Services et Technique
+- Mise en place du journal des versions
+
+## v4.0 « Ligne droite » — 17 août 2026
+
+- Grosses inscriptions: titres géants en graisse fine, accents rouges, kickers au filet rouge
+- Page Services refaite: « Vos leads. Notre obsession. », six leviers avec chiffres fantômes et étiquettes
+- Nouvelle page Technique: tracking, inventaire temps réel, CRM, enchères intelligentes, intégrations, specs
+- Bloc CTA « Prêt à voir où sont vos ventes? » avec bouton premium
+- Fonte Inter (Google Fonts) en relève de Söhne
+
+## v3.0 « Apex » — 17 août 2026
+
+- Image 488 Pista exploitée: bloc immersif parallaxe, triptyque de recadrages, bandeaux par page
+- Cinq pages secteurs FR et EN: SEM, SMM, Pixels & Tags, Feeds & API, Débuts de mois
+- Index des secteurs en sommaire de magazine
+
+## v2.0 « Pole position » — 17 août 2026
+
+- Refonte complète selon les normes graphiques v2: fond crème, filets hairline, majuscules espacées
+- Wordmark en graisse régulière avec le point rond, registre éditorial aligné à gauche
+- Trois expertises PSM, panneau noir avec marquee, panneau rouge, ligne d'arrivée en damier
+
+## v1.0 « Tour de chauffe » — 17 août 2026
+
+- Premier site multi-pages bilingue FR/EN en HTML, CSS et JavaScript pur
+- Noir sur blanc, cinq pages par langue, redirection par langue du navigateur

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Pista Studio</title>
+  <meta name="description" content="Joignez Pista Studio, agence de marketing automobile à Québec. Une conversation sans engagement, en français ou en anglais.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container">
+      <span class="label">Marketing pour les marques nées sur la piste</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="wordmark">Pista Studio<span class="dot">.</span></a>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Menu"><span></span></button>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="technique.html">Technique</a></li>
+        <li><a href="a-propos.html">À propos</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+        <li><a href="../en/contact.html" class="lang-switch" lang="en">EN</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <span class="label">La conversation commence ici</span>
+        <h1>Contact<span class="dot">.</span></h1>
+        <p class="lead">Racontez-nous où en est votre concession et où vous voulez l'amener. On s'occupe du reste.</p>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="container">
+        <div class="contact-layout">
+          <div class="contact-info">
+            <h3>Courriel</h3>
+            <p><a href="mailto:hello@pista.ca">hello@pista.ca</a></p>
+            <h3>Adresse</h3>
+            <p>53, rue du Petit-Champlain<br>Québec, QC G1K 4H5</p>
+            <h3>Langues</h3>
+            <p>Français et anglais</p>
+          </div>
+          <form data-contact-form data-success="Merci! Votre message est prêt. Branchez le formulaire à votre service d'envoi pour le recevoir par courriel.">
+            <div class="form-group">
+              <label for="nom">Nom</label>
+              <input type="text" id="nom" name="nom" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="concession">Concession</label>
+              <input type="text" id="concession" name="concession" autocomplete="organization">
+            </div>
+            <div class="form-group">
+              <label for="courriel">Courriel</label>
+              <input type="email" id="courriel" name="courriel" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+            <p class="form-note">Formulaire de démonstration. Pour recevoir les messages, connectez un service comme Formspree ou votre propre serveur.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="container">
+        <span class="label">Comment ça se passe</span>
+        <h2>Trois étapes, aucun engagement</h2>
+        <ul class="inclus-liste">
+          <li>
+            <span class="inclus-num">01</span>
+            <div>
+              <h3>On se rencontre</h3>
+              <p>Trente minutes, en personne ou en visio, dans la langue de votre choix. Vous nous parlez de votre concession, de vos marques et de vos objectifs.</p>
+            </div>
+          </li>
+          <li>
+            <span class="inclus-num">02</span>
+            <div>
+              <h3>On analyse votre marché</h3>
+              <p>Votre zone, vos concurrents, votre présence numérique actuelle. On regarde ce qui roule, ce qui freine et ce qui dort.</p>
+            </div>
+          </li>
+          <li>
+            <span class="inclus-num">03</span>
+            <div>
+              <h3>On vous montre les chiffres</h3>
+              <p>Un portrait clair des ventes que vous laissez sur la table, et un plan concret pour aller les chercher. Pas de pitch, des chiffres.</p>
+            </div>
+          </li>
+        </ul>
+        <p class="meta-note">Réponse en 24 h. Sans engagement.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="wordmark">Pista Studio<span class="dot">.</span></a>
+          <p class="tagline">L'art de faire rouler les marques</p>
+        </div>
+        <ul class="footer-links">
+          <li><a href="services.html">Services</a></li>
+        <li><a href="technique.html">Technique</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-expertises">
+        <span>PSM Events</span>
+        <span>PSM Digital</span>
+        <span>PSM Content</span>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> Pista Studio. 53, rue du Petit-Champlain, Québec, QC G1K 4H5</span>
+        <span>pista.ca</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
