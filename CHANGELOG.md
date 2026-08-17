@@ -2,6 +2,12 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v6.1 « Écurie » — 17 août 2026
+
+- Retrait de toute mention du fondateur sur le site
+- Logo Nissan redessiné selon le design actuel de la marque (2020)
+- Ajout du client Carrera Café: mandat complet, de l'image de marque à la mise en marché jusqu'aux outils de suivi de restaurant
+
 ## v6.0 « Slicks » — 17 août 2026
 
 - Retrait de toutes les photos du site
