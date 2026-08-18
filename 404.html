@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Pista Studio</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/css/style.css">
+  <meta name="theme-color" content="#0A0A0A">
+</head>
+<body>
+
+  <main class="page-404">
+    <div class="container">
+      <p class="num">404<span class="pastille" aria-hidden="true"></span></p>
+      <div lang="fr" data-fr>
+        <h1>Drapeau rouge. Sortie de piste.</h1>
+        <p>Cette page n'existe pas, ou elle a quitté le circuit. Revenez aux puits, on vous remet en course.</p>
+        <div class="hero-actions" style="margin-top:2rem;">
+          <a href="/fr/index.html" class="btn btn-creme">Retour aux puits</a>
+        </div>
+      </div>
+      <div lang="en" data-en hidden>
+        <h1>Red flag. Off the track.</h1>
+        <p>This page doesn't exist, or it left the circuit. Head back to the pits, we'll get you racing again.</p>
+        <div class="hero-actions" style="margin-top:2rem;">
+          <a href="/en/index.html" class="btn btn-creme">Back to the pits</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var fr = (navigator.language || "en").toLowerCase().indexOf("fr") === 0;
+      document.documentElement.lang = fr ? "fr" : "en";
+      document.querySelector("[data-fr]").hidden = !fr;
+      document.querySelector("[data-en]").hidden = fr;
+    })();
+  </script>
+</body>
+</html>

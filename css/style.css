@@ -1547,6 +1547,206 @@ a {
 }
 
 /* ------------------------------------------------------------
+   Séquence de départ — les feux s'éteignent, la course part
+   ------------------------------------------------------------ */
+.depart-overlay {
+  position: fixed;
+  inset: 0;
+  background: #0a0a0a;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  transition: opacity 0.5s ease;
+}
+
+.depart-overlay i {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #262624;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.depart-overlay i.on {
+  background: var(--rouge);
+  box-shadow: 0 0 26px rgba(224, 35, 26, 0.7);
+}
+
+/* ------------------------------------------------------------
+   Trainée de freinage derrière le curseur
+   ------------------------------------------------------------ */
+.trail-dot {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--rouge);
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* ------------------------------------------------------------
+   Compteur de tours dans la marge
+   ------------------------------------------------------------ */
+.lap-counter {
+  position: fixed;
+  left: 16px;
+  bottom: 18px;
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gris-clair);
+  z-index: 150;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .lap-counter {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------
+   Navigation entre secteurs
+   ------------------------------------------------------------ */
+.sector-pager {
+  border-top: 1px solid var(--filet);
+  padding: 2rem 0;
+}
+
+.sector-pager .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.sector-pager a {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gris-moyen);
+  transition: color 0.2s ease;
+}
+
+.sector-pager a:hover {
+  color: var(--noir);
+}
+
+/* ------------------------------------------------------------
+   Course de nuit — le site passe au noir
+   ------------------------------------------------------------ */
+body.nuit {
+  --creme: #121211;
+  --noir: #f4f3ee;
+  --gris-moyen: #a5a49e;
+  --gris-clair: #6f6f6b;
+  --filet: #262624;
+}
+
+body.nuit .site-header {
+  background: rgba(18, 18, 17, 0.94);
+}
+
+body.nuit .panel-noir,
+body.nuit .track-panel {
+  background: #1a1a19;
+}
+
+body.nuit .panel-noir .credo,
+body.nuit .panel-noir h2 {
+  color: #f4f3ee;
+}
+
+body.nuit .panel-rouge,
+body.nuit .panel-rouge h2 {
+  color: #f4f3ee;
+}
+
+body.nuit .btn-creme {
+  background: #f4f3ee;
+  color: #121211;
+  border-color: #f4f3ee;
+}
+
+body.nuit .btn-premium {
+  color: #f4f3ee;
+}
+
+body.nuit .svc-ghost {
+  -webkit-text-stroke-color: rgba(244, 243, 238, 0.12);
+}
+
+body.nuit .svc-row:hover .svc-ghost {
+  -webkit-text-stroke-color: rgba(224, 35, 26, 0.3);
+}
+
+body.nuit .lights i {
+  background: rgba(244, 243, 238, 0.14);
+}
+
+.theme-toggle {
+  cursor: pointer;
+  background: none;
+  font-family: var(--font);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gris-moyen);
+}
+
+/* ------------------------------------------------------------
+   Page 404 — sortie de piste
+   ------------------------------------------------------------ */
+.page-404 {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #f4f3ee;
+  display: flex;
+  align-items: center;
+}
+
+.page-404 .num {
+  font-size: clamp(7rem, 24vw, 20rem);
+  font-weight: 200;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(244, 243, 238, 0.7);
+}
+
+.page-404 .pastille {
+  display: inline-block;
+  width: 0.14em;
+  height: 0.14em;
+  border-radius: 50%;
+  background: var(--rouge);
+  margin-left: 0.06em;
+}
+
+.page-404 h1 {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-top: 1.5rem;
+}
+
+.page-404 p {
+  color: var(--gris-clair);
+  margin-top: 1rem;
+  max-width: 50ch;
+}
+
+/* ------------------------------------------------------------
    Animations d'apparition
    ------------------------------------------------------------ */
 .reveal {

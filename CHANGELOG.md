@@ -2,6 +2,17 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v7.0 « Grand Prix » — 18 août 2026
+
+- Séquence de départ sur l'accueil: les cinq feux s'allument puis s'éteignent, une fois par visite
+- Mode « course de nuit »: bascule jour/nuit dans le menu, mémorisée d'une visite à l'autre
+- Trainée de freinage derrière le curseur quand il accélère
+- Compteur de tours dans la marge qui suit les sections au défilement
+- Page 404 « Drapeau rouge. Sortie de piste. » bilingue
+- Navigation précédent/suivant entre les cinq pages secteurs
+- Image de partage Open Graph aux couleurs Pista, balises OG et Twitter sur toutes les pages
+- Sitemap, robots.txt, balises hreflang FR/EN et canoniques, icône Apple, theme-color
+
 ## v6.3 « Aspiration » — 17 août 2026
 
 - Une trentaine de petites allusions à la course automobile glissées dans les textes, FR et EN: grille de départ, tour de reconnaissance, télémétrie, muret des puits, drapeau vert, aspiration, chrono, carburant

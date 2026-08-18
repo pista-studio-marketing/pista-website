@@ -1,6 +1,6 @@
 # Pista Studio — Site web
 
-Version courante: **v6.3 « Aspiration »**. Voir `CHANGELOG.md` pour l'historique des versions.
+Version courante: **v7.0 « Grand Prix »**. Voir `CHANGELOG.md` pour l'historique des versions.
 
 Site vitrine bilingue (FR/EN) en HTML, CSS et JavaScript pur. Aucune dépendance, aucun outil de build.
 
