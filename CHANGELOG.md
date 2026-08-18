@@ -2,6 +2,12 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v7.1 « Formation » — 18 août 2026
+
+- Grosseur de titre uniforme sur toutes les pages sauf l'accueil, calquée sur « L'infrastructure qui tient la route. »
+- Les feux de départ apparaissent au même endroit sur toutes les pages
+- Les feux passent à trois rouges et deux verts, dans le héros comme dans la séquence de départ
+
 ## v7.0 « Grand Prix » — 18 août 2026
 
 - Séquence de départ sur l'accueil: les cinq feux s'allument puis s'éteignent, une fois par visite

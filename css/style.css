@@ -12,6 +12,7 @@
   --gris-moyen: #6f6f6b;
   --gris-clair: #9b9b97;
   --rouge: #e0231a;
+  --vert: #12a150;
   --filet: #deddd6;          /* hairline, gris très clair sur crème */
   --filet-noir: #2c2c2a;     /* hairline sur fond noir */
   --max-width: 1240px;
@@ -303,10 +304,10 @@ a {
 }
 
 .page-hero h1 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 400;
-  letter-spacing: -0.025em;
-  line-height: 1.05;
+  font-size: clamp(2.75rem, 7vw, 7.25rem);
+  font-weight: 200;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
 }
 
 .page-hero .lead {
@@ -1050,12 +1051,17 @@ a {
 .lights i:nth-child(1) { animation-delay: 0s; }
 .lights i:nth-child(2) { animation-delay: 0.35s; }
 .lights i:nth-child(3) { animation-delay: 0.7s; }
-.lights i:nth-child(4) { animation-delay: 1.05s; }
-.lights i:nth-child(5) { animation-delay: 1.4s; }
+.lights i:nth-child(4) { animation-name: lightUpVert; animation-delay: 1.05s; }
+.lights i:nth-child(5) { animation-name: lightUpVert; animation-delay: 1.4s; }
 
 @keyframes lightUp {
   0%, 100% { background: rgba(10, 10, 10, 0.1); box-shadow: none; }
   25%, 55% { background: var(--rouge); box-shadow: 0 0 14px rgba(224, 35, 26, 0.5); }
+}
+
+@keyframes lightUpVert {
+  0%, 100% { background: rgba(10, 10, 10, 0.1); box-shadow: none; }
+  25%, 55% { background: var(--vert); box-shadow: 0 0 14px rgba(18, 161, 80, 0.5); }
 }
 
 /* ------------------------------------------------------------
@@ -1230,10 +1236,10 @@ a {
 }
 
 .giant {
-  font-size: clamp(3.25rem, 11vw, 9.75rem);
+  font-size: clamp(2.75rem, 7vw, 7.25rem);
   font-weight: 200;
   letter-spacing: -0.035em;
-  line-height: 0.92;
+  line-height: 0.95;
   text-wrap: balance;
 }
 
@@ -1572,6 +1578,12 @@ a {
 .depart-overlay i.on {
   background: var(--rouge);
   box-shadow: 0 0 26px rgba(224, 35, 26, 0.7);
+}
+
+.depart-overlay i:nth-child(4).on,
+.depart-overlay i:nth-child(5).on {
+  background: var(--vert);
+  box-shadow: 0 0 26px rgba(18, 161, 80, 0.7);
 }
 
 /* ------------------------------------------------------------
