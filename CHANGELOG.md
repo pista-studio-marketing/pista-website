@@ -2,6 +2,11 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v7.2 « Lights out » — 18 août 2026
+
+- Les feux reprennent la vraie séquence F1: cinq rouges qui s'allument un à un, puis extinction simultanée, c'est l'extinction qui donne le départ
+- Fin des feux verts introduits en v7.1, la F1 n'en utilise pas au départ
+
 ## v7.1 « Formation » — 18 août 2026
 
 - Grosseur de titre uniforme sur toutes les pages sauf l'accueil, calquée sur « L'infrastructure qui tient la route. »

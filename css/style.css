@@ -1045,23 +1045,45 @@ a {
   height: 13px;
   border-radius: 50%;
   background: rgba(10, 10, 10, 0.1);
-  animation: lightUp 3s infinite;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
 }
 
-.lights i:nth-child(1) { animation-delay: 0s; }
-.lights i:nth-child(2) { animation-delay: 0.35s; }
-.lights i:nth-child(3) { animation-delay: 0.7s; }
-.lights i:nth-child(4) { animation-name: lightUpVert; animation-delay: 1.05s; }
-.lights i:nth-child(5) { animation-name: lightUpVert; animation-delay: 1.4s; }
+/* Cinq feux rouges qui s'allument un à un, extinction simultanée à mi-cycle */
+.lights i:nth-child(1) { animation-name: feu1; }
+.lights i:nth-child(2) { animation-name: feu2; }
+.lights i:nth-child(3) { animation-name: feu3; }
+.lights i:nth-child(4) { animation-name: feu4; }
+.lights i:nth-child(5) { animation-name: feu5; }
 
-@keyframes lightUp {
-  0%, 100% { background: rgba(10, 10, 10, 0.1); box-shadow: none; }
-  25%, 55% { background: var(--rouge); box-shadow: 0 0 14px rgba(224, 35, 26, 0.5); }
+@keyframes feu1 {
+  0%, 7.9% { background: rgba(10, 10, 10, 0.1); box-shadow: none; }
+  8%, 49.9% { background: var(--rouge); box-shadow: 0 0 14px rgba(224, 35, 26, 0.5); }
+  50%, 100% { background: rgba(10, 10, 10, 0.1); box-shadow: none; }
 }
 
-@keyframes lightUpVert {
-  0%, 100% { background: rgba(10, 10, 10, 0.1); box-shadow: none; }
-  25%, 55% { background: var(--vert); box-shadow: 0 0 14px rgba(18, 161, 80, 0.5); }
+@keyframes feu2 {
+  0%, 15.9% { background: rgba(10, 10, 10, 0.1); box-shadow: none; }
+  16%, 49.9% { background: var(--rouge); box-shadow: 0 0 14px rgba(224, 35, 26, 0.5); }
+  50%, 100% { background: rgba(10, 10, 10, 0.1); box-shadow: none; }
+}
+
+@keyframes feu3 {
+  0%, 23.9% { background: rgba(10, 10, 10, 0.1); box-shadow: none; }
+  24%, 49.9% { background: var(--rouge); box-shadow: 0 0 14px rgba(224, 35, 26, 0.5); }
+  50%, 100% { background: rgba(10, 10, 10, 0.1); box-shadow: none; }
+}
+
+@keyframes feu4 {
+  0%, 31.9% { background: rgba(10, 10, 10, 0.1); box-shadow: none; }
+  32%, 49.9% { background: var(--rouge); box-shadow: 0 0 14px rgba(224, 35, 26, 0.5); }
+  50%, 100% { background: rgba(10, 10, 10, 0.1); box-shadow: none; }
+}
+
+@keyframes feu5 {
+  0%, 39.9% { background: rgba(10, 10, 10, 0.1); box-shadow: none; }
+  40%, 49.9% { background: var(--rouge); box-shadow: 0 0 14px rgba(224, 35, 26, 0.5); }
+  50%, 100% { background: rgba(10, 10, 10, 0.1); box-shadow: none; }
 }
 
 /* ------------------------------------------------------------
@@ -1578,12 +1600,6 @@ a {
 .depart-overlay i.on {
   background: var(--rouge);
   box-shadow: 0 0 26px rgba(224, 35, 26, 0.7);
-}
-
-.depart-overlay i:nth-child(4).on,
-.depart-overlay i:nth-child(5).on {
-  background: var(--vert);
-  box-shadow: 0 0 26px rgba(18, 161, 80, 0.7);
 }
 
 /* ------------------------------------------------------------
