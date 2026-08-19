@@ -643,15 +643,48 @@ a {
   flex-wrap: wrap;
 }
 
-.client-logos svg {
-  height: clamp(44px, 6vw, 64px);
+.client-logos img {
+  height: clamp(38px, 5vw, 58px);
   width: auto;
-  color: var(--gris-clair);
-  transition: color 0.3s ease;
+  opacity: 0.8;
+  transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
-.client-logos svg:hover {
+.client-logos img:hover {
+  opacity: 1;
+}
+
+body.nuit .logo-invert {
+  filter: invert(1);
+}
+
+.work-logo {
+  height: 42px;
+  width: auto;
+  margin-bottom: 0.9rem;
+}
+
+.logo-nuit {
+  display: none;
+}
+
+body.nuit .logo-nuit {
+  display: block;
+}
+
+body.nuit .logo-jour {
+  display: none;
+}
+
+.lien {
   color: var(--noir);
+  font-weight: 500;
+  border-bottom: 1px solid var(--gris-clair);
+  transition: border-color 0.2s ease;
+}
+
+.lien:hover {
+  border-color: var(--rouge);
 }
 
 /* ------------------------------------------------------------

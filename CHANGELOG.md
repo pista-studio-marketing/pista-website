@@ -2,6 +2,12 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v7.3 « Livrée » — 19 août 2026
+
+- Les vrais logos Audi, Nissan et Carrera Café remplacent les versions dessinées
+- Logos adaptés au mode nuit, inversion pour Audi et Nissan, variante crème pour Carrera Café
+- Carrera Café cliquable, lien vers carreracafe.ca
+
 ## v7.2 « Lights out » — 18 août 2026
 
 - Les feux reprennent la vraie séquence F1: cinq rouges qui s'allument un à un, puis extinction simultanée, c'est l'extinction qui donne le départ
