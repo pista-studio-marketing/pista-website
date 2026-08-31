@@ -2,6 +2,14 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v9.0 « Retour au stand » — 31 août 2026
+
+- Les boutons Tour précédent et Tour suivant reviennent dans la page, directement sous le contenu du tour, plus de barre flottante
+- Les trajectoires atterrissent maintenant chacune à leur porte: « Forfaits et à la carte » ouvre directement sur les forfaits, « À la carte seulement » directement sur le catalogue
+- Dans ces trajectoires, la question des concessions se pose juste avant la ligne d'arrivée, au moment naturel
+- Changer de trajectoire repart toujours à son premier tour, la sélection et les totaux restent intacts
+- Audit complet de la mécanique: trajectoires, forfait Sur mesure, quantités, exclusions du combo, mémoire, lien partageable et remise à zéro, tout vérifié dans les deux langues
+
 ## v8.9 « Mise au point » — 31 août 2026
 
 - Fin du chevauchement entre le pit board et la barre de navigation des tours

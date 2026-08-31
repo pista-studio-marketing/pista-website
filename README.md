@@ -1,6 +1,6 @@
 # Pista Studio — Site web
 
-Version courante: **v8.9 « Mise au point »**. Voir `CHANGELOG.md` pour l'historique des versions.
+Version courante: **v9.0 « Retour au stand »**. Voir `CHANGELOG.md` pour l'historique des versions.
 
 Site vitrine bilingue (FR/EN) en HTML, CSS et JavaScript pur. Aucune dépendance, aucun outil de build.
 

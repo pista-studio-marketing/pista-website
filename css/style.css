@@ -3243,55 +3243,26 @@ body.nuit .traj.actif .t-det {
   }
 }
 
-/* v8.8 — navigation de tour toujours visible */
+/* v9.0 — la navigation revient sous le tour, dans la page */
 .tour-nav {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 190;
-  margin: 0;
-  background: var(--creme);
   border-top: 1px solid var(--filet);
-  padding-top: 0.6rem;
-  padding-bottom: 0.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-body.nuit .tour-nav {
-  background: var(--noir);
+  padding-top: 1.5rem;
 }
 
 .tour-nav .btn {
-  padding: 0.65rem 1.3rem;
   margin: 0;
 }
 
 .tour-nav .annot {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
 }
 
 .tour-nav .annot svg {
-  width: 38px;
+  width: 44px;
 }
 
 #tourNavEtat {
   white-space: nowrap;
-}
-
-body.parcours main {
-  padding-bottom: calc(var(--nav-h, 64px) + 60px);
-}
-
-body.parcours .pitboard {
-  bottom: var(--nav-h, 64px);
-}
-
-body.parcours.pb-actif main {
-  padding-bottom: calc(var(--nav-h, 64px) + 170px);
 }
 
 @media (max-width: 700px) {
