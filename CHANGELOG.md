@@ -2,6 +2,17 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v8.2 « Pole position » — 31 août 2026
+
+- Chaque produit du catalogue gagne une ligne « En clair », une explication sans jargon pour ceux qui ne parlent pas marketing
+- Section « Le marché » qui compare nos prix aux fourchettes des agences québécoises, un peu au-dessus de la moyenne, et c'est voulu
+- Les deux connexions d'inventaire et leur combo sont regroupés dans un bloc distinct, avec l'économie affichée sur le combo, 775 $ + 155 $/mois
+- Le combo et les connexions individuelles s'excluent mutuellement, et si un client choisit les deux connexions séparées, le pit board lui suggère le combo de lui-même
+- Nouveau produit, plateforme de multipublication Metricool, 75 $/mois, une publication qui part partout en même temps
+- Nouveau produit, campagne de recrutement, 465 $/poste, pour trouver technicien ou conseiller sans agence de placement
+- Nouveau produit, pièce graphique ou imprimée, 310 $/pièce, affiche, dépliant, carte ou bannière à l'unité
+- Frais de gestion média ajustés à 15 % du budget, au centre du marché
+
 ## v8.1 « Télémétrie » — 31 août 2026
 
 - Nouveau produit au catalogue, le carrousel véhicules hebdomadaire, occasions, neufs ou démonstrateurs montés à partir de l'inventaire réel, 620 $/mois
