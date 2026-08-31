@@ -2,6 +2,24 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v7.6 « Catalogue » — 31 août 2026
+
+- Catalogue à la carte sur la page proposition: 22 produits en six catégories avec prix, réputation et GMB, contenu récurrent, données et technique (API Merchant Center et catalogue Meta), acquisition, CRM et rétention, conseil et production
+- Frais de gestion média affichés: 12 % du budget publicitaire
+- Prix récurrents en forfaits fixes mensuels, installations toujours facturées
+
+## v7.5 « Motorhome » — 31 août 2026
+
+- La page de présentation client déménage vers des adresses plus professionnelles: /fr/proposition.html et /en/proposal.html
+- Titres et textes ajustés en conséquence, toujours non listée et hors des moteurs de recherche
+
+## v7.4 « Paddock » — 19 août 2026
+
+- Nouvelle page non listée /fr/paddock.html et /en/paddock.html, présentation client
+- Taux horaire affiché: 155 $ CAD de l'heure
+- Trois forfaits mensuels: Trackday 1 550 $ (10 h), Podium 3 875 $ (25 h, le plus roulé), Champion 6 975 $ (45 h)
+- Page exclue des moteurs de recherche (noindex) et du sitemap, aucun lien depuis les menus
+
 ## v7.3 « Livrée » — 19 août 2026
 
 - Les vrais logos Audi, Nissan et Carrera Café remplacent les versions dessinées

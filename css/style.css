@@ -1808,6 +1808,209 @@ body.nuit .lights i {
 }
 
 /* ------------------------------------------------------------
+   Le paddock — tarifs et forfaits (page non listée)
+   ------------------------------------------------------------ */
+.taux {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.taux .montant {
+  font-size: clamp(4rem, 12vw, 10rem);
+  font-weight: 200;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.taux .montant em {
+  color: var(--rouge);
+  font-style: normal;
+}
+
+.taux .unite {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gris-moyen);
+}
+
+.forfaits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+  align-items: stretch;
+}
+
+@media (max-width: 960px) {
+  .forfaits {
+    grid-template-columns: 1fr;
+  }
+}
+
+.forfait {
+  border: 1px solid var(--filet);
+  padding: 2.5rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.forfait:hover {
+  border-color: var(--gris-clair);
+  transform: translateY(-4px);
+}
+
+.forfait--star {
+  border-color: var(--rouge);
+}
+
+.forfait--star:hover {
+  border-color: var(--rouge);
+}
+
+.forfait .badge {
+  position: absolute;
+  top: -11px;
+  left: 2.25rem;
+  background: var(--rouge);
+  color: #f4f3ee;
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+}
+
+.forfait .nom {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+.forfait .pour {
+  margin-top: 0.35rem;
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gris-clair);
+}
+
+.forfait .prix {
+  margin-top: 1.5rem;
+  font-size: clamp(2.25rem, 3.5vw, 3rem);
+  font-weight: 200;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.forfait .prix small {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--gris-moyen);
+}
+
+.forfait .heures {
+  margin-top: 0.4rem;
+  font-size: 0.8125rem;
+  color: var(--gris-clair);
+}
+
+.forfait ul {
+  list-style: none;
+  margin: 1.75rem 0 2rem;
+  flex: 1;
+}
+
+.forfait li {
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--filet);
+  font-size: 0.9375rem;
+  color: var(--gris-moyen);
+}
+
+.forfait li b {
+  color: var(--noir);
+  font-weight: 500;
+}
+
+.forfait .btn {
+  align-self: flex-start;
+}
+
+body.nuit .forfait .badge {
+  color: #f4f3ee;
+}
+
+/* Catalogue à la carte (page proposition) */
+.carte-cat {
+  margin-top: 3rem;
+}
+
+.carte-liste {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.carte-liste li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--filet);
+  align-items: baseline;
+}
+
+.carte-liste li:last-child {
+  border-bottom: 1px solid var(--filet);
+}
+
+.carte-nom {
+  font-weight: 500;
+}
+
+.carte-desc {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--gris-moyen);
+  font-weight: 400;
+  max-width: 62ch;
+}
+
+.carte-prix {
+  font-weight: 300;
+  font-size: 1.1875rem;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.carte-prix small {
+  display: block;
+  font-size: 0.6875rem;
+  color: var(--gris-clair);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 560px) {
+  .carte-liste li {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .carte-prix {
+    text-align: left;
+  }
+}
+
+/* ------------------------------------------------------------
    Animations d'apparition
    ------------------------------------------------------------ */
 .reveal {
