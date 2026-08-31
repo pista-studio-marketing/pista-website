@@ -2,6 +2,16 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v8.4 « Grille de départ » — 31 août 2026
+
+- Section « En tant que client, je cherche à… » en tête de page, sept objectifs cochables reliés aux bons produits et au bon forfait
+- Bouton « Monter ce plan en un clic » qui sélectionne le forfait recommandé et ajoute les produits d'un coup, puis ouvre le détail du pit board
+- Étiquette « Recommandé » sur les produits correspondants dans le catalogue, tant que des objectifs sont cochés
+- Quatre objectifs et plus, le plan passe automatiquement au forfait Champion
+- Bouton « Copier un lien de cette sélection », le lien recrée la sélection complète sur n'importe quel appareil, parfait pour préparer une proposition avant une rencontre
+- Bouton « Copier le résumé » pour coller la sélection dans une soumission ou un message
+- Séquence d'allumage, l'aiguille du compte-tours part de zéro et monte au régime à l'ouverture de la page
+
 ## v8.3 « Écurie » — 31 août 2026
 
 - Rabais d'écurie pour les groupes, 2 concessions −5 %, 3 concessions −10 %, 4 et plus −15 %, appliqué au mensuel et aux installations de chaque concession

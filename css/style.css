@@ -2760,6 +2760,132 @@ body.nuit .ech.actif small {
 }
 
 /* ------------------------------------------------------------
+   v8.4 Grille de départ — objectifs, plan en un clic, partage
+   ------------------------------------------------------------ */
+.objectifs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.75rem;
+}
+
+.obj {
+  font-family: var(--font);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--noir);
+  background: none;
+  border: 1px solid var(--filet);
+  border-radius: 999px;
+  padding: 0.75rem 1.35rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+body.nuit .obj {
+  color: var(--creme);
+}
+
+.obj:hover {
+  border-color: var(--rouge);
+}
+
+.obj.actif {
+  background: var(--noir);
+  border-color: var(--noir);
+  color: var(--creme);
+}
+
+.obj.actif::before {
+  content: "\2713\00a0\00a0";
+  color: var(--rouge);
+  font-weight: 500;
+}
+
+body.nuit .obj.actif {
+  background: var(--creme);
+  border-color: var(--creme);
+  color: var(--noir);
+}
+
+.obj-plan {
+  border: 1px solid var(--filet);
+  border-left: 2px solid var(--rouge);
+  padding: 1.5rem 1.75rem;
+  margin-top: 1.75rem;
+}
+
+.obj-plan[hidden] {
+  display: none;
+}
+
+.obj-plan p {
+  margin: 0.75rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+.obj-plan p b {
+  font-weight: 500;
+}
+
+.tag-reco {
+  display: inline-block;
+  margin-left: 0.6rem;
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--rouge);
+  color: var(--rouge);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+li.reco {
+  background: rgba(224, 35, 26, 0.03);
+}
+
+.pb-outils {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.1rem;
+}
+
+.pb-outil {
+  background: none;
+  border: 1px solid rgba(244, 243, 238, 0.3);
+  color: #f4f3ee;
+  font-family: var(--font);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pb-outil:hover {
+  border-color: var(--rouge);
+}
+
+.aiguille {
+  transition: transform 0.7s cubic-bezier(0.3, 1.3, 0.4, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aiguille {
+    transition: none;
+  }
+}
+
+/* ------------------------------------------------------------
    Animations d'apparition
    ------------------------------------------------------------ */
 .reveal {

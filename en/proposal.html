@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="stylesheet" href="../css/style.css?v=8.3">
+  <link rel="stylesheet" href="../css/style.css?v=8.4">
   <meta name="theme-color" content="#F4F3EE">
 </head>
 <body>
@@ -45,6 +45,7 @@
         <h1 class="giant">Proposal<span class="accent">.</span></h1>
         <p class="lede"><b>A clear plan, clear numbers.</b> Play with the gauge, pick your package, add your products. The total follows you at the bottom of the page.</p>
         <div class="hero-nav">
+          <a class="filtre" href="#objectifs">Your goals</a>
           <a class="filtre" href="#forfaits">Hour packages</a>
           <a class="filtre" href="#carte">À la carte</a>
           <a class="filtre" href="#ecurie">The team</a>
@@ -60,7 +61,32 @@
       </div>
     </div>
 
-    <section class="section reveal" style="border-top:none;">
+    <section class="section reveal" id="objectifs" style="border-top:none;">
+      <div class="container">
+        <span class="label">The starting grid</span>
+        <h2>As a client, I'm looking to…</h2>
+        <p class="intro">Check one or more goals and we'll build the race plan to match. Nothing is locked in, everything can be adjusted after.</p>
+        <div class="objectifs" id="objChoix">
+          <button class="obj" data-obj="neufs">Sell more new vehicles</button>
+          <button class="obj" data-obj="occasions">Move my used inventory</button>
+          <button class="obj" data-obj="visibilite">Be more visible in my area</button>
+          <button class="obj" data-obj="retention">Bring my current customers back</button>
+          <button class="obj" data-obj="mesure">Know what my marketing pays back</button>
+          <button class="obj" data-obj="recrutement">Hire staff</button>
+          <button class="obj" data-obj="lancement">Launch a new model in style</button>
+        </div>
+        <div class="obj-plan" id="objPlan" hidden>
+          <span class="label">Your race plan</span>
+          <p id="objResume"></p>
+          <div class="hero-actions" style="margin-top:1.5rem;">
+            <button class="btn btn-primary" id="objAppliquer">Build this plan in one click</button>
+          </div>
+          <p class="meta-note">The recommended products are also tagged in the catalogue below. Adjust as you wish.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
       <div class="container">
         <span class="label">The hourly rate</span>
         <div class="taux">
@@ -433,6 +459,10 @@
       <div class="container">
         <ul id="pbListe"></ul>
         <p class="pb-eq" id="pbEq"></p>
+        <div class="pb-outils">
+          <button class="pb-outil" id="pbCopier">Copy the summary</button>
+          <button class="pb-outil" id="pbLien">Copy a link to this selection</button>
+        </div>
       </div>
     </div>
     <div class="pb-hint" id="pbHint" hidden>
@@ -479,7 +509,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=8.3"></script>
+  <script src="../js/main.js?v=8.4"></script>
   <script>
   (function () {
     var fmt = function (n) { return "$" + n.toLocaleString("en-CA"); };
@@ -508,7 +538,10 @@
       });
     }
     throttle.addEventListener("input", majSimu);
-    majSimu();
+    // Ignition sequence: the needle starts at zero and climbs to pace
+    arc.style.strokeDashoffset = LONG;
+    aiguille.style.transform = "rotate(-90deg)";
+    setTimeout(majSimu, 350);
 
     // ----- Catalogue filters -----
     document.querySelectorAll(".filtre").forEach(function (btn) {
@@ -767,7 +800,7 @@
       try { localStorage.removeItem(CLE); } catch (e) {}
     });
 
-    document.getElementById("pbEnvoyer").addEventListener("click", function () {
+    function resumeLignes() {
       var lignes = [];
       if (etat.forfait) lignes.push(etat.forfait + " package: " + fmt(etat.prix) + "/month");
       etat.items.forEach(function (it) {
@@ -777,13 +810,48 @@
         lignes.push("Team: " + (etat.nb === 4 ? "4 dealerships and up" : etat.nb + " dealerships") + ", " + Math.round((RABAIS[etat.nb] || 0) * 100) + "% discount for each one");
       }
       lignes.push("", "Monthly total" + (etat.nb > 1 ? " (group)" : "") + ": " + pbMensuel.textContent, "One-time total" + (etat.nb > 1 ? " (group)" : "") + ": " + pbUnique.textContent);
-      var corps = "Hello Pista Studio,%0D%0A%0D%0AHere is the selection we built together:%0D%0A%0D%0A- " + lignes.join("%0D%0A- ").replace(/%0D%0A- %0D%0A/, "%0D%0A%0D%0A");
+      return lignes;
+    }
+
+    document.getElementById("pbEnvoyer").addEventListener("click", function () {
+      var corps = "Hello Pista Studio,%0D%0A%0D%0AHere is the selection we built together:%0D%0A%0D%0A- " + resumeLignes().join("%0D%0A- ").replace(/%0D%0A- %0D%0A/, "%0D%0A%0D%0A");
       window.location.href = "mailto:hello@pista.ca?subject=" + encodeURIComponent("My Pista Studio selection") + "&body=" + corps;
     });
 
-    // ----- Restore the remembered selection -----
+    function copierVers(btn, texte, fait) {
+      var avant = btn.textContent;
+      var ok = function () { btn.textContent = fait; setTimeout(function () { btn.textContent = avant; }, 1800); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texte).then(ok, ok);
+      } else {
+        var ta = document.createElement("textarea");
+        ta.value = texte;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); } catch (e) {}
+        document.body.removeChild(ta);
+        ok();
+      }
+    }
+
+    document.getElementById("pbCopier").addEventListener("click", function () {
+      var texte = "Pista Studio selection\n\n- " + resumeLignes().join("\n- ").replace(/\n- \n/, "\n\n");
+      copierVers(this, texte, "Copied ✓");
+    });
+
+    document.getElementById("pbLien").addEventListener("click", function () {
+      var m = { f: etat.forfait, n: etat.nb, i: etat.items.map(function (it) { return [it.li.dataset.nom, it.qte]; }) };
+      var lien = location.href.split("#")[0] + "#s=" + btoa(encodeURIComponent(JSON.stringify(m)));
+      copierVers(this, lien, "Link copied ✓");
+    });
+
+    // ----- Restore: shared link first, memory second -----
     try {
-      var memo = JSON.parse(localStorage.getItem(CLE) || "null");
+      var memo = null;
+      if (location.hash.indexOf("#s=") === 0) {
+        try { memo = JSON.parse(decodeURIComponent(atob(location.hash.slice(3)))); } catch (e2) {}
+      }
+      if (!memo) memo = JSON.parse(localStorage.getItem(CLE) || "null");
       if (memo) {
         if (memo.n && RABAIS[memo.n] !== undefined) majEcurie(memo.n);
         if (memo.f) {
@@ -808,6 +876,87 @@
         if (etat.forfait || etat.items.length) majBoard();
       }
     } catch (e) {}
+
+    // ----- The starting grid: client goals -----
+    var OBJ = {
+      neufs: { forfait: "Podium", produits: ["Turnkey month-start campaign", "Both connections combo"] },
+      occasions: { forfait: "Trackday", produits: ["Weekly vehicle carousel", "Inventory API connection, Google Merchant Center"] },
+      visibilite: { forfait: "Trackday", produits: ["Google Business Profile management", "SEO blog", "Extended reputation watch"] },
+      retention: { forfait: null, produits: ["Retention email and SMS management", "Automated flow", "Monthly newsletter"] },
+      mesure: { forfait: null, produits: ["GA4, GTM and conversion setup", "Looker Studio dashboard", "Full digital audit"] },
+      recrutement: { forfait: null, produits: ["Recruitment campaign"] },
+      lancement: { forfait: "Podium", produits: ["Model launch campaign", "Dealership photo and video day"] }
+    };
+    var RANG = { Trackday: 1, Podium: 2, Champion: 3 };
+    var objSel = [];
+    var planReco = { forfait: null, produits: [] };
+    var objPlan = document.getElementById("objPlan");
+    var objResume = document.getElementById("objResume");
+
+    function majObjectifs() {
+      var produits = [];
+      var forfait = null;
+      var rang = 0;
+      objSel.forEach(function (id) {
+        var o = OBJ[id];
+        o.produits.forEach(function (n) { if (produits.indexOf(n) === -1) produits.push(n); });
+        if (o.forfait && RANG[o.forfait] > rang) { rang = RANG[o.forfait]; forfait = o.forfait; }
+      });
+      if (produits.indexOf("Both connections combo") > -1) {
+        produits = produits.filter(function (n) {
+          return n !== "Inventory API connection, Google Merchant Center" && n !== "Inventory connection, Meta catalogue";
+        });
+      }
+      if (objSel.length >= 4) forfait = "Champion";
+      planReco = { forfait: forfait, produits: produits };
+
+      document.querySelectorAll(".carte-liste li[data-nom]").forEach(function (li) {
+        var reco = produits.indexOf(li.dataset.nom) > -1;
+        li.classList.toggle("reco", reco);
+        var t = li.querySelector(".tag-reco");
+        if (reco && !t) {
+          var s = document.createElement("span");
+          s.className = "tag-reco";
+          s.textContent = "Recommended";
+          li.querySelector(".carte-nom").appendChild(s);
+        }
+        if (!reco && t) t.parentNode.removeChild(t);
+      });
+
+      if (!objSel.length) { objPlan.hidden = true; return; }
+      objPlan.hidden = false;
+      var morceaux = [];
+      if (forfait) morceaux.push("the <b>" + forfait + "</b> package");
+      if (produits.length) morceaux.push(produits.join(" · "));
+      objResume.innerHTML = "For " + (objSel.length > 1 ? "these goals" : "this goal") + ", your racing line: " + morceaux.join(", completed by ") + ".";
+    }
+
+    document.querySelectorAll(".obj").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var id = b.dataset.obj;
+        var i = objSel.indexOf(id);
+        if (i > -1) objSel.splice(i, 1); else objSel.push(id);
+        b.classList.toggle("actif", i === -1);
+        majObjectifs();
+      });
+    });
+
+    document.getElementById("objAppliquer").addEventListener("click", function () {
+      if (planReco.forfait) {
+        var f = document.querySelector('.forfait[data-forfait="' + planReco.forfait + '"]');
+        if (f && !f.classList.contains("actif")) f.querySelector(".choisir").click();
+      }
+      planReco.produits.forEach(function (nom) {
+        var li = null;
+        document.querySelectorAll(".carte-liste li[data-nom]").forEach(function (x) { if (x.dataset.nom === nom) li = x; });
+        if (!li) return;
+        var deja = false;
+        etat.items.forEach(function (x) { if (x.li === li) deja = true; });
+        if (!deja) li.querySelector(".ajout").click();
+      });
+      pbDetail.hidden = false;
+      pbToggle.setAttribute("aria-expanded", "true");
+    });
   })();
   </script>
 </body>

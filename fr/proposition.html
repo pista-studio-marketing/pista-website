@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="stylesheet" href="../css/style.css?v=8.3">
+  <link rel="stylesheet" href="../css/style.css?v=8.4">
   <meta name="theme-color" content="#F4F3EE">
 </head>
 <body>
@@ -45,6 +45,7 @@
         <h1 class="giant">Proposition<span class="accent">.</span></h1>
         <p class="lede"><b>Un plan clair, des chiffres clairs.</b> Jouez avec la jauge, choisissez votre forfait, ajoutez vos produits. Le total vous suit en bas de page.</p>
         <div class="hero-nav">
+          <a class="filtre" href="#objectifs">Vos objectifs</a>
           <a class="filtre" href="#forfaits">Forfaits d'heures</a>
           <a class="filtre" href="#carte">À la carte</a>
           <a class="filtre" href="#ecurie">L'écurie</a>
@@ -60,7 +61,32 @@
       </div>
     </div>
 
-    <section class="section reveal" style="border-top:none;">
+    <section class="section reveal" id="objectifs" style="border-top:none;">
+      <div class="container">
+        <span class="label">La grille de départ</span>
+        <h2>En tant que client, je cherche à…</h2>
+        <p class="intro">Cochez un ou plusieurs objectifs, on vous monte le plan de course qui va avec. Rien d'obligé, tout se modifie après.</p>
+        <div class="objectifs" id="objChoix">
+          <button class="obj" data-obj="neufs">Vendre plus de véhicules neufs</button>
+          <button class="obj" data-obj="occasions">Écouler mes véhicules d'occasion</button>
+          <button class="obj" data-obj="visibilite">Être plus visible dans ma région</button>
+          <button class="obj" data-obj="retention">Faire revenir mes clients actuels</button>
+          <button class="obj" data-obj="mesure">Comprendre ce que rapporte mon marketing</button>
+          <button class="obj" data-obj="recrutement">Recruter du personnel</button>
+          <button class="obj" data-obj="lancement">Lancer un nouveau modèle en grand</button>
+        </div>
+        <div class="obj-plan" id="objPlan" hidden>
+          <span class="label">Votre plan de course</span>
+          <p id="objResume"></p>
+          <div class="hero-actions" style="margin-top:1.5rem;">
+            <button class="btn btn-primary" id="objAppliquer">Monter ce plan en un clic</button>
+          </div>
+          <p class="meta-note">Les produits recommandés portent aussi une étiquette dans le catalogue plus bas. Libre à vous d'ajuster.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
       <div class="container">
         <span class="label">Le taux horaire</span>
         <div class="taux">
@@ -433,6 +459,10 @@
       <div class="container">
         <ul id="pbListe"></ul>
         <p class="pb-eq" id="pbEq"></p>
+        <div class="pb-outils">
+          <button class="pb-outil" id="pbCopier">Copier le résumé</button>
+          <button class="pb-outil" id="pbLien">Copier un lien de cette sélection</button>
+        </div>
       </div>
     </div>
     <div class="pb-hint" id="pbHint" hidden>
@@ -479,7 +509,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=8.3"></script>
+  <script src="../js/main.js?v=8.4"></script>
   <script>
   (function () {
     var fmt = function (n) { return n.toLocaleString("fr-CA") + " $"; };
@@ -508,7 +538,10 @@
       });
     }
     throttle.addEventListener("input", majSimu);
-    majSimu();
+    // Séquence d'allumage: l'aiguille part de zéro et monte au régime
+    arc.style.strokeDashoffset = LONG;
+    aiguille.style.transform = "rotate(-90deg)";
+    setTimeout(majSimu, 350);
 
     // ----- Filtres du catalogue -----
     document.querySelectorAll(".filtre").forEach(function (btn) {
@@ -767,7 +800,7 @@
       try { localStorage.removeItem(CLE); } catch (e) {}
     });
 
-    document.getElementById("pbEnvoyer").addEventListener("click", function () {
+    function resumeLignes() {
       var lignes = [];
       if (etat.forfait) lignes.push("Forfait " + etat.forfait + " : " + fmt(etat.prix) + "/mois");
       etat.items.forEach(function (it) {
@@ -777,13 +810,48 @@
         lignes.push("Écurie : " + (etat.nb === 4 ? "4 concessions et plus" : etat.nb + " concessions") + ", rabais de " + Math.round((RABAIS[etat.nb] || 0) * 100) + " % pour chacune");
       }
       lignes.push("", "Total mensuel" + (etat.nb > 1 ? " (groupe)" : "") + " : " + pbMensuel.textContent, "Total ponctuel" + (etat.nb > 1 ? " (groupe)" : "") + " : " + pbUnique.textContent);
-      var corps = "Bonjour Pista Studio,%0D%0A%0D%0AVoici la sélection préparée ensemble :%0D%0A%0D%0A- " + lignes.join("%0D%0A- ").replace(/%0D%0A- %0D%0A/, "%0D%0A%0D%0A");
+      return lignes;
+    }
+
+    document.getElementById("pbEnvoyer").addEventListener("click", function () {
+      var corps = "Bonjour Pista Studio,%0D%0A%0D%0AVoici la sélection préparée ensemble :%0D%0A%0D%0A- " + resumeLignes().join("%0D%0A- ").replace(/%0D%0A- %0D%0A/, "%0D%0A%0D%0A");
       window.location.href = "mailto:hello@pista.ca?subject=" + encodeURIComponent("Ma sélection Pista Studio") + "&body=" + corps;
     });
 
-    // ----- Restauration de la sélection mémorisée -----
+    function copierVers(btn, texte, fait) {
+      var avant = btn.textContent;
+      var ok = function () { btn.textContent = fait; setTimeout(function () { btn.textContent = avant; }, 1800); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texte).then(ok, ok);
+      } else {
+        var ta = document.createElement("textarea");
+        ta.value = texte;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); } catch (e) {}
+        document.body.removeChild(ta);
+        ok();
+      }
+    }
+
+    document.getElementById("pbCopier").addEventListener("click", function () {
+      var texte = "Sélection Pista Studio\n\n- " + resumeLignes().join("\n- ").replace(/\n- \n/, "\n\n");
+      copierVers(this, texte, "Copié ✓");
+    });
+
+    document.getElementById("pbLien").addEventListener("click", function () {
+      var m = { f: etat.forfait, n: etat.nb, i: etat.items.map(function (it) { return [it.li.dataset.nom, it.qte]; }) };
+      var lien = location.href.split("#")[0] + "#s=" + btoa(encodeURIComponent(JSON.stringify(m)));
+      copierVers(this, lien, "Lien copié ✓");
+    });
+
+    // ----- Restauration: lien partagé d'abord, mémoire ensuite -----
     try {
-      var memo = JSON.parse(localStorage.getItem(CLE) || "null");
+      var memo = null;
+      if (location.hash.indexOf("#s=") === 0) {
+        try { memo = JSON.parse(decodeURIComponent(atob(location.hash.slice(3)))); } catch (e2) {}
+      }
+      if (!memo) memo = JSON.parse(localStorage.getItem(CLE) || "null");
       if (memo) {
         if (memo.n && RABAIS[memo.n] !== undefined) majEcurie(memo.n);
         if (memo.f) {
@@ -808,6 +876,87 @@
         if (etat.forfait || etat.items.length) majBoard();
       }
     } catch (e) {}
+
+    // ----- La grille de départ: objectifs du client -----
+    var OBJ = {
+      neufs: { forfait: "Podium", produits: ["Campagne de début de mois clé en main", "Combo des deux connexions"] },
+      occasions: { forfait: "Trackday", produits: ["Carrousel véhicules hebdomadaire", "Connexion API inventaire, Google Merchant Center"] },
+      visibilite: { forfait: "Trackday", produits: ["Gestion Google Business Profile", "Blogue SEO", "Veille de réputation élargie"] },
+      retention: { forfait: null, produits: ["Gestion courriel et SMS de rétention", "Flow automatisé", "Infolettre mensuelle"] },
+      mesure: { forfait: null, produits: ["Installation GA4, GTM et conversions", "Tableau de bord Looker Studio", "Audit numérique complet"] },
+      recrutement: { forfait: null, produits: ["Campagne de recrutement"] },
+      lancement: { forfait: "Podium", produits: ["Campagne de lancement de modèle", "Journée photo et vidéo en concession"] }
+    };
+    var RANG = { Trackday: 1, Podium: 2, Champion: 3 };
+    var objSel = [];
+    var planReco = { forfait: null, produits: [] };
+    var objPlan = document.getElementById("objPlan");
+    var objResume = document.getElementById("objResume");
+
+    function majObjectifs() {
+      var produits = [];
+      var forfait = null;
+      var rang = 0;
+      objSel.forEach(function (id) {
+        var o = OBJ[id];
+        o.produits.forEach(function (n) { if (produits.indexOf(n) === -1) produits.push(n); });
+        if (o.forfait && RANG[o.forfait] > rang) { rang = RANG[o.forfait]; forfait = o.forfait; }
+      });
+      if (produits.indexOf("Combo des deux connexions") > -1) {
+        produits = produits.filter(function (n) {
+          return n !== "Connexion API inventaire, Google Merchant Center" && n !== "Connexion inventaire, catalogue Meta";
+        });
+      }
+      if (objSel.length >= 4) forfait = "Champion";
+      planReco = { forfait: forfait, produits: produits };
+
+      document.querySelectorAll(".carte-liste li[data-nom]").forEach(function (li) {
+        var reco = produits.indexOf(li.dataset.nom) > -1;
+        li.classList.toggle("reco", reco);
+        var t = li.querySelector(".tag-reco");
+        if (reco && !t) {
+          var s = document.createElement("span");
+          s.className = "tag-reco";
+          s.textContent = "Recommandé";
+          li.querySelector(".carte-nom").appendChild(s);
+        }
+        if (!reco && t) t.parentNode.removeChild(t);
+      });
+
+      if (!objSel.length) { objPlan.hidden = true; return; }
+      objPlan.hidden = false;
+      var morceaux = [];
+      if (forfait) morceaux.push("le forfait <b>" + forfait + "</b>");
+      if (produits.length) morceaux.push(produits.join(" · "));
+      objResume.innerHTML = "Pour " + (objSel.length > 1 ? "ces objectifs" : "cet objectif") + ", votre ligne de course: " + morceaux.join(", complété par ") + ".";
+    }
+
+    document.querySelectorAll(".obj").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var id = b.dataset.obj;
+        var i = objSel.indexOf(id);
+        if (i > -1) objSel.splice(i, 1); else objSel.push(id);
+        b.classList.toggle("actif", i === -1);
+        majObjectifs();
+      });
+    });
+
+    document.getElementById("objAppliquer").addEventListener("click", function () {
+      if (planReco.forfait) {
+        var f = document.querySelector('.forfait[data-forfait="' + planReco.forfait + '"]');
+        if (f && !f.classList.contains("actif")) f.querySelector(".choisir").click();
+      }
+      planReco.produits.forEach(function (nom) {
+        var li = null;
+        document.querySelectorAll(".carte-liste li[data-nom]").forEach(function (x) { if (x.dataset.nom === nom) li = x; });
+        if (!li) return;
+        var deja = false;
+        etat.items.forEach(function (x) { if (x.li === li) deja = true; });
+        if (!deja) li.querySelector(".ajout").click();
+      });
+      pbDetail.hidden = false;
+      pbToggle.setAttribute("aria-expanded", "true");
+    });
   })();
   </script>
 </body>
