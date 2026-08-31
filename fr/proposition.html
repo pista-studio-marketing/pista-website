@@ -4,14 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Proposition — Pista Studio</title>
-  <meta name="description" content="Tarifs et forfaits mensuels de Pista Studio, présentation réservée aux clients.">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Taux horaire, forfaits mensuels et catalogue à la carte de Pista Studio. Montez votre plan et recevez votre soumission.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="stylesheet" href="../css/style.css?v=9.0">
+  <link rel="stylesheet" href="../css/style.css?v=9.1">
+  <link rel="canonical" href="https://www.pista.ca/fr/proposition">
+  <link rel="alternate" hreflang="fr" href="https://www.pista.ca/fr/proposition">
+  <link rel="alternate" hreflang="en" href="https://www.pista.ca/en/proposal">
+  <link rel="alternate" hreflang="x-default" href="https://www.pista.ca/en/proposal">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Pista Studio">
+  <meta property="og:title" content="Proposition — Pista Studio">
+  <meta property="og:description" content="Taux horaire, forfaits mensuels et catalogue à la carte de Pista Studio. Montez votre plan et recevez votre soumission.">
+  <meta property="og:url" content="https://www.pista.ca/fr/proposition">
+  <meta property="og:image" content="https://www.pista.ca/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_CA">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#F4F3EE">
 </head>
 <body>
@@ -31,6 +44,7 @@
         <li><a href="/fr/services">Services</a></li>
         <li><a href="/fr/technique">Technique</a></li>
         <li><a href="/fr/a-propos">À propos</a></li>
+        <li><a href="/fr/proposition" aria-current="page">Tarifs</a></li>
         <li><a href="/fr/contact">Contact</a></li>
         <li><a href="/en/proposal" class="lang-switch" lang="en">EN</a></li>
       </ul>
@@ -428,9 +442,15 @@
               <div class="marche-item"><span class="k">Ponctuel</span><span class="nous" id="ficheUnique">0 $</span><span class="note">Installations et mandats uniques, facturés une seule fois.</span></div>
               <div class="marche-item"><span class="k">Heures de piste</span><span class="nous" id="ficheHeures">0 h</span><span class="note" id="ficheHNote"></span></div>
             </div>
-            <div class="annot" style="margin-top:2rem;"><span>Un clic, et tout part</span><svg viewBox="0 0 60 84" aria-hidden="true"><path d="M12 6 C 38 22, 46 46, 34 72"/><path d="M20 60 L 33 75 L 46 58"/></svg></div>
+            <div class="sou-coord">
+              <div class="form-group"><label for="cConc">Concession</label><input type="text" id="cConc" autocomplete="organization"></div>
+              <div class="form-group"><label for="cNom">Votre nom</label><input type="text" id="cNom" autocomplete="name"></div>
+              <div class="form-group"><label for="cMail">Courriel</label><input type="email" id="cMail" autocomplete="email"></div>
+            </div>
+            <div class="annot" style="margin-top:2rem;"><span>Remplissez, puis créez la soumission</span><svg viewBox="0 0 60 84" aria-hidden="true"><path d="M12 6 C 38 22, 46 46, 34 72"/><path d="M20 60 L 33 75 L 46 58"/></svg></div>
             <div class="hero-actions" style="margin-top:0.75rem; flex-wrap:wrap;">
-              <button class="btn btn-primary" id="ficheEnvoyer">Recevoir cette proposition par courriel</button>
+              <button class="btn btn-primary" id="fichePdf">Créer la soumission (PDF)</button>
+              <button class="btn btn-secondary" id="ficheEnvoyer">Recevoir par courriel</button>
               <button class="btn btn-secondary" id="ficheCopier">Copier le résumé</button>
               <button class="btn btn-secondary" id="ficheLien">Copier un lien</button>
               <button class="btn btn-secondary" id="ficheReset">Tout remettre à zéro</button>
@@ -550,6 +570,26 @@
     </div>
   </div>
 
+
+  <div class="soumission" id="soumission" aria-hidden="true">
+    <div class="sou-tete">
+      <div>
+        <div class="sou-marque">Pista Studio<span>.</span></div>
+        <div class="sou-tag">L'art de faire rouler les marques</div>
+      </div>
+      <div class="sou-meta">Soumission <b id="souNum"></b><br>Date: <span id="souDate"></span><br>Valide 30 jours</div>
+    </div>
+    <div class="sou-client" id="souClient"></div>
+    <div class="sou-obj" id="souObj"></div>
+    <table class="sou-table">
+      <thead><tr><th>Élément</th><th>Mensuel</th><th>Ponctuel</th></tr></thead>
+      <tbody id="souLignes"></tbody>
+    </table>
+    <p class="sou-note">Prix en dollars canadiens, avant taxes. Soumission valide 30 jours. Sans contrat de douze mois, renouvellement mensuel. Budgets publicitaires payés directement aux plateformes, frais de gestion média de 15 % du budget en sus. Tout mandat hors catalogue au taux de 155 $/h. Les heures non utilisées ne s'accumulent pas.</p>
+    <div class="sou-sign"><div>Pista Studio</div><div>Le client</div></div>
+    <div class="sou-pied">pista.ca &nbsp;·&nbsp; hello@pista.ca &nbsp;·&nbsp; 53, rue du Petit-Champlain, Québec, QC G1K 4H5</div>
+  </div>
+
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top">
@@ -561,6 +601,7 @@
           <li><a href="/fr/services">Services</a></li>
           <li><a href="/fr/technique">Technique</a></li>
           <li><a href="/fr/a-propos">À propos</a></li>
+          <li><a href="/fr/proposition">Tarifs</a></li>
           <li><a href="/fr/contact">Contact</a></li>
         </ul>
       </div>
@@ -576,7 +617,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=9.0"></script>
+  <script src="../js/main.js?v=9.1"></script>
   <script>
   (function () {
     var fmt = function (n) { return n.toLocaleString("fr-CA") + " $"; };
@@ -893,7 +934,7 @@
 
     document.getElementById("pbEnvoyer").addEventListener("click", function () {
       var corps = "Bonjour Pista Studio,%0D%0A%0D%0AVoici la sélection préparée ensemble :%0D%0A%0D%0A- " + resumeLignes().join("%0D%0A- ").replace(/%0D%0A- %0D%0A/, "%0D%0A%0D%0A");
-      window.location.href = "mailto:hello@pista.ca?subject=" + encodeURIComponent("Ma sélection Pista Studio") + "&body=" + corps;
+      window.location.href = "mailto:hello@pista.ca?subject=" + encodeURIComponent(sujetSoumission()) + "&body=" + corps;
     });
 
     function copierVers(btn, texte, fait) {
@@ -1254,6 +1295,83 @@
     document.body.classList.add("parcours");
     allerTour(tourActuel, true);
     majNavH();
+
+    // ----- v9.1: coordonnées et soumission imprimable -----
+    var CLE_COORD = "pista-coord-fr";
+    var champsCoord = ["cConc", "cNom", "cMail"];
+
+    function coord() {
+      var v = {};
+      champsCoord.forEach(function (id) { var e = document.getElementById(id); v[id] = e ? e.value.trim() : ""; });
+      return v;
+    }
+    try {
+      var cMemo = JSON.parse(localStorage.getItem(CLE_COORD) || "null");
+      if (cMemo) champsCoord.forEach(function (id) { var e = document.getElementById(id); if (e && cMemo[id]) e.value = cMemo[id]; });
+    } catch (e) {}
+    champsCoord.forEach(function (id) {
+      var e = document.getElementById(id);
+      if (e) e.addEventListener("input", function () {
+        try { localStorage.setItem(CLE_COORD, JSON.stringify(coord())); } catch (er) {}
+      });
+    });
+
+    function sujetSoumission() {
+      var c = coord();
+      return "Soumission Pista Studio" + (c.cConc ? " \u00b7 " + c.cConc : "");
+    }
+
+    var resumeCoordBase = resumeLignes;
+    resumeLignes = function () {
+      var l = resumeCoordBase();
+      var c = coord();
+      if (c.cNom || c.cMail) l.unshift("Contact : " + [c.cNom, c.cMail].filter(Boolean).join(", "));
+      if (c.cConc) l.unshift("Concession : " + c.cConc);
+      return l;
+    };
+
+    function majSoumission() {
+      var d = new Date();
+      var pad = function (x) { return (x < 10 ? "0" : "") + x; };
+      document.getElementById("souNum").textContent = "PS-" + d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + "-" + pad(d.getHours()) + pad(d.getMinutes());
+      document.getElementById("souDate").textContent = d.toLocaleDateString("fr-CA");
+      var c = coord();
+      var cl = [];
+      if (c.cConc) cl.push("<b>" + c.cConc + "</b>");
+      if (c.cNom) cl.push(c.cNom);
+      if (c.cMail) cl.push(c.cMail);
+      if (etat.nb > 1) cl.push((etat.nb === 4 ? "4 concessions et plus" : etat.nb + " concessions") + ", rabais d'écurie de " + Math.round((RABAIS[etat.nb] || 0) * 100) + " % pour chacune");
+      document.getElementById("souClient").innerHTML = cl.join(" &nbsp;·&nbsp; ");
+      document.getElementById("souObj").textContent = objSel.length ? "Objectifs identifiés: " + objLabels().join(" · ") : "";
+
+      var corps = document.getElementById("souLignes");
+      corps.innerHTML = "";
+      var r = RABAIS[etat.nb] || 0;
+      var mensuel = etat.prix, unique = 0;
+      function tr(a, m, u, cls) {
+        var l = document.createElement("tr");
+        if (cls) l.className = cls;
+        l.innerHTML = "<td>" + a + "</td><td>" + (m || "") + "</td><td>" + (u || "") + "</td>";
+        corps.appendChild(l);
+      }
+      if (etat.forfait) tr("Forfait " + etat.forfait + (etat.forfait === "Sur mesure" ? " (" + Math.round(etat.prix / 155) + " h/mois)" : ""), fmt(etat.prix), "");
+      etat.items.forEach(function (it) {
+        var m = parseInt(it.li.dataset.mensuel || 0, 10) * it.qte;
+        var u = parseInt(it.li.dataset.unique || 0, 10) * it.qte;
+        mensuel += m; unique += u;
+        tr(libelle(it), m ? fmt(m) : "", u ? fmt(u) : "");
+      });
+      if (etat.nb > 1) {
+        tr("Sous-total par concession", fmt(mensuel), fmt(unique));
+        tr("Rabais d'écurie (" + Math.round(r * 100) + " %) et " + etat.nb + " concessions", "", "");
+      }
+      tr("Total" + (etat.nb > 1 ? " du groupe" : ""), fmt(Math.round(mensuel * etat.nb * (1 - r))) + " /mois", fmt(Math.round(unique * etat.nb * (1 - r))), "sou-tot");
+    }
+
+    document.getElementById("fichePdf").addEventListener("click", function () {
+      majSoumission();
+      window.print();
+    });
   })();
   </script>
 </body>

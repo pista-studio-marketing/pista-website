@@ -4,14 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Proposal — Pista Studio</title>
-  <meta name="description" content="Pista Studio rates and monthly packages, client presentation.">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Pista Studio hourly rate, monthly packages and à la carte catalogue. Build your plan and get your quote.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="stylesheet" href="../css/style.css?v=9.0">
+  <link rel="stylesheet" href="../css/style.css?v=9.1">
+  <link rel="canonical" href="https://www.pista.ca/en/proposal">
+  <link rel="alternate" hreflang="fr" href="https://www.pista.ca/fr/proposition">
+  <link rel="alternate" hreflang="en" href="https://www.pista.ca/en/proposal">
+  <link rel="alternate" hreflang="x-default" href="https://www.pista.ca/en/proposal">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Pista Studio">
+  <meta property="og:title" content="Proposal — Pista Studio">
+  <meta property="og:description" content="Pista Studio hourly rate, monthly packages and à la carte catalogue. Build your plan and get your quote.">
+  <meta property="og:url" content="https://www.pista.ca/en/proposal">
+  <meta property="og:image" content="https://www.pista.ca/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_CA">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#F4F3EE">
 </head>
 <body>
@@ -31,6 +44,7 @@
         <li><a href="/en/services">Services</a></li>
         <li><a href="/en/technique">Technical</a></li>
         <li><a href="/en/about">About</a></li>
+        <li><a href="/en/proposal" aria-current="page">Pricing</a></li>
         <li><a href="/en/contact">Contact</a></li>
         <li><a href="/fr/proposition" class="lang-switch" lang="fr">FR</a></li>
       </ul>
@@ -428,9 +442,15 @@
               <div class="marche-item"><span class="k">One-time</span><span class="nous" id="ficheUnique">$0</span><span class="note">Setups and one-off mandates, billed once.</span></div>
               <div class="marche-item"><span class="k">Track hours</span><span class="nous" id="ficheHeures">0 h</span><span class="note" id="ficheHNote"></span></div>
             </div>
-            <div class="annot" style="margin-top:2rem;"><span>One click and it's on its way</span><svg viewBox="0 0 60 84" aria-hidden="true"><path d="M12 6 C 38 22, 46 46, 34 72"/><path d="M20 60 L 33 75 L 46 58"/></svg></div>
+            <div class="sou-coord">
+              <div class="form-group"><label for="cConc">Dealership</label><input type="text" id="cConc" autocomplete="organization"></div>
+              <div class="form-group"><label for="cNom">Your name</label><input type="text" id="cNom" autocomplete="name"></div>
+              <div class="form-group"><label for="cMail">Email</label><input type="email" id="cMail" autocomplete="email"></div>
+            </div>
+            <div class="annot" style="margin-top:2rem;"><span>Fill in, then create the quote</span><svg viewBox="0 0 60 84" aria-hidden="true"><path d="M12 6 C 38 22, 46 46, 34 72"/><path d="M20 60 L 33 75 L 46 58"/></svg></div>
             <div class="hero-actions" style="margin-top:0.75rem; flex-wrap:wrap;">
-              <button class="btn btn-primary" id="ficheEnvoyer">Send this proposal by email</button>
+              <button class="btn btn-primary" id="fichePdf">Create the quote (PDF)</button>
+              <button class="btn btn-secondary" id="ficheEnvoyer">Send by email</button>
               <button class="btn btn-secondary" id="ficheCopier">Copy the summary</button>
               <button class="btn btn-secondary" id="ficheLien">Copy a link</button>
               <button class="btn btn-secondary" id="ficheReset">Clear the selection</button>
@@ -550,6 +570,26 @@
     </div>
   </div>
 
+
+  <div class="soumission" id="soumission" aria-hidden="true">
+    <div class="sou-tete">
+      <div>
+        <div class="sou-marque">Pista Studio<span>.</span></div>
+        <div class="sou-tag">The art of driving brands forward</div>
+      </div>
+      <div class="sou-meta">Quote <b id="souNum"></b><br>Date: <span id="souDate"></span><br>Valid 30 days</div>
+    </div>
+    <div class="sou-client" id="souClient"></div>
+    <div class="sou-obj" id="souObj"></div>
+    <table class="sou-table">
+      <thead><tr><th>Item</th><th>Monthly</th><th>One-time</th></tr></thead>
+      <tbody id="souLignes"></tbody>
+    </table>
+    <p class="sou-note">Prices in Canadian dollars, before taxes. Quote valid 30 days. No twelve-month contract, monthly renewal. Ad budgets paid directly to the platforms, media management fee of 15% of spend applies. Any work outside the catalogue at the $155 hourly rate. Unused hours do not roll over.</p>
+    <div class="sou-sign"><div>Pista Studio</div><div>Client</div></div>
+    <div class="sou-pied">pista.ca &nbsp;·&nbsp; hello@pista.ca &nbsp;·&nbsp; 53 Petit-Champlain st., Quebec, QC G1K 4H5</div>
+  </div>
+
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top">
@@ -561,6 +601,7 @@
           <li><a href="/en/services">Services</a></li>
           <li><a href="/en/technique">Technical</a></li>
           <li><a href="/en/about">About</a></li>
+          <li><a href="/en/proposal">Pricing</a></li>
           <li><a href="/en/contact">Contact</a></li>
         </ul>
       </div>
@@ -576,7 +617,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=9.0"></script>
+  <script src="../js/main.js?v=9.1"></script>
   <script>
   (function () {
     var fmt = function (n) { return "$" + n.toLocaleString("en-CA"); };
@@ -893,7 +934,7 @@
 
     document.getElementById("pbEnvoyer").addEventListener("click", function () {
       var corps = "Hello Pista Studio,%0D%0A%0D%0AHere is the selection we built together:%0D%0A%0D%0A- " + resumeLignes().join("%0D%0A- ").replace(/%0D%0A- %0D%0A/, "%0D%0A%0D%0A");
-      window.location.href = "mailto:hello@pista.ca?subject=" + encodeURIComponent("My Pista Studio selection") + "&body=" + corps;
+      window.location.href = "mailto:hello@pista.ca?subject=" + encodeURIComponent(sujetSoumission()) + "&body=" + corps;
     });
 
     function copierVers(btn, texte, fait) {
@@ -1254,6 +1295,83 @@
     document.body.classList.add("parcours");
     allerTour(tourActuel, true);
     majNavH();
+
+    // ----- v9.1: contact details and printable quote -----
+    var CLE_COORD = "pista-coord-en";
+    var champsCoord = ["cConc", "cNom", "cMail"];
+
+    function coord() {
+      var v = {};
+      champsCoord.forEach(function (id) { var e = document.getElementById(id); v[id] = e ? e.value.trim() : ""; });
+      return v;
+    }
+    try {
+      var cMemo = JSON.parse(localStorage.getItem(CLE_COORD) || "null");
+      if (cMemo) champsCoord.forEach(function (id) { var e = document.getElementById(id); if (e && cMemo[id]) e.value = cMemo[id]; });
+    } catch (e) {}
+    champsCoord.forEach(function (id) {
+      var e = document.getElementById(id);
+      if (e) e.addEventListener("input", function () {
+        try { localStorage.setItem(CLE_COORD, JSON.stringify(coord())); } catch (er) {}
+      });
+    });
+
+    function sujetSoumission() {
+      var c = coord();
+      return "Pista Studio quote" + (c.cConc ? " \u00b7 " + c.cConc : "");
+    }
+
+    var resumeCoordBase = resumeLignes;
+    resumeLignes = function () {
+      var l = resumeCoordBase();
+      var c = coord();
+      if (c.cNom || c.cMail) l.unshift("Contact: " + [c.cNom, c.cMail].filter(Boolean).join(", "));
+      if (c.cConc) l.unshift("Dealership: " + c.cConc);
+      return l;
+    };
+
+    function majSoumission() {
+      var d = new Date();
+      var pad = function (x) { return (x < 10 ? "0" : "") + x; };
+      document.getElementById("souNum").textContent = "PS-" + d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + "-" + pad(d.getHours()) + pad(d.getMinutes());
+      document.getElementById("souDate").textContent = d.toLocaleDateString("en-CA");
+      var c = coord();
+      var cl = [];
+      if (c.cConc) cl.push("<b>" + c.cConc + "</b>");
+      if (c.cNom) cl.push(c.cNom);
+      if (c.cMail) cl.push(c.cMail);
+      if (etat.nb > 1) cl.push((etat.nb === 4 ? "4 dealerships and up" : etat.nb + " dealerships") + ", team discount of " + Math.round((RABAIS[etat.nb] || 0) * 100) + "% for each one");
+      document.getElementById("souClient").innerHTML = cl.join(" &nbsp;·&nbsp; ");
+      document.getElementById("souObj").textContent = objSel.length ? "Identified goals: " + objLabels().join(" · ") : "";
+
+      var corps = document.getElementById("souLignes");
+      corps.innerHTML = "";
+      var r = RABAIS[etat.nb] || 0;
+      var mensuel = etat.prix, unique = 0;
+      function tr(a, m, u, cls) {
+        var l = document.createElement("tr");
+        if (cls) l.className = cls;
+        l.innerHTML = "<td>" + a + "</td><td>" + (m || "") + "</td><td>" + (u || "") + "</td>";
+        corps.appendChild(l);
+      }
+      if (etat.forfait) tr(etat.forfait + " package" + (etat.forfait === "Custom" ? " (" + Math.round(etat.prix / 155) + " h/month)" : ""), fmt(etat.prix), "");
+      etat.items.forEach(function (it) {
+        var m = parseInt(it.li.dataset.mensuel || 0, 10) * it.qte;
+        var u = parseInt(it.li.dataset.unique || 0, 10) * it.qte;
+        mensuel += m; unique += u;
+        tr(libelle(it), m ? fmt(m) : "", u ? fmt(u) : "");
+      });
+      if (etat.nb > 1) {
+        tr("Subtotal per dealership", fmt(mensuel), fmt(unique));
+        tr("Team discount (" + Math.round(r * 100) + "%) and " + etat.nb + " dealerships", "", "");
+      }
+      tr("Total" + (etat.nb > 1 ? " (group)" : ""), fmt(Math.round(mensuel * etat.nb * (1 - r))) + " /month", fmt(Math.round(unique * etat.nb * (1 - r))), "sou-tot");
+    }
+
+    document.getElementById("fichePdf").addEventListener("click", function () {
+      majSoumission();
+      window.print();
+    });
   })();
   </script>
 </body>

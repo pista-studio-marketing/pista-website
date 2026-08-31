@@ -3111,31 +3111,34 @@ body.nuit .btn-mini {
   position: relative;
   display: inline-block;
   padding: 0 0.12em;
+  z-index: 0;
 }
 
 .cercle svg {
   position: absolute;
-  left: -0.4em;
-  top: -0.3em;
-  width: calc(100% + 0.8em);
-  height: calc(100% + 0.6em);
+  left: -0.6em;
+  top: -0.48em;
+  width: calc(100% + 1.2em);
+  height: calc(100% + 0.96em);
   stroke: var(--rouge);
   fill: none;
   stroke-width: 2.5;
   stroke-linecap: round;
-  opacity: 0.9;
+  opacity: 0.7;
   pointer-events: none;
+  z-index: -1;
 }
 
 .souligne {
   display: block;
   width: min(340px, 62%);
   height: 18px;
-  margin: 0.4rem 0 0;
+  margin: 1rem 0 0;
   stroke: var(--rouge);
   fill: none;
   stroke-width: 3;
   stroke-linecap: round;
+  opacity: 0.85;
 }
 
 /* v8.7 — hero compact et trajectoires d'entrée */
@@ -3269,6 +3272,148 @@ body.nuit .traj.actif .t-det {
   .tour-nav .annot span,
   #tourNavEtat {
     display: none;
+  }
+}
+
+/* v9.1 — coordonnées et soumission imprimable */
+.sou-coord {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin: 2rem 0 0.5rem;
+}
+
+@media (max-width: 760px) {
+  .sou-coord {
+    grid-template-columns: 1fr;
+  }
+}
+
+.soumission {
+  display: none;
+}
+
+@media print {
+  body,
+  body.nuit {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  body > *:not(.soumission) {
+    display: none !important;
+  }
+
+  .soumission {
+    display: block !important;
+    color: #000;
+    background: #fff;
+    font-family: var(--font);
+  }
+
+  .sou-tete {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #000;
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+  }
+
+  .sou-marque {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .sou-marque span {
+    color: #e0231a;
+  }
+
+  .sou-tag {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #666;
+    margin-top: 4px;
+  }
+
+  .sou-meta {
+    text-align: right;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  .sou-client {
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 6px;
+  }
+
+  .sou-obj {
+    font-size: 10px;
+    color: #555;
+    margin-bottom: 12px;
+  }
+
+  .sou-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+  }
+
+  .sou-table th {
+    text-align: left;
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #000;
+    padding: 6px 4px;
+  }
+
+  .sou-table th + th,
+  .sou-table td + td {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .sou-table td {
+    padding: 6px 4px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .sou-tot td {
+    font-weight: 600;
+    border-top: 2px solid #000;
+    border-bottom: none;
+  }
+
+  .sou-note {
+    font-size: 8.5px;
+    color: #555;
+    margin-top: 14px;
+    line-height: 1.5;
+  }
+
+  .sou-sign {
+    display: flex;
+    gap: 60px;
+    margin-top: 44px;
+    font-size: 10px;
+    color: #333;
+  }
+
+  .sou-sign div {
+    flex: 1;
+    border-top: 1px solid #000;
+    padding-top: 6px;
+  }
+
+  .sou-pied {
+    margin-top: 28px;
+    font-size: 8.5px;
+    color: #777;
+    letter-spacing: 0.08em;
   }
 }
 

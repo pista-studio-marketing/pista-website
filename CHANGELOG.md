@@ -2,6 +2,14 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v9.1 « Soumission » — 31 août 2026
+
+- La fiche de course crée maintenant une vraie soumission: numéro automatique, date, validité 30 jours, tableau détaillé, conditions et lignes de signature
+- Bouton « Créer la soumission (PDF) », le navigateur imprime ou enregistre un document propre aux couleurs de la marque, rien d'autre de la page n'apparaît
+- Champs concession, nom et courriel dans la fiche, mémorisés, repris dans la soumission, dans le résumé copié et dans l'objet du courriel
+- La page Proposition sort de l'ombre: indexée, ajoutée au plan du site, avec ses balises complètes, et liée dans le menu et le pied de page sous « Tarifs » et « Pricing »
+- Traits de crayon peaufinés: l'encerclement passe derrière le texte et s'élargit, le soulignement respire davantage, fini le chevauchement
+
 ## v9.0 « Retour au stand » — 31 août 2026
 
 - Les boutons Tour précédent et Tour suivant reviennent dans la page, directement sous le contenu du tour, plus de barre flottante

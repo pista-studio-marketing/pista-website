@@ -11,6 +11,7 @@
   <url><loc>https://www.pista.ca/fr/pixels-tags</loc></url>
   <url><loc>https://www.pista.ca/fr/feeds-api</loc></url>
   <url><loc>https://www.pista.ca/fr/campagnes-mensuelles</loc></url>
+  <url><loc>https://www.pista.ca/fr/proposition</loc></url>
   <url><loc>https://www.pista.ca/en/</loc></url>
   <url><loc>https://www.pista.ca/en/services</loc></url>
   <url><loc>https://www.pista.ca/en/technique</loc></url>
@@ -21,4 +22,5 @@
   <url><loc>https://www.pista.ca/en/pixels-tags</loc></url>
   <url><loc>https://www.pista.ca/en/feeds-api</loc></url>
   <url><loc>https://www.pista.ca/en/monthly-campaigns</loc></url>
+  <url><loc>https://www.pista.ca/en/proposal</loc></url>
 </urlset>
