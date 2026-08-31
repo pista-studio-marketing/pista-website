@@ -1,6 +1,6 @@
 # Pista Studio — Site web
 
-Version courante: **v8.7 « Trajectoire »**. Voir `CHANGELOG.md` pour l'historique des versions.
+Version courante: **v8.8 « Muret des puits »**. Voir `CHANGELOG.md` pour l'historique des versions.
 
 Site vitrine bilingue (FR/EN) en HTML, CSS et JavaScript pur. Aucune dépendance, aucun outil de build.
 

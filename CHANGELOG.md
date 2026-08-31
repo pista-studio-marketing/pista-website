@@ -2,6 +2,13 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v8.8 « Muret des puits » — 31 août 2026
+
+- Les boutons Tour précédent et Tour suivant sont maintenant fixés au bas de l'écran, toujours visibles, toujours à la même place
+- La barre de navigation affiche aussi le tour en cours et son nom, on sait toujours où on est
+- Le pit board se pose juste au-dessus de la barre de navigation, les deux cohabitent sans se cacher
+- Plus besoin de descendre chercher le bouton puis remonter, on lit, on choisit, on clique
+
 ## v8.7 « Trajectoire » — 31 août 2026
 
 - Trois trajectoires d'entrée dès le haut de la page: identifier mes besoins, forfaits et à la carte, ou à la carte seulement

@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="stylesheet" href="../css/style.css?v=8.7">
+  <link rel="stylesheet" href="../css/style.css?v=8.8">
   <meta name="theme-color" content="#F4F3EE">
 </head>
 <body>
@@ -444,6 +444,7 @@
 
       <div class="container tour-nav">
         <button id="tourPrec" class="btn btn-secondary" hidden>&#8592; Tour précédent</button>
+        <span class="label" id="tourNavEtat">Tour 1 / 5</span>
         <span class="annot annot-nav" id="navAnnot"><span>On continue, la piste est belle</span><svg viewBox="0 0 90 60" aria-hidden="true"><path d="M6 14 C 34 20, 58 30, 76 44"/><path d="M62 32 L 79 46 L 59 52"/></svg></span>
         <button id="tourSuiv" class="btn btn-primary">Tour suivant &#8594;</button>
       </div>
@@ -575,7 +576,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=8.7"></script>
+  <script src="../js/main.js?v=8.8"></script>
   <script>
   (function () {
     var fmt = function (n) { return n.toLocaleString("fr-CA") + " $"; };
@@ -1200,6 +1201,8 @@
       document.querySelectorAll(".etape").forEach(function (e) { e.hidden = parseInt(e.dataset.etape, 10) !== n; });
       document.getElementById("tourN").textContent = tourIdx + 1;
       document.getElementById("tourTot").textContent = route.length;
+      var ne = document.getElementById("tourNavEtat");
+      if (ne) ne.textContent = "Tour " + (tourIdx + 1) + " / " + route.length + " \u00b7 " + NOMS_TOURS[n];
       document.getElementById("tourNom").textContent = NOMS_TOURS[n];
       document.querySelectorAll(".feu").forEach(function (f, i) {
         f.hidden = i >= route.length;
@@ -1242,6 +1245,7 @@
     document.querySelectorAll(".traj").forEach(function (t) {
       t.addEventListener("click", function () { setRoute(t.dataset.route); });
     });
+    document.body.classList.add("parcours");
     allerTour(tourActuel, true);
   })();
   </script>
