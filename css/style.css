@@ -2010,6 +2010,17 @@ body.nuit .forfait .badge {
   }
 }
 
+/* Le point signature dessiné, pastille parfaitement ronde (norme graphique) */
+.prond {
+  display: inline-block;
+  width: 0.12em;
+  height: 0.12em;
+  border-radius: 50%;
+  background: currentColor;
+  margin-left: 0.045em;
+  vertical-align: baseline;
+}
+
 /* ------------------------------------------------------------
    Animations d'apparition
    ------------------------------------------------------------ */

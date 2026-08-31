@@ -2,6 +2,11 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v7.7 « Pastille » — 31 août 2026
+
+- Tous les points signature du site deviennent des pastilles parfaitement rondes, dessinées, conformes aux normes graphiques, la fonte Inter imposait un point rectangulaire
+- S'applique partout: wordmark, titres, credos, marquee, montants, mode jour comme mode nuit
+
 ## v7.6 « Catalogue » — 31 août 2026
 
 - Catalogue à la carte sur la page proposition: 22 produits en six catégories avec prix, réputation et GMB, contenu récurrent, données et technique (API Merchant Center et catalogue Meta), acquisition, CRM et rétention, conseil et production

@@ -1,6 +1,15 @@
 /* Pista Studio — interactions légères */
 
 (function () {
+  // Le point signature: pastille ronde dessinée, jamais le glyphe carré de la fonte
+  document.querySelectorAll(".dot, .dot--rouge, .accent, .count-big em, .taux .montant em, .marquee-inner i").forEach(function (el) {
+    if (el.textContent.trim() === ".") {
+      el.textContent = "";
+      el.classList.add("prond");
+      el.setAttribute("aria-hidden", "true");
+    }
+  });
+
   // Menu mobile
   var toggle = document.querySelector(".nav-toggle");
   var links = document.querySelector(".nav-links");
