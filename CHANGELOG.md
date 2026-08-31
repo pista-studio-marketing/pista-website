@@ -2,6 +2,12 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v8.9 « Mise au point » — 31 août 2026
+
+- Fin du chevauchement entre le pit board et la barre de navigation des tours
+- Le pit board mesure maintenant la hauteur réelle de la barre et se pose exactement au-dessus, à toutes les largeurs d'écran
+- Le calage se refait tout seul au redimensionnement de la fenêtre et à chaque changement de tour
+
 ## v8.8 « Muret des puits » — 31 août 2026
 
 - Les boutons Tour précédent et Tour suivant sont maintenant fixés au bas de l'écran, toujours visibles, toujours à la même place

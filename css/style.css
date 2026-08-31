@@ -3283,25 +3283,21 @@ body.nuit .tour-nav {
 }
 
 body.parcours main {
-  padding-bottom: 120px;
+  padding-bottom: calc(var(--nav-h, 64px) + 60px);
 }
 
 body.parcours .pitboard {
-  bottom: 62px;
+  bottom: var(--nav-h, 64px);
 }
 
 body.parcours.pb-actif main {
-  padding-bottom: 220px;
+  padding-bottom: calc(var(--nav-h, 64px) + 170px);
 }
 
 @media (max-width: 700px) {
   .tour-nav .annot span,
   #tourNavEtat {
     display: none;
-  }
-
-  body.parcours .pitboard {
-    bottom: 58px;
   }
 }
 

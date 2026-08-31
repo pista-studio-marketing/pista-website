@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="stylesheet" href="../css/style.css?v=8.8">
+  <link rel="stylesheet" href="../css/style.css?v=8.9">
   <meta name="theme-color" content="#F4F3EE">
 </head>
 <body>
@@ -576,7 +576,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=8.8"></script>
+  <script src="../js/main.js?v=8.9"></script>
   <script>
   (function () {
     var fmt = function (n) { return "$" + n.toLocaleString("en-CA"); };
@@ -1213,6 +1213,7 @@
       document.getElementById("tourSuiv").hidden = dernier;
       var na = document.getElementById("navAnnot");
       if (na) na.hidden = dernier;
+      if (typeof majNavH === "function") setTimeout(majNavH, 50);
       if (n === 5) majFiche();
       document.querySelectorAll(".etape .reveal").forEach(function (rv) { rv.classList.add("visible"); });
       if (!sansDefile) {
@@ -1245,8 +1246,14 @@
     document.querySelectorAll(".traj").forEach(function (t) {
       t.addEventListener("click", function () { setRoute(t.dataset.route); });
     });
+    function majNavH() {
+      var tn = document.querySelector(".tour-nav");
+      if (tn) document.documentElement.style.setProperty("--nav-h", tn.offsetHeight + "px");
+    }
+    window.addEventListener("resize", majNavH);
     document.body.classList.add("parcours");
     allerTour(tourActuel, true);
+    majNavH();
   })();
   </script>
 </body>
