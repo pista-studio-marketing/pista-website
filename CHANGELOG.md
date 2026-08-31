@@ -2,6 +2,16 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v8.5 « Tour de piste » — 31 août 2026
+
+- La page proposition devient un parcours guidé en cinq tours, une question à la fois, fini le va-et-vient du haut au bas de la page
+- Tour 1, l'écurie, combien de concessions embarquent · Tour 2, les objectifs · Tour 3, le rythme et les forfaits · Tour 4, le catalogue à la carte · Tour 5, la ligne d'arrivée
+- Cinq feux de départ en tête de parcours, un feu s'allume par tour franchi, et chaque feu est cliquable pour revenir en arrière
+- Boutons Tour précédent et Tour suivant, la page défile toute seule au bon endroit
+- Tour final, la fiche de course: la sélection ligne par ligne, les trois totaux en grand, les boutons courriel, résumé et lien, et une bande à damier
+- « Monter ce plan en un clic » file maintenant directement à la ligne d'arrivée
+- Le taux horaire et la comparaison avec le marché restent disponibles sous le parcours, en référence
+
 ## v8.4 « Grille de départ » — 31 août 2026
 
 - Section « En tant que client, je cherche à… » en tête de page, sept objectifs cochables reliés aux bons produits et au bon forfait

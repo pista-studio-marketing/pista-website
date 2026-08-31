@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="stylesheet" href="../css/style.css?v=8.4">
+  <link rel="stylesheet" href="../css/style.css?v=8.5">
   <meta name="theme-color" content="#F4F3EE">
 </head>
 <body>
@@ -43,15 +43,7 @@
         <div class="lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
         <span class="kicker">Proposition · Présentation client</span>
         <h1 class="giant">Proposition<span class="accent">.</span></h1>
-        <p class="lede"><b>Un plan clair, des chiffres clairs.</b> Jouez avec la jauge, choisissez votre forfait, ajoutez vos produits. Le total vous suit en bas de page.</p>
-        <div class="hero-nav">
-          <a class="filtre" href="#objectifs">Vos objectifs</a>
-          <a class="filtre" href="#forfaits">Forfaits d'heures</a>
-          <a class="filtre" href="#carte">À la carte</a>
-          <a class="filtre" href="#ecurie">L'écurie</a>
-          <a class="filtre" href="#marche">Le marché</a>
-          <a class="filtre" href="#simulateur">Le simulateur</a>
-        </div>
+        <p class="lede"><b>Un plan clair, des chiffres clairs.</b> Cinq tours de piste, une question à la fois, et votre proposition se monte toute seule. Le total vous suit en bas de page.</p>
       </div>
     </section>
 
@@ -61,7 +53,31 @@
       </div>
     </div>
 
-    <section class="section reveal" id="objectifs" style="border-top:none;">
+    <div class="wizard" id="wizard">
+      <div class="container tour-tete">
+        <div class="tour-feux"><button class="feu on" data-tour="1" aria-label="Tour 1"></button><button class="feu" data-tour="2" aria-label="Tour 2"></button><button class="feu" data-tour="3" aria-label="Tour 3"></button><button class="feu" data-tour="4" aria-label="Tour 4"></button><button class="feu" data-tour="5" aria-label="Tour 5"></button></div>
+        <span class="label">Tour <b id="tourN">1</b> / 5 &#183; <span id="tourNom">L'écurie</span></span>
+      </div>
+
+      <div class="etape" data-etape="1">
+<section class="section reveal" id="ecurie">
+      <div class="container">
+        <span class="label">L'écurie</span>
+        <h2>Combien de concessions embarquent?</h2>
+        <p class="intro">Une concession, c'est une voiture engagée en course. Plusieurs, c'est une écurie. Dites-nous combien de concessions embarquent, le rabais d'écurie s'applique au total de chacune d'elles.</p>
+        <div class="ecurie-choix" id="ecurieChoix">
+          <button class="ech actif" data-nb="1"><span class="n">1</span><small>concession</small><em>&#8212;</em></button>
+          <button class="ech" data-nb="2"><span class="n">2</span><small>concessions</small><em>&#8722;5 %</em></button>
+          <button class="ech" data-nb="3"><span class="n">3</span><small>concessions</small><em>&#8722;10 %</em></button>
+          <button class="ech" data-nb="4"><span class="n">4 +</span><small>concessions</small><em>&#8722;15 %</em></button>
+        </div>
+        <p class="meta-note">Le rabais s'applique au total mensuel et aux installations de chaque concession du groupe. Les budgets publicitaires restent payés directement aux plateformes. Au-delà de quatre concessions, on se parle, le café est déjà prêt.</p>
+      </div>
+    </section>
+      </div>
+
+      <div class="etape" data-etape="2" hidden>
+<section class="section reveal" id="objectifs" style="border-top:none;">
       <div class="container">
         <span class="label">La grille de départ</span>
         <h2>En tant que client, je cherche à…</h2>
@@ -81,51 +97,14 @@
           <div class="hero-actions" style="margin-top:1.5rem;">
             <button class="btn btn-primary" id="objAppliquer">Monter ce plan en un clic</button>
           </div>
-          <p class="meta-note">Les produits recommandés portent aussi une étiquette dans le catalogue plus bas. Libre à vous d'ajuster.</p>
+          <p class="meta-note">Les produits recommandés porteront une étiquette rouge au tour À la carte. Libre à vous d'ajuster.</p>
         </div>
       </div>
     </section>
-
-    <section class="section reveal">
-      <div class="container">
-        <span class="label">Le taux horaire</span>
-        <div class="taux">
-          <span class="montant">155 $<em>.</em></span>
-          <span class="unite">CAD / heure</span>
-        </div>
-        <p class="intro">Un seul taux pour toute l'équipe, stratégie, gestion de campagnes, création, technique. Tout mandat hors forfait est facturé à ce taux, au réel, avec le détail des heures.</p>
       </div>
-    </section>
 
-    <section class="section reveal" id="marche">
-      <div class="container">
-        <span class="label">Le marché</span>
-        <h2>Un peu au-dessus de la moyenne, et c'est voulu</h2>
-        <p class="intro">Au Québec, une agence facture entre 75 $ et 250 $ de l'heure, selon qu'un junior ou un stratège travaille sur votre compte. Chez Pista, il n'y a pas de junior: chaque heure est une heure d'expert qui ne fait que de l'automobile. Vous payez le taux d'un stratège sénior, jamais celui d'une équipe qui apprend sur votre budget.</p>
-        <div class="marche">
-          <div class="marche-item">
-            <span class="k">Taux horaire</span>
-            <span class="eux">Le marché: 75 $ à 250 $ / heure</span>
-            <span class="nous">155 $</span>
-            <span class="note">Le taux d'un stratège sénior, appliqué à toute l'équipe. Celui qui pense votre stratégie est celui qui l'exécute.</span>
-          </div>
-          <div class="marche-item">
-            <span class="k">Gestion média</span>
-            <span class="eux">Le marché: 10 à 20 % du budget</span>
-            <span class="nous">15 %</span>
-            <span class="note">En plein centre du marché, avec des rapports qui parlent en rendez-vous et en ventes plutôt qu'en clics.</span>
-          </div>
-          <div class="marche-item">
-            <span class="k">Suivi mensuel en concession</span>
-            <span class="eux">Le marché: 1 000 $ à 3 500 $ / mois</span>
-            <span class="nous">Dès 1 550 $</span>
-            <span class="note">Dans la fourchette des agences généralistes, avec une équipe qui ne fait que de l'automobile, rien d'autre.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section reveal" id="simulateur">
+      <div class="etape" data-etape="3" hidden>
+<section class="section reveal" id="simulateur">
       <div class="container">
         <span class="label">Le simulateur</span>
         <h2>Poussez la jauge, trouvez votre rythme</h2>
@@ -146,7 +125,7 @@
       </div>
     </section>
 
-    <section class="section reveal" id="forfaits">
+<section class="section reveal" id="forfaits">
       <div class="container">
         <span class="label">Les forfaits mensuels</span>
         <h2>Trois plans de course, un seul objectif</h2>
@@ -204,23 +183,10 @@
         <p class="meta-note">Prix en dollars canadiens, avant taxes. Les heures non utilisées ne s'accumulent pas, la course se court chaque mois. Budgets publicitaires payés directement aux plateformes, frais de gestion média de 15 % du budget en sus.</p>
       </div>
     </section>
-
-    <section class="section reveal" id="ecurie">
-      <div class="container">
-        <span class="label">L'écurie</span>
-        <h2>Plusieurs concessions, un seul rabais</h2>
-        <p class="intro">Une concession, c'est une voiture engagée en course. Plusieurs, c'est une écurie. Dites-nous combien de concessions embarquent, le rabais d'écurie s'applique au total de chacune d'elles.</p>
-        <div class="ecurie-choix" id="ecurieChoix">
-          <button class="ech actif" data-nb="1"><span class="n">1</span><small>concession</small><em>&#8212;</em></button>
-          <button class="ech" data-nb="2"><span class="n">2</span><small>concessions</small><em>&#8722;5 %</em></button>
-          <button class="ech" data-nb="3"><span class="n">3</span><small>concessions</small><em>&#8722;10 %</em></button>
-          <button class="ech" data-nb="4"><span class="n">4 +</span><small>concessions</small><em>&#8722;15 %</em></button>
-        </div>
-        <p class="meta-note">Le rabais s'applique au total mensuel et aux installations de chaque concession du groupe. Les budgets publicitaires restent payés directement aux plateformes. Au-delà de quatre concessions, on se parle, le café est déjà prêt.</p>
       </div>
-    </section>
 
-    <section class="section reveal" id="carte">
+      <div class="etape" data-etape="4" hidden>
+<section class="section reveal" id="carte">
       <div class="container">
         <span class="label">À la carte</span>
         <h2>Le catalogue des produits</h2>
@@ -428,6 +394,80 @@
         <p class="meta-note">Tout mandat hors catalogue est facturé au taux horaire de 155 $, au réel. Gestion du média publicitaire: 15 % du budget mensuel, budgets payés directement aux plateformes.</p>
       </div>
     </section>
+      </div>
+
+      <div class="etape" data-etape="5" hidden>
+      <section class="section" id="fiche">
+        <div class="container">
+          <span class="label">La ligne d'arrivée</span>
+          <h2>Votre fiche de course</h2>
+          <p class="intro" id="ficheVide">Rien de sélectionné pour l'instant. Remontez d'un tour ou deux, la piste est à vous.</p>
+          <div id="ficheContenu" hidden>
+            <p class="intro">Voici la proposition montée ensemble. Chaque tour reste ouvert, revenez modifier ce que vous voulez, la fiche suit.</p>
+            <ul class="fiche-liste" id="ficheListe"></ul>
+            <div class="marche">
+              <div class="marche-item"><span class="k">Mensuel</span><span class="nous" id="ficheMensuel">0 $</span><span class="note" id="ficheMensNote"></span></div>
+              <div class="marche-item"><span class="k">Ponctuel</span><span class="nous" id="ficheUnique">0 $</span><span class="note">Installations et mandats uniques, facturés une seule fois.</span></div>
+              <div class="marche-item"><span class="k">Heures de piste</span><span class="nous" id="ficheHeures">0 h</span><span class="note" id="ficheHNote"></span></div>
+            </div>
+            <div class="hero-actions" style="margin-top:2.25rem; flex-wrap:wrap;">
+              <button class="btn btn-primary" id="ficheEnvoyer">Recevoir cette proposition par courriel</button>
+              <button class="btn btn-secondary" id="ficheCopier">Copier le résumé</button>
+              <button class="btn btn-secondary" id="ficheLien">Copier un lien</button>
+            </div>
+            <p class="meta-note">Prix en dollars canadiens, avant taxes. Gestion du média publicitaire: 15 % du budget mensuel. Tout mandat hors catalogue au taux de 155 $/h.</p>
+            <div class="damier" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+      </div>
+
+      <div class="container tour-nav">
+        <button id="tourPrec" class="btn btn-secondary" hidden>&#8592; Tour précédent</button>
+        <span></span>
+        <button id="tourSuiv" class="btn btn-primary">Tour suivant &#8594;</button>
+      </div>
+    </div>
+
+<section class="section reveal">
+      <div class="container">
+        <span class="label">Le taux horaire</span>
+        <div class="taux">
+          <span class="montant">155 $<em>.</em></span>
+          <span class="unite">CAD / heure</span>
+        </div>
+        <p class="intro">Un seul taux pour toute l'équipe, stratégie, gestion de campagnes, création, technique. Tout mandat hors forfait est facturé à ce taux, au réel, avec le détail des heures.</p>
+      </div>
+    </section>
+
+<section class="section reveal" id="marche">
+      <div class="container">
+        <span class="label">Le marché</span>
+        <h2>Un peu au-dessus de la moyenne, et c'est voulu</h2>
+        <p class="intro">Au Québec, une agence facture entre 75 $ et 250 $ de l'heure, selon qu'un junior ou un stratège travaille sur votre compte. Chez Pista, il n'y a pas de junior: chaque heure est une heure d'expert qui ne fait que de l'automobile. Vous payez le taux d'un stratège sénior, jamais celui d'une équipe qui apprend sur votre budget.</p>
+        <div class="marche">
+          <div class="marche-item">
+            <span class="k">Taux horaire</span>
+            <span class="eux">Le marché: 75 $ à 250 $ / heure</span>
+            <span class="nous">155 $</span>
+            <span class="note">Le taux d'un stratège sénior, appliqué à toute l'équipe. Celui qui pense votre stratégie est celui qui l'exécute.</span>
+          </div>
+          <div class="marche-item">
+            <span class="k">Gestion média</span>
+            <span class="eux">Le marché: 10 à 20 % du budget</span>
+            <span class="nous">15 %</span>
+            <span class="note">En plein centre du marché, avec des rapports qui parlent en rendez-vous et en ventes plutôt qu'en clics.</span>
+          </div>
+          <div class="marche-item">
+            <span class="k">Suivi mensuel en concession</span>
+            <span class="eux">Le marché: 1 000 $ à 3 500 $ / mois</span>
+            <span class="nous">Dès 1 550 $</span>
+            <span class="note">Dans la fourchette des agences généralistes, avec une équipe qui ne fait que de l'automobile, rien d'autre.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <section class="panel-noir reveal">
       <div class="container">
@@ -509,7 +549,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=8.4"></script>
+  <script src="../js/main.js?v=8.5"></script>
   <script>
   (function () {
     var fmt = function (n) { return n.toLocaleString("fr-CA") + " $"; };
@@ -957,6 +997,76 @@
       pbDetail.hidden = false;
       pbToggle.setAttribute("aria-expanded", "true");
     });
+
+    // ----- Tours de piste: parcours guidé -----
+    var NOMS_TOURS = { 1: "L'écurie", 2: "Vos objectifs", 3: "Votre rythme", 4: "À la carte", 5: "La ligne d'arrivée" };
+    var tourActuel = 1;
+    var ficheVide = document.getElementById("ficheVide");
+    var ficheContenu = document.getElementById("ficheContenu");
+    var ficheListe = document.getElementById("ficheListe");
+
+    function majFiche() {
+      var mensuel = etat.prix, unique = 0;
+      etat.items.forEach(function (it) {
+        mensuel += parseInt(it.li.dataset.mensuel || 0, 10) * it.qte;
+        unique += parseInt(it.li.dataset.unique || 0, 10) * it.qte;
+      });
+      var vide = !etat.forfait && !etat.items.length;
+      ficheVide.hidden = !vide;
+      ficheContenu.hidden = vide;
+      if (vide) return;
+      var r = RABAIS[etat.nb] || 0;
+      ficheListe.innerHTML = "";
+      function ligne(g, d) {
+        var l = document.createElement("li");
+        l.innerHTML = "<span>" + g + "</span><span class=\"fp\">" + d + "</span>";
+        ficheListe.appendChild(l);
+      }
+      if (etat.forfait) ligne("<b>Forfait " + etat.forfait + "</b>", fmt(etat.prix) + "/mois");
+      etat.items.forEach(function (it) { ligne(libelle(it), prixItem(it)); });
+      if (etat.nb > 1) ligne("<b>Rabais d'écurie</b>, " + (etat.nb === 4 ? "4 concessions et plus" : etat.nb + " concessions"), "\u2212" + Math.round(r * 100) + " % chacune");
+      document.getElementById("ficheMensuel").textContent = fmt(Math.round(mensuel * etat.nb * (1 - r)));
+      document.getElementById("ficheUnique").textContent = fmt(Math.round(unique * etat.nb * (1 - r)));
+      document.getElementById("ficheHeures").textContent = "\u2248 " + Math.round(mensuel / 155) + " h";
+      document.getElementById("ficheMensNote").textContent = etat.nb > 1 ? "Total du groupe, rabais inclus, soit " + fmt(Math.round(mensuel * (1 - r))) + " par concession." : "Par mois, tout inclus, sans surprise.";
+      document.getElementById("ficheHNote").textContent = "Par mois" + (etat.nb > 1 ? ", par concession" : "") + ", l'équivalent au taux de 155 $.";
+    }
+
+    var majBoardBase = majBoard;
+    majBoard = function () { majBoardBase(); majFiche(); };
+
+    function allerTour(n, sansDefile) {
+      if (n < 1 || n > 5) return;
+      tourActuel = n;
+      document.querySelectorAll(".etape").forEach(function (e) { e.hidden = parseInt(e.dataset.etape, 10) !== n; });
+      document.getElementById("tourN").textContent = n;
+      document.getElementById("tourNom").textContent = NOMS_TOURS[n];
+      document.querySelectorAll(".feu").forEach(function (f, i) { f.classList.toggle("on", i < n); });
+      document.getElementById("tourPrec").hidden = n === 1;
+      document.getElementById("tourSuiv").hidden = n === 5;
+      if (n === 5) majFiche();
+      document.querySelectorAll(".etape .reveal").forEach(function (rv) { rv.classList.add("visible"); });
+      if (!sansDefile) {
+        var w = document.getElementById("wizard");
+        window.scrollTo({ top: w.getBoundingClientRect().top + window.scrollY - 70, behavior: "smooth" });
+      }
+    }
+    document.getElementById("tourPrec").addEventListener("click", function () { allerTour(tourActuel - 1); });
+    document.getElementById("tourSuiv").addEventListener("click", function () { allerTour(tourActuel + 1); });
+    document.querySelectorAll(".feu").forEach(function (f) {
+      f.addEventListener("click", function () { allerTour(parseInt(f.dataset.tour, 10)); });
+    });
+    document.getElementById("objAppliquer").addEventListener("click", function () { allerTour(5); });
+    document.getElementById("ficheEnvoyer").addEventListener("click", function () { document.getElementById("pbEnvoyer").click(); });
+    document.getElementById("ficheCopier").addEventListener("click", function () {
+      var texte = "Sélection Pista Studio\n\n- " + resumeLignes().join("\n- ").replace(/\n- \n/, "\n\n");
+      copierVers(this, texte, "Copié \u2713");
+    });
+    document.getElementById("ficheLien").addEventListener("click", function () {
+      var m = { f: etat.forfait, n: etat.nb, i: etat.items.map(function (it) { return [it.li.dataset.nom, it.qte]; }) };
+      copierVers(this, location.href.split("#")[0] + "#s=" + btoa(encodeURIComponent(JSON.stringify(m))), "Lien copié \u2713");
+    });
+    allerTour(1, true);
   })();
   </script>
 </body>

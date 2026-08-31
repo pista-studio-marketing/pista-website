@@ -2886,6 +2886,100 @@ li.reco {
 }
 
 /* ------------------------------------------------------------
+   v8.5 Tour de piste — parcours guidé, une question à la fois
+   ------------------------------------------------------------ */
+.wizard {
+  border-top: 1px solid var(--filet);
+}
+
+.tour-tete {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding-top: 2.25rem;
+}
+
+.tour-feux {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.feu {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid var(--gris-clair);
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.feu:hover {
+  border-color: var(--rouge);
+}
+
+.feu.on {
+  background: var(--rouge);
+  border-color: var(--rouge);
+}
+
+.etape[hidden] {
+  display: none;
+}
+
+.etape .section:first-of-type {
+  border-top: none;
+}
+
+.tour-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 3.5rem;
+}
+
+.fiche-liste {
+  list-style: none;
+  margin: 1.75rem 0 2.25rem;
+  padding: 0;
+}
+
+.fiche-liste li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--filet);
+  font-weight: 300;
+  font-size: 1.02rem;
+}
+
+.fiche-liste li b {
+  font-weight: 500;
+}
+
+.fiche-liste .fp {
+  white-space: nowrap;
+  color: var(--gris-moyen);
+}
+
+.damier {
+  height: 14px;
+  margin-top: 2.5rem;
+  background-image: conic-gradient(var(--noir) 0 25%, transparent 0 50%, var(--noir) 0 75%, transparent 0);
+  background-size: 14px 14px;
+  opacity: 0.9;
+}
+
+body.nuit .damier {
+  background-image: conic-gradient(var(--creme) 0 25%, transparent 0 50%, var(--creme) 0 75%, transparent 0);
+}
+
+/* ------------------------------------------------------------
    Animations d'apparition
    ------------------------------------------------------------ */
 .reveal {

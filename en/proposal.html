@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="stylesheet" href="../css/style.css?v=8.4">
+  <link rel="stylesheet" href="../css/style.css?v=8.5">
   <meta name="theme-color" content="#F4F3EE">
 </head>
 <body>
@@ -43,15 +43,7 @@
         <div class="lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
         <span class="kicker">Proposal · Client presentation</span>
         <h1 class="giant">Proposal<span class="accent">.</span></h1>
-        <p class="lede"><b>A clear plan, clear numbers.</b> Play with the gauge, pick your package, add your products. The total follows you at the bottom of the page.</p>
-        <div class="hero-nav">
-          <a class="filtre" href="#objectifs">Your goals</a>
-          <a class="filtre" href="#forfaits">Hour packages</a>
-          <a class="filtre" href="#carte">À la carte</a>
-          <a class="filtre" href="#ecurie">The team</a>
-          <a class="filtre" href="#marche">The market</a>
-          <a class="filtre" href="#simulateur">The simulator</a>
-        </div>
+        <p class="lede"><b>A clear plan, clear numbers.</b> Five laps, one question at a time, and your proposal builds itself. The total follows you at the bottom of the page.</p>
       </div>
     </section>
 
@@ -61,7 +53,31 @@
       </div>
     </div>
 
-    <section class="section reveal" id="objectifs" style="border-top:none;">
+    <div class="wizard" id="wizard">
+      <div class="container tour-tete">
+        <div class="tour-feux"><button class="feu on" data-tour="1" aria-label="Lap 1"></button><button class="feu" data-tour="2" aria-label="Lap 2"></button><button class="feu" data-tour="3" aria-label="Lap 3"></button><button class="feu" data-tour="4" aria-label="Lap 4"></button><button class="feu" data-tour="5" aria-label="Lap 5"></button></div>
+        <span class="label">Lap <b id="tourN">1</b> / 5 &#183; <span id="tourNom">The team</span></span>
+      </div>
+
+      <div class="etape" data-etape="1">
+<section class="section reveal" id="ecurie">
+      <div class="container">
+        <span class="label">The team</span>
+        <h2>How many dealerships are joining?</h2>
+        <p class="intro">One dealership is a car entered in the race. Several make a race team. Tell us how many stores are joining, and the team discount applies to each one's total.</p>
+        <div class="ecurie-choix" id="ecurieChoix">
+          <button class="ech actif" data-nb="1"><span class="n">1</span><small>dealership</small><em>&#8212;</em></button>
+          <button class="ech" data-nb="2"><span class="n">2</span><small>dealerships</small><em>&#8722;5%</em></button>
+          <button class="ech" data-nb="3"><span class="n">3</span><small>dealerships</small><em>&#8722;10%</em></button>
+          <button class="ech" data-nb="4"><span class="n">4 +</span><small>dealerships</small><em>&#8722;15%</em></button>
+        </div>
+        <p class="meta-note">The discount applies to the monthly total and the setups of every store in the group. Ad budgets are still paid directly to the platforms. Beyond four stores, let's talk, the coffee is already on.</p>
+      </div>
+    </section>
+      </div>
+
+      <div class="etape" data-etape="2" hidden>
+<section class="section reveal" id="objectifs" style="border-top:none;">
       <div class="container">
         <span class="label">The starting grid</span>
         <h2>As a client, I'm looking to…</h2>
@@ -81,51 +97,14 @@
           <div class="hero-actions" style="margin-top:1.5rem;">
             <button class="btn btn-primary" id="objAppliquer">Build this plan in one click</button>
           </div>
-          <p class="meta-note">The recommended products are also tagged in the catalogue below. Adjust as you wish.</p>
+          <p class="meta-note">The recommended products will carry a red tag in the À la carte lap. Adjust as you wish.</p>
         </div>
       </div>
     </section>
-
-    <section class="section reveal">
-      <div class="container">
-        <span class="label">The hourly rate</span>
-        <div class="taux">
-          <span class="montant">$155<em>.</em></span>
-          <span class="unite">CAD / hour</span>
-        </div>
-        <p class="intro">One rate for the whole team, strategy, campaign management, creative, technology. Any work outside a package is billed at this rate, actuals only, with a detailed breakdown of hours.</p>
       </div>
-    </section>
 
-    <section class="section reveal" id="marche">
-      <div class="container">
-        <span class="label">The market</span>
-        <h2>A little above average, on purpose</h2>
-        <p class="intro">In Canada, agencies bill anywhere from $75 to $250 an hour, depending on whether a junior or a strategist works on your account. At Pista there are no juniors: every hour is an expert hour, automotive only. You pay a senior strategist's rate, never for a team learning on your budget.</p>
-        <div class="marche">
-          <div class="marche-item">
-            <span class="k">Hourly rate</span>
-            <span class="eux">The market: $75 to $250 / hour</span>
-            <span class="nous">$155</span>
-            <span class="note">A senior strategist's rate, applied to the whole team. The person who designs your strategy is the one who executes it.</span>
-          </div>
-          <div class="marche-item">
-            <span class="k">Media management</span>
-            <span class="eux">The market: 10 to 20% of spend</span>
-            <span class="nous">15%</span>
-            <span class="note">Right at the centre of the market, with reports that speak in appointments and sales rather than clicks.</span>
-          </div>
-          <div class="marche-item">
-            <span class="k">Monthly dealership retainer</span>
-            <span class="eux">The market: $1,000 to $3,500 / month</span>
-            <span class="nous">From $1,550</span>
-            <span class="note">Within the generalist agency range, with a team that does automotive and nothing else.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section reveal" id="simulateur">
+      <div class="etape" data-etape="3" hidden>
+<section class="section reveal" id="simulateur">
       <div class="container">
         <span class="label">The simulator</span>
         <h2>Push the gauge, find your pace</h2>
@@ -146,7 +125,7 @@
       </div>
     </section>
 
-    <section class="section reveal" id="forfaits">
+<section class="section reveal" id="forfaits">
       <div class="container">
         <span class="label">Monthly packages</span>
         <h2>Three race plans, one goal</h2>
@@ -204,23 +183,10 @@
         <p class="meta-note">Prices in Canadian dollars, before taxes. Unused hours don't roll over, the race is run every month. Ad budgets are paid directly to the platforms, media management fee of 15% of spend applies.</p>
       </div>
     </section>
-
-    <section class="section reveal" id="ecurie">
-      <div class="container">
-        <span class="label">The team</span>
-        <h2>Several dealerships, one discount</h2>
-        <p class="intro">One dealership is a car entered in the race. Several make a race team. Tell us how many stores are joining, and the team discount applies to each one's total.</p>
-        <div class="ecurie-choix" id="ecurieChoix">
-          <button class="ech actif" data-nb="1"><span class="n">1</span><small>dealership</small><em>&#8212;</em></button>
-          <button class="ech" data-nb="2"><span class="n">2</span><small>dealerships</small><em>&#8722;5%</em></button>
-          <button class="ech" data-nb="3"><span class="n">3</span><small>dealerships</small><em>&#8722;10%</em></button>
-          <button class="ech" data-nb="4"><span class="n">4 +</span><small>dealerships</small><em>&#8722;15%</em></button>
-        </div>
-        <p class="meta-note">The discount applies to the monthly total and the setups of every store in the group. Ad budgets are still paid directly to the platforms. Beyond four stores, let's talk, the coffee is already on.</p>
       </div>
-    </section>
 
-    <section class="section reveal" id="carte">
+      <div class="etape" data-etape="4" hidden>
+<section class="section reveal" id="carte">
       <div class="container">
         <span class="label">À la carte</span>
         <h2>The product catalogue</h2>
@@ -428,6 +394,80 @@
         <p class="meta-note">Any work outside the catalogue is billed at the $155 hourly rate, actuals only. Ad media management: 15% of monthly ad spend, budgets paid directly to the platforms.</p>
       </div>
     </section>
+      </div>
+
+      <div class="etape" data-etape="5" hidden>
+      <section class="section" id="fiche">
+        <div class="container">
+          <span class="label">The finish line</span>
+          <h2>Your race card</h2>
+          <p class="intro" id="ficheVide">Nothing selected yet. Go back a lap or two, the track is yours.</p>
+          <div id="ficheContenu" hidden>
+            <p class="intro">Here's the proposal we built together. Every lap stays open, go back and adjust anything, the card follows.</p>
+            <ul class="fiche-liste" id="ficheListe"></ul>
+            <div class="marche">
+              <div class="marche-item"><span class="k">Monthly</span><span class="nous" id="ficheMensuel">$0</span><span class="note" id="ficheMensNote"></span></div>
+              <div class="marche-item"><span class="k">One-time</span><span class="nous" id="ficheUnique">$0</span><span class="note">Setups and one-off mandates, billed once.</span></div>
+              <div class="marche-item"><span class="k">Track hours</span><span class="nous" id="ficheHeures">0 h</span><span class="note" id="ficheHNote"></span></div>
+            </div>
+            <div class="hero-actions" style="margin-top:2.25rem; flex-wrap:wrap;">
+              <button class="btn btn-primary" id="ficheEnvoyer">Send this proposal by email</button>
+              <button class="btn btn-secondary" id="ficheCopier">Copy the summary</button>
+              <button class="btn btn-secondary" id="ficheLien">Copy a link</button>
+            </div>
+            <p class="meta-note">Prices in Canadian dollars, before taxes. Ad media management: 15% of monthly spend. Any work outside the catalogue at the $155 hourly rate.</p>
+            <div class="damier" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+      </div>
+
+      <div class="container tour-nav">
+        <button id="tourPrec" class="btn btn-secondary" hidden>&#8592; Previous lap</button>
+        <span></span>
+        <button id="tourSuiv" class="btn btn-primary">Next lap &#8594;</button>
+      </div>
+    </div>
+
+<section class="section reveal">
+      <div class="container">
+        <span class="label">The hourly rate</span>
+        <div class="taux">
+          <span class="montant">$155<em>.</em></span>
+          <span class="unite">CAD / hour</span>
+        </div>
+        <p class="intro">One rate for the whole team, strategy, campaign management, creative, technology. Any work outside a package is billed at this rate, actuals only, with a detailed breakdown of hours.</p>
+      </div>
+    </section>
+
+<section class="section reveal" id="marche">
+      <div class="container">
+        <span class="label">The market</span>
+        <h2>A little above average, on purpose</h2>
+        <p class="intro">In Canada, agencies bill anywhere from $75 to $250 an hour, depending on whether a junior or a strategist works on your account. At Pista there are no juniors: every hour is an expert hour, automotive only. You pay a senior strategist's rate, never for a team learning on your budget.</p>
+        <div class="marche">
+          <div class="marche-item">
+            <span class="k">Hourly rate</span>
+            <span class="eux">The market: $75 to $250 / hour</span>
+            <span class="nous">$155</span>
+            <span class="note">A senior strategist's rate, applied to the whole team. The person who designs your strategy is the one who executes it.</span>
+          </div>
+          <div class="marche-item">
+            <span class="k">Media management</span>
+            <span class="eux">The market: 10 to 20% of spend</span>
+            <span class="nous">15%</span>
+            <span class="note">Right at the centre of the market, with reports that speak in appointments and sales rather than clicks.</span>
+          </div>
+          <div class="marche-item">
+            <span class="k">Monthly dealership retainer</span>
+            <span class="eux">The market: $1,000 to $3,500 / month</span>
+            <span class="nous">From $1,550</span>
+            <span class="note">Within the generalist agency range, with a team that does automotive and nothing else.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <section class="panel-noir reveal">
       <div class="container">
@@ -509,7 +549,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=8.4"></script>
+  <script src="../js/main.js?v=8.5"></script>
   <script>
   (function () {
     var fmt = function (n) { return "$" + n.toLocaleString("en-CA"); };
@@ -957,6 +997,76 @@
       pbDetail.hidden = false;
       pbToggle.setAttribute("aria-expanded", "true");
     });
+
+    // ----- Laps: guided flow -----
+    var NOMS_TOURS = { 1: "The team", 2: "Your goals", 3: "Your pace", 4: "À la carte", 5: "The finish line" };
+    var tourActuel = 1;
+    var ficheVide = document.getElementById("ficheVide");
+    var ficheContenu = document.getElementById("ficheContenu");
+    var ficheListe = document.getElementById("ficheListe");
+
+    function majFiche() {
+      var mensuel = etat.prix, unique = 0;
+      etat.items.forEach(function (it) {
+        mensuel += parseInt(it.li.dataset.mensuel || 0, 10) * it.qte;
+        unique += parseInt(it.li.dataset.unique || 0, 10) * it.qte;
+      });
+      var vide = !etat.forfait && !etat.items.length;
+      ficheVide.hidden = !vide;
+      ficheContenu.hidden = vide;
+      if (vide) return;
+      var r = RABAIS[etat.nb] || 0;
+      ficheListe.innerHTML = "";
+      function ligne(g, d) {
+        var l = document.createElement("li");
+        l.innerHTML = "<span>" + g + "</span><span class=\"fp\">" + d + "</span>";
+        ficheListe.appendChild(l);
+      }
+      if (etat.forfait) ligne("<b>" + etat.forfait + " package</b>", fmt(etat.prix) + "/month");
+      etat.items.forEach(function (it) { ligne(libelle(it), prixItem(it)); });
+      if (etat.nb > 1) ligne("<b>Team discount</b>, " + (etat.nb === 4 ? "4 dealerships and up" : etat.nb + " dealerships"), "\u2212" + Math.round(r * 100) + "% each");
+      document.getElementById("ficheMensuel").textContent = fmt(Math.round(mensuel * etat.nb * (1 - r)));
+      document.getElementById("ficheUnique").textContent = fmt(Math.round(unique * etat.nb * (1 - r)));
+      document.getElementById("ficheHeures").textContent = "\u2248 " + Math.round(mensuel / 155) + " h";
+      document.getElementById("ficheMensNote").textContent = etat.nb > 1 ? "Group total, discount included, " + fmt(Math.round(mensuel * (1 - r))) + " per dealership." : "Per month, all in, no surprises.";
+      document.getElementById("ficheHNote").textContent = "Per month" + (etat.nb > 1 ? ", per dealership" : "") + ", at the $155 rate.";
+    }
+
+    var majBoardBase = majBoard;
+    majBoard = function () { majBoardBase(); majFiche(); };
+
+    function allerTour(n, sansDefile) {
+      if (n < 1 || n > 5) return;
+      tourActuel = n;
+      document.querySelectorAll(".etape").forEach(function (e) { e.hidden = parseInt(e.dataset.etape, 10) !== n; });
+      document.getElementById("tourN").textContent = n;
+      document.getElementById("tourNom").textContent = NOMS_TOURS[n];
+      document.querySelectorAll(".feu").forEach(function (f, i) { f.classList.toggle("on", i < n); });
+      document.getElementById("tourPrec").hidden = n === 1;
+      document.getElementById("tourSuiv").hidden = n === 5;
+      if (n === 5) majFiche();
+      document.querySelectorAll(".etape .reveal").forEach(function (rv) { rv.classList.add("visible"); });
+      if (!sansDefile) {
+        var w = document.getElementById("wizard");
+        window.scrollTo({ top: w.getBoundingClientRect().top + window.scrollY - 70, behavior: "smooth" });
+      }
+    }
+    document.getElementById("tourPrec").addEventListener("click", function () { allerTour(tourActuel - 1); });
+    document.getElementById("tourSuiv").addEventListener("click", function () { allerTour(tourActuel + 1); });
+    document.querySelectorAll(".feu").forEach(function (f) {
+      f.addEventListener("click", function () { allerTour(parseInt(f.dataset.tour, 10)); });
+    });
+    document.getElementById("objAppliquer").addEventListener("click", function () { allerTour(5); });
+    document.getElementById("ficheEnvoyer").addEventListener("click", function () { document.getElementById("pbEnvoyer").click(); });
+    document.getElementById("ficheCopier").addEventListener("click", function () {
+      var texte = "Pista Studio selection\n\n- " + resumeLignes().join("\n- ").replace(/\n- \n/, "\n\n");
+      copierVers(this, texte, "Copied \u2713");
+    });
+    document.getElementById("ficheLien").addEventListener("click", function () {
+      var m = { f: etat.forfait, n: etat.nb, i: etat.items.map(function (it) { return [it.li.dataset.nom, it.qte]; }) };
+      copierVers(this, location.href.split("#")[0] + "#s=" + btoa(encodeURIComponent(JSON.stringify(m))), "Link copied \u2713");
+    });
+    allerTour(1, true);
   })();
   </script>
 </body>
