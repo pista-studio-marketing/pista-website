@@ -2,6 +2,13 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v8.7 « Trajectoire » — 31 août 2026
+
+- Trois trajectoires d'entrée dès le haut de la page: identifier mes besoins, forfaits et à la carte, ou à la carte seulement
+- Le parcours s'adapte à la trajectoire choisie, cinq, quatre ou trois tours, les feux et le compteur suivent
+- Entête compact, le formulaire commence beaucoup plus haut, le bandeau « un seul taux » descend sous le parcours
+- Notes au crayon rouge déployées sur le reste du site: accueil « Ça part d'ici », contact « Trente secondes, promis », à propos « Le café est déjà chaud », en français comme en anglais
+
 ## v8.6 « Ravitaillement » — 31 août 2026
 
 - Bouton « Tout remettre à zéro » directement dans la fiche de course, il vide la sélection et les objectifs d'un coup

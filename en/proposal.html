@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="stylesheet" href="../css/style.css?v=8.6">
+  <link rel="stylesheet" href="../css/style.css?v=8.7">
   <meta name="theme-color" content="#F4F3EE">
 </head>
 <body>
@@ -39,27 +39,27 @@
 
   <main>
 
-    <section class="page-hero">
+    <section class="page-hero page-hero--compact">
       <div class="container">
         <div class="lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
         <span class="kicker">Proposal · Client presentation</span>
         <h1 class="giant">Proposal<span class="accent">.</span></h1>
         <svg class="souligne" viewBox="0 0 340 18" preserveAspectRatio="none" aria-hidden="true"><path d="M4 12 C 70 5, 270 3, 336 8"/><path d="M22 15 C 100 10, 240 8, 312 12"/></svg>
         <p class="lede"><b>A clear plan, clear numbers.</b> <span class="cercle">Five laps<svg viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M14 32 C 22 10, 178 4, 191 24 C 199 44, 44 58, 16 44 C 2 36, 46 12, 104 9"/></svg></span>, one question at a time, and your proposal builds itself. The total follows you at the bottom of the page.</p>
-        <div class="annot annot-hero"><span>Start here, two quick minutes</span><svg viewBox="0 0 60 84" aria-hidden="true"><path d="M12 6 C 38 22, 46 46, 34 72"/><path d="M20 60 L 33 75 L 46 58"/></svg></div>
+        <div class="annot annot-hero"><span>Pick your trajectory, the lights do the rest</span><svg viewBox="0 0 60 84" aria-hidden="true"><path d="M12 6 C 38 22, 46 46, 34 72"/><path d="M20 60 L 33 75 L 46 58"/></svg></div>
+        <div class="trajectoires" id="trajectoires">
+          <button class="traj actif" data-route="besoins"><span class="t-nom">Identify my needs<span class="t-tag">Recommended</span></span><span class="t-det">The full run, five laps, we start from your goals and the plan builds itself.</span></button>
+          <button class="traj" data-route="forfaits"><span class="t-nom">Packages and à la carte</span><span class="t-det">Four laps, straight to the hour blocks, then the catalogue.</span></button>
+          <button class="traj" data-route="carte"><span class="t-nom">À la carte only</span><span class="t-det">Three laps, the catalogue with no detour.</span></button>
+        </div>
       </div>
     </section>
 
-    <div class="intro-strip reveal">
-      <div class="container">
-        <p>One rate, clear packages. <span>No hidden fees, no surprises on the invoice. What you see here is what you pay.</span></p>
-      </div>
-    </div>
 
     <div class="wizard" id="wizard">
       <div class="container tour-tete">
         <div class="tour-feux"><button class="feu on" data-tour="1" aria-label="Lap 1"></button><button class="feu" data-tour="2" aria-label="Lap 2"></button><button class="feu" data-tour="3" aria-label="Lap 3"></button><button class="feu" data-tour="4" aria-label="Lap 4"></button><button class="feu" data-tour="5" aria-label="Lap 5"></button></div>
-        <span class="label">Lap <b id="tourN">1</b> / 5 &#183; <span id="tourNom">The team</span></span>
+        <span class="label">Lap <b id="tourN">1</b> / <span id="tourTot">5</span> &#183; <span id="tourNom">The team</span></span>
         <span class="label tour-suivi" id="tourSuivi"></span>
       </div>
 
@@ -449,7 +449,13 @@
       </div>
     </div>
 
-<section class="section reveal">
+    <div class="intro-strip reveal">
+      <div class="container">
+        <p>One rate, clear packages. <span>No hidden fees, no surprises on the invoice. What you see here is what you pay.</span></p>
+      </div>
+    </div>
+
+    <section class="section reveal">
       <div class="container">
         <span class="label">The hourly rate</span>
         <div class="taux">
@@ -569,7 +575,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=8.6"></script>
+  <script src="../js/main.js?v=8.7"></script>
   <script>
   (function () {
     var fmt = function (n) { return "$" + n.toLocaleString("en-CA"); };
@@ -1177,6 +1183,66 @@
       }
     } catch (e) {}
     majSuivi();
+
+    // ----- v8.7: trajectoires d'entrée -----
+    var ROUTES = { besoins: [1, 2, 3, 4, 5], forfaits: [1, 3, 4, 5], carte: [1, 4, 5] };
+    var route = ROUTES.besoins;
+    var tourIdx = 0;
+
+    allerTour = function (n, sansDefile) {
+      if (route.indexOf(n) === -1) {
+        var apres = route.filter(function (x) { return x > tourActuel; });
+        var avant = route.filter(function (x) { return x < tourActuel; });
+        n = n > tourActuel ? (apres.length ? apres[0] : route[route.length - 1]) : (avant.length ? avant[avant.length - 1] : route[0]);
+      }
+      tourIdx = route.indexOf(n);
+      tourActuel = n;
+      document.querySelectorAll(".etape").forEach(function (e) { e.hidden = parseInt(e.dataset.etape, 10) !== n; });
+      document.getElementById("tourN").textContent = tourIdx + 1;
+      document.getElementById("tourTot").textContent = route.length;
+      document.getElementById("tourNom").textContent = NOMS_TOURS[n];
+      document.querySelectorAll(".feu").forEach(function (f, i) {
+        f.hidden = i >= route.length;
+        f.classList.toggle("on", i <= tourIdx);
+      });
+      var dernier = tourIdx === route.length - 1;
+      document.getElementById("tourPrec").hidden = tourIdx === 0;
+      document.getElementById("tourSuiv").hidden = dernier;
+      var na = document.getElementById("navAnnot");
+      if (na) na.hidden = dernier;
+      if (n === 5) majFiche();
+      document.querySelectorAll(".etape .reveal").forEach(function (rv) { rv.classList.add("visible"); });
+      if (!sansDefile) {
+        var w = document.getElementById("wizard");
+        window.scrollTo({ top: w.getBoundingClientRect().top + window.scrollY - 70, behavior: "smooth" });
+      }
+    };
+
+    // remplace les commandes de navigation pour suivre la route
+    ["tourPrec", "tourSuiv"].forEach(function (id) {
+      var b = document.getElementById(id);
+      var c = b.cloneNode(true);
+      b.parentNode.replaceChild(c, b);
+    });
+    document.querySelectorAll(".feu").forEach(function (f) {
+      var c = f.cloneNode(true);
+      f.parentNode.replaceChild(c, f);
+    });
+    document.getElementById("tourPrec").addEventListener("click", function () { allerTour(route[Math.max(0, tourIdx - 1)]); });
+    document.getElementById("tourSuiv").addEventListener("click", function () { allerTour(route[Math.min(route.length - 1, tourIdx + 1)]); });
+    document.querySelectorAll(".feu").forEach(function (f, i) {
+      f.addEventListener("click", function () { if (i < route.length) allerTour(route[i]); });
+    });
+
+    function setRoute(cle) {
+      route = ROUTES[cle] || ROUTES.besoins;
+      document.querySelectorAll(".traj").forEach(function (t) { t.classList.toggle("actif", t.dataset.route === cle); });
+      allerTour(route.indexOf(tourActuel) > -1 ? tourActuel : route[0]);
+    }
+    document.querySelectorAll(".traj").forEach(function (t) {
+      t.addEventListener("click", function () { setRoute(t.dataset.route); });
+    });
+    allerTour(tourActuel, true);
   })();
   </script>
 </body>
