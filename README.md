@@ -1,6 +1,6 @@
 # Pista Studio — Site web
 
-Version courante: **v7.8 « Point rouge »**. Voir `CHANGELOG.md` pour l'historique des versions.
+Version courante: **v8.1 « Télémétrie »**. Voir `CHANGELOG.md` pour l'historique des versions.
 
 Site vitrine bilingue (FR/EN) en HTML, CSS et JavaScript pur. Aucune dépendance, aucun outil de build.
 

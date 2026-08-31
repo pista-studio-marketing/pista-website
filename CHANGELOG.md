@@ -2,6 +2,32 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v8.1 « Télémétrie » — 31 août 2026
+
+- Nouveau produit au catalogue, le carrousel véhicules hebdomadaire, occasions, neufs ou démonstrateurs montés à partir de l'inventaire réel, 620 $/mois
+- Quantités sur les produits à l'unité, un deuxième appui sur le + ajoute un envoi, une campagne, une page ou une journée de plus, le bouton moins retire
+- Filtres du catalogue par famille, réputation, contenu, données, acquisition, CRM, conseil
+- Le pit board gagne un bouton Détail qui déroule la sélection complète, ligne par ligne, avec retrait individuel
+- Équivalence en heures de piste affichée sous le détail
+- Conseiller intelligent, si la sélection dépasse le prix du forfait supérieur, le pit board le suggère de lui-même
+- Choisir un forfait règle la jauge du simulateur sur son bloc d'heures
+- La sélection est mémorisée dans le navigateur, elle survit à la fermeture de la page, bouton de remise à zéro inclus
+
+## v8.0 « Pit board » — 31 août 2026
+
+- La page proposition devient un outil interactif et ludique, en français comme en anglais
+- Simulateur d'heures avec jauge façon compte-tours, l'aiguille monte avec le volume d'heures et le forfait suggéré s'allume tout seul
+- Forfaits cliquables, la carte choisie passe au noir comme une voiture de tête
+- Catalogue à la carte avec boutons ronds pour ajouter chaque produit à sa sélection
+- Pit board fixe au bas de l'écran, il affiche le forfait choisi, le total mensuel et le total ponctuel en temps réel
+- Bouton « Recevoir cette sélection » qui prépare un courriel complet vers hello@pista.ca avec la sélection du client
+
+## v7.9 « Aéro » — 31 août 2026
+
+- Adresses propres sans .html grâce à Vercel (cleanUrls), pista.ca/fr/proposition au lieu de proposition.html
+- Tous les liens internes, canoniques, hreflang, Open Graph et le sitemap passent aux adresses propres
+- Les anciennes adresses en .html redirigent automatiquement
+
 ## v7.8 « Point rouge » — 31 août 2026
 
 - Toutes les pastilles du site deviennent rouges, wordmark compris

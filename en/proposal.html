@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="stylesheet" href="../css/style.css?v=7.8">
+  <link rel="stylesheet" href="../css/style.css?v=8.1">
   <meta name="theme-color" content="#F4F3EE">
 </head>
 <body>
@@ -23,15 +23,15 @@
 
   <header class="site-header">
     <div class="container nav">
-      <a href="index.html" class="wordmark">Pista Studio<span class="dot">.</span></a>
+      <a href="/en/" class="wordmark">Pista Studio<span class="dot">.</span></a>
       <button class="nav-toggle" aria-expanded="false" aria-label="Menu"><span></span></button>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="technique.html">Technical</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="../fr/proposition.html" class="lang-switch" lang="fr">FR</a></li>
+        <li><a href="/en/">Home</a></li>
+        <li><a href="/en/services">Services</a></li>
+        <li><a href="/en/technique">Technical</a></li>
+        <li><a href="/en/about">About</a></li>
+        <li><a href="/en/contact">Contact</a></li>
+        <li><a href="/fr/proposition" class="lang-switch" lang="fr">FR</a></li>
       </ul>
     </div>
   </header>
@@ -43,7 +43,7 @@
         <div class="lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
         <span class="kicker">Proposal · Client presentation</span>
         <h1 class="giant">Proposal<span class="accent">.</span></h1>
-        <p class="lede"><b>A clear plan, clear numbers.</b> Rates, monthly packages and how we work.</p>
+        <p class="lede"><b>A clear plan, clear numbers.</b> Play with the gauge, pick your package, add your products. The total follows you at the bottom of the page.</p>
       </div>
     </section>
 
@@ -66,13 +66,34 @@
 
     <section class="section reveal">
       <div class="container">
+        <span class="label">The simulator</span>
+        <h2>Push the gauge, find your pace</h2>
+        <div class="simu">
+          <svg class="jauge" viewBox="0 0 200 115" aria-hidden="true">
+            <path class="arc-fond" d="M 20 100 A 80 80 0 0 1 180 100"/>
+            <path class="arc-val" id="arcVal" d="M 20 100 A 80 80 0 0 1 180 100"/>
+            <line class="aiguille" id="aiguille" x1="100" y1="100" x2="100" y2="32"/>
+            <circle class="moyeu" cx="100" cy="100" r="7"/>
+          </svg>
+          <div>
+            <span class="simu-heures"><span id="simuH">25</span> hours / month</span>
+            <p class="simu-prix" id="simuPrix">$3,875 <small>/ month</small></p>
+            <input type="range" class="throttle" id="throttle" min="5" max="50" step="5" value="25" aria-label="Hours per month">
+            <p class="simu-note" id="simuNote">At this pace, the <b>Podium</b> package is your racing line.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="container">
         <span class="label">Monthly packages</span>
         <h2>Three race plans, one goal</h2>
-        <p class="intro">Each package is a monthly block of hours at $155, committed to what sells. No twelve-month contract, we earn your renewal every month.</p>
+        <p class="intro">Each package is a monthly block of hours at $155. No twelve-month contract, we earn your renewal every month. Click to choose.</p>
 
         <div class="forfaits">
 
-          <article class="forfait">
+          <article class="forfait" data-forfait="Trackday" data-prix="1550" data-heures="10">
             <p class="nom">Trackday<span class="dot--rouge">.</span></p>
             <p class="pour">To start on the right foot</p>
             <p class="prix">$1,550 <small>/ month</small></p>
@@ -83,10 +104,10 @@
               <li><b>Month-start banners</b> on your website</li>
               <li><b>Monthly report</b> that speaks in appointments, not clicks</li>
             </ul>
-            <a href="contact.html" class="btn btn-secondary">Start here</a>
+            <button class="btn btn-secondary choisir">Choose</button>
           </article>
 
-          <article class="forfait forfait--star">
+          <article class="forfait forfait--star" data-forfait="Podium" data-prix="3875" data-heures="25">
             <span class="badge">Most driven</span>
             <p class="nom">Podium<span class="dot--rouge">.</span></p>
             <p class="pour">To take the lead in your market</p>
@@ -99,10 +120,10 @@
               <li><b>Pixels, tags and remarketing</b> continuously optimized</li>
               <li><b>Monthly report and follow-up call</b></li>
             </ul>
-            <a href="contact.html" class="btn btn-primary">Aim for the podium</a>
+            <button class="btn btn-primary choisir">Choose</button>
           </article>
 
-          <article class="forfait">
+          <article class="forfait" data-forfait="Champion" data-prix="6975" data-heures="45">
             <p class="nom">Champion<span class="dot--rouge">.</span></p>
             <p class="pour">To dominate the season</p>
             <p class="prix">$6,975 <small>/ month</small></p>
@@ -114,7 +135,7 @@
               <li><b>Lead management</b>, automated follow-up, CRM, email, SMS</li>
               <li><b>Live analytics dashboard</b> and 24-hour priority</li>
             </ul>
-            <a href="contact.html" class="btn btn-secondary">Run up front</a>
+            <button class="btn btn-secondary choisir">Choose</button>
           </article>
 
         </div>
@@ -127,138 +148,182 @@
       <div class="container">
         <span class="label">À la carte</span>
         <h2>The product catalogue</h2>
-        <p class="intro">Every product can be added to a package or taken on its own. Recurring prices are fixed monthly amounts, predictable, no surprises.</p>
+        <p class="intro">Hit <b>+</b> to add a product to your plan. Hit it again to take a second one, the pit board at the bottom keeps score. Your selection is remembered, even if you close the page.</p>
 
-        <div class="carte-cat">
+        <div class="filtres" id="filtres">
+          <button class="filtre actif" data-cat="tous">See all</button>
+          <button class="filtre" data-cat="reputation">Reputation</button>
+          <button class="filtre" data-cat="contenu">Content</button>
+          <button class="filtre" data-cat="donnees">Data</button>
+          <button class="filtre" data-cat="acquisition">Acquisition</button>
+          <button class="filtre" data-cat="crm">CRM</button>
+          <button class="filtre" data-cat="conseil">Advisory</button>
+        </div>
+
+        <div class="carte-cat" data-cat="reputation">
           <span class="label">Reputation and local presence</span>
           <ul class="carte-liste">
-          <li>
-            <span><span class="carte-nom">Google Business Profile management</span><span class="carte-desc">Review replies within 24 hours, posts, photos, Q&amp;A.</span></span>
-            <span class="carte-prix">$465<small>/ month</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">Social media comment management</span><span class="carte-desc">Moderation and replies on Meta and Instagram, on brand.</span></span>
-            <span class="carte-prix">$775<small>/ month</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">Extended reputation watch</span><span class="carte-desc">DealerRater, CarGurus, Kijiji and friends, added to an active management plan.</span></span>
-            <span class="carte-prix">+$155<small>/ month</small></span>
-          </li>
+            <li data-nom="Google Business Profile management" data-mensuel="465">
+              <span><span class="carte-nom">Google Business Profile management</span><span class="carte-desc">Review replies within 24 hours, posts, photos, Q&amp;A.</span></span>
+              <span class="carte-prix">$465<small>/ month</small></span>
+              <button class="ajout" aria-label="Add">+</button>
+            </li>
+            <li data-nom="Social media comment management" data-mensuel="775">
+              <span><span class="carte-nom">Social media comment management</span><span class="carte-desc">Moderation and replies on Meta and Instagram, on brand.</span></span>
+              <span class="carte-prix">$775<small>/ month</small></span>
+              <button class="ajout" aria-label="Add">+</button>
+            </li>
+            <li data-nom="Extended reputation watch" data-mensuel="155">
+              <span><span class="carte-nom">Extended reputation watch</span><span class="carte-desc">DealerRater, CarGurus, Kijiji and friends, added to an active management plan.</span></span>
+              <span class="carte-prix">+$155<small>/ month</small></span>
+              <button class="ajout" aria-label="Add">+</button>
+            </li>
           </ul>
         </div>
-        <div class="carte-cat">
+
+        <div class="carte-cat" data-cat="contenu">
           <span class="label">Recurring content</span>
           <ul class="carte-liste">
-          <li>
-            <span><span class="carte-nom">Monthly newsletter</span><span class="carte-desc">Design, bilingual copy, send and performance report.</span></span>
-            <span class="carte-prix">$620<small>/ send</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">Full organic calendar</span><span class="carte-desc">Twelve posts a month, aligned with your campaigns and inventory.</span></span>
-            <span class="carte-prix">$1,240<small>/ month</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">SEO blog</span><span class="carte-desc">Two articles a month working your local visibility.</span></span>
-            <span class="carte-prix">$620<small>/ month</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">Short video pack</span><span class="carte-desc">Four reels a month, shot and edited for your platforms.</span></span>
-            <span class="carte-prix">$930<small>/ month</small></span>
-          </li>
+            <li data-nom="Weekly vehicle carousel" data-mensuel="620" data-multi="1" data-unite="carousel per week">
+              <span><span class="carte-nom">Weekly vehicle carousel</span><span class="carte-desc">Every week, a carousel of used vehicles, new arrivals or demos, built from your live inventory and published on your platforms.</span></span>
+              <span class="carte-prix">$620<small>/ month</small></span>
+              <span class="carte-actions"><span class="qte" hidden><button class="q-moins" aria-label="Remove one">&#8722;</button><b class="q-n">1</b></span><button class="ajout" aria-label="Add">+</button></span>
+            </li>
+            <li data-nom="Monthly newsletter" data-mensuel="620" data-multi="1" data-unite="send per month">
+              <span><span class="carte-nom">Monthly newsletter</span><span class="carte-desc">Design, bilingual copy, send and performance report.</span></span>
+              <span class="carte-prix">$620<small>/ send</small></span>
+              <span class="carte-actions"><span class="qte" hidden><button class="q-moins" aria-label="Remove one">&#8722;</button><b class="q-n">1</b></span><button class="ajout" aria-label="Add">+</button></span>
+            </li>
+            <li data-nom="Full organic calendar" data-mensuel="1240">
+              <span><span class="carte-nom">Full organic calendar</span><span class="carte-desc">Twelve posts a month, aligned with your campaigns and inventory.</span></span>
+              <span class="carte-prix">$1,240<small>/ month</small></span>
+              <button class="ajout" aria-label="Add">+</button>
+            </li>
+            <li data-nom="SEO blog" data-mensuel="620">
+              <span><span class="carte-nom">SEO blog</span><span class="carte-desc">Two articles a month working your local visibility.</span></span>
+              <span class="carte-prix">$620<small>/ month</small></span>
+              <button class="ajout" aria-label="Add">+</button>
+            </li>
+            <li data-nom="Short video pack" data-mensuel="930">
+              <span><span class="carte-nom">Short video pack</span><span class="carte-desc">Four reels a month, shot and edited for your platforms.</span></span>
+              <span class="carte-prix">$930<small>/ month</small></span>
+              <button class="ajout" aria-label="Add">+</button>
+            </li>
           </ul>
         </div>
-        <div class="carte-cat">
+
+        <div class="carte-cat" data-cat="donnees">
           <span class="label">Data and technology</span>
           <ul class="carte-liste">
-          <li>
-            <span><span class="carte-nom">Inventory API connection, Google Merchant Center</span><span class="carte-desc">Your vehicles in Vehicle Ads, synced in real time.</span></span>
-            <span class="carte-prix">$2,325<small>setup, +$310/month</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">Inventory connection, Meta catalogue</span><span class="carte-desc">Automotive Inventory Ads wired to your live stock.</span></span>
-            <span class="carte-prix">$1,550<small>setup, +$310/month</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">Both connections combo</span><span class="carte-desc">Google and Meta wired together, one maintenance.</span></span>
-            <span class="carte-prix">$3,100<small>setup, +$465/month</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">GA4, GTM and conversion setup</span><span class="carte-desc">Complete measurement, verified and documented.</span></span>
-            <span class="carte-prix">$1,085<small>one-time</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">Looker Studio dashboard</span><span class="carte-desc">Your numbers, live and readable at the dealership.</span></span>
-            <span class="carte-prix">$930<small>setup, +$155/month</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">Law 25 compliance and consent</span><span class="carte-desc">Banner, consent mode, clean measurement.</span></span>
-            <span class="carte-prix">$465<small>one-time</small></span>
-          </li>
+            <li data-nom="Inventory API connection, Google Merchant Center" data-unique="2325" data-mensuel="310">
+              <span><span class="carte-nom">Inventory API connection, Google Merchant Center</span><span class="carte-desc">Your vehicles in Vehicle Ads, synced in real time.</span></span>
+              <span class="carte-prix">$2,325<small>setup, +$310/month</small></span>
+              <button class="ajout" aria-label="Add">+</button>
+            </li>
+            <li data-nom="Inventory connection, Meta catalogue" data-unique="1550" data-mensuel="310">
+              <span><span class="carte-nom">Inventory connection, Meta catalogue</span><span class="carte-desc">Automotive Inventory Ads wired to your live stock.</span></span>
+              <span class="carte-prix">$1,550<small>setup, +$310/month</small></span>
+              <button class="ajout" aria-label="Add">+</button>
+            </li>
+            <li data-nom="Both connections combo" data-unique="3100" data-mensuel="465">
+              <span><span class="carte-nom">Both connections combo</span><span class="carte-desc">Google and Meta wired together, one maintenance.</span></span>
+              <span class="carte-prix">$3,100<small>setup, +$465/month</small></span>
+              <button class="ajout" aria-label="Add">+</button>
+            </li>
+            <li data-nom="GA4, GTM and conversion setup" data-unique="1085">
+              <span><span class="carte-nom">GA4, GTM and conversion setup</span><span class="carte-desc">Complete measurement, verified and documented.</span></span>
+              <span class="carte-prix">$1,085<small>one-time</small></span>
+              <button class="ajout" aria-label="Add">+</button>
+            </li>
+            <li data-nom="Looker Studio dashboard" data-unique="930" data-mensuel="155">
+              <span><span class="carte-nom">Looker Studio dashboard</span><span class="carte-desc">Your numbers, live and readable at the dealership.</span></span>
+              <span class="carte-prix">$930<small>setup, +$155/month</small></span>
+              <button class="ajout" aria-label="Add">+</button>
+            </li>
+            <li data-nom="Law 25 compliance and consent" data-unique="465">
+              <span><span class="carte-nom">Law 25 compliance and consent</span><span class="carte-desc">Banner, consent mode, clean measurement.</span></span>
+              <span class="carte-prix">$465<small>one-time</small></span>
+              <button class="ajout" aria-label="Add">+</button>
+            </li>
           </ul>
         </div>
-        <div class="carte-cat">
+
+        <div class="carte-cat" data-cat="acquisition">
           <span class="label">À la carte acquisition</span>
           <ul class="carte-liste">
-          <li>
-            <span><span class="carte-nom">Turnkey month-start campaign</span><span class="carte-desc">Visuals from zero, per-platform declination, banners, SEM and SMM injection.</span></span>
-            <span class="carte-prix">$930<small>/ campaign</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">Promotional landing page</span><span class="carte-desc">One page built to convert one specific offer.</span></span>
-            <span class="carte-prix">$775<small>/ page</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">Model launch campaign</span><span class="carte-desc">A new model arrival, orchestrated from teaser to showroom.</span></span>
-            <span class="carte-prix">$1,550<small>/ campaign</small></span>
-          </li>
+            <li data-nom="Turnkey month-start campaign" data-unique="930" data-multi="1" data-unite="campaign">
+              <span><span class="carte-nom">Turnkey month-start campaign</span><span class="carte-desc">Visuals from zero, per-platform declination, banners, SEM and SMM injection.</span></span>
+              <span class="carte-prix">$930<small>/ campaign</small></span>
+              <span class="carte-actions"><span class="qte" hidden><button class="q-moins" aria-label="Remove one">&#8722;</button><b class="q-n">1</b></span><button class="ajout" aria-label="Add">+</button></span>
+            </li>
+            <li data-nom="Promotional landing page" data-unique="775" data-multi="1" data-unite="page">
+              <span><span class="carte-nom">Promotional landing page</span><span class="carte-desc">One page built to convert one specific offer.</span></span>
+              <span class="carte-prix">$775<small>/ page</small></span>
+              <span class="carte-actions"><span class="qte" hidden><button class="q-moins" aria-label="Remove one">&#8722;</button><b class="q-n">1</b></span><button class="ajout" aria-label="Add">+</button></span>
+            </li>
+            <li data-nom="Model launch campaign" data-unique="1550" data-multi="1" data-unite="campaign">
+              <span><span class="carte-nom">Model launch campaign</span><span class="carte-desc">A new model arrival, orchestrated from teaser to showroom.</span></span>
+              <span class="carte-prix">$1,550<small>/ campaign</small></span>
+              <span class="carte-actions"><span class="qte" hidden><button class="q-moins" aria-label="Remove one">&#8722;</button><b class="q-n">1</b></span><button class="ajout" aria-label="Add">+</button></span>
+            </li>
           </ul>
         </div>
-        <div class="carte-cat">
+
+        <div class="carte-cat" data-cat="crm">
           <span class="label">CRM and retention</span>
           <ul class="carte-liste">
-          <li>
-            <span><span class="carte-nom">Automated flow</span><span class="carte-desc">Lead follow-up, test drive reminder, financing anniversary, service reminder.</span></span>
-            <span class="carte-prix">$620<small>/ flow</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">Full CRM integration</span><span class="carte-desc">DealerSocket, VinSolutions, PBS, Activix, wired to your campaigns.</span></span>
-            <span class="carte-prix">$1,550<small>one-time</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">Retention email and SMS management</span><span class="carte-desc">Your current customers, your next sale.</span></span>
-            <span class="carte-prix">$465<small>/ month</small></span>
-          </li>
+            <li data-nom="Automated flow" data-unique="620" data-multi="1" data-unite="flow">
+              <span><span class="carte-nom">Automated flow</span><span class="carte-desc">Lead follow-up, test drive reminder, financing anniversary, service reminder.</span></span>
+              <span class="carte-prix">$620<small>/ flow</small></span>
+              <span class="carte-actions"><span class="qte" hidden><button class="q-moins" aria-label="Remove one">&#8722;</button><b class="q-n">1</b></span><button class="ajout" aria-label="Add">+</button></span>
+            </li>
+            <li data-nom="Full CRM integration" data-unique="1550">
+              <span><span class="carte-nom">Full CRM integration</span><span class="carte-desc">DealerSocket, VinSolutions, PBS, Activix, wired to your campaigns.</span></span>
+              <span class="carte-prix">$1,550<small>one-time</small></span>
+              <button class="ajout" aria-label="Add">+</button>
+            </li>
+            <li data-nom="Retention email and SMS management" data-mensuel="465">
+              <span><span class="carte-nom">Retention email and SMS management</span><span class="carte-desc">Your current customers, your next sale.</span></span>
+              <span class="carte-prix">$465<small>/ month</small></span>
+              <button class="ajout" aria-label="Add">+</button>
+            </li>
           </ul>
         </div>
-        <div class="carte-cat">
+
+        <div class="carte-cat" data-cat="conseil">
           <span class="label">Advisory and production</span>
           <ul class="carte-liste">
-          <li>
-            <span><span class="carte-nom">Full digital audit</span><span class="carte-desc">The picture of the sales you're leaving on the table, credited if you take a package within 30 days.</span></span>
-            <span class="carte-prix">$1,550<small>one-time</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">Manufacturer co-op management</span><span class="carte-desc">Building and filing your OEM advertising claims.</span></span>
-            <span class="carte-prix">$155<small>/ hour</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">Lead handling team training</span><span class="carte-desc">A hands-on workshop so every lead gets called back within the hour.</span></span>
-            <span class="carte-prix">$930<small>/ workshop</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">Competitive watch</span><span class="carte-desc">Digital mystery shopping and monthly tracking of your rivals.</span></span>
-            <span class="carte-prix">$465<small>/ month</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">Dealership photo and video day</span><span class="carte-desc">An image bank of your own, editing billed hourly.</span></span>
-            <span class="carte-prix">$1,240<small>/ day</small></span>
-          </li>
-          <li>
-            <span><span class="carte-nom">PSM Events</span><span class="carte-desc">Launches, open houses, test drive days, managed end to end.</span></span>
-            <span class="carte-prix">Custom quote<small>managed at $155/h</small></span>
-          </li>
+            <li data-nom="Full digital audit" data-unique="1550">
+              <span><span class="carte-nom">Full digital audit</span><span class="carte-desc">The picture of the sales you're leaving on the table, credited if you take a package within 30 days.</span></span>
+              <span class="carte-prix">$1,550<small>one-time</small></span>
+              <button class="ajout" aria-label="Add">+</button>
+            </li>
+            <li>
+              <span><span class="carte-nom">Manufacturer co-op management</span><span class="carte-desc">Building and filing your OEM advertising claims.</span></span>
+              <span class="carte-prix">$155<small>/ hour</small></span>
+            </li>
+            <li data-nom="Lead handling team training" data-unique="930" data-multi="1" data-unite="workshop">
+              <span><span class="carte-nom">Lead handling team training</span><span class="carte-desc">A hands-on workshop so every lead gets called back within the hour.</span></span>
+              <span class="carte-prix">$930<small>/ workshop</small></span>
+              <span class="carte-actions"><span class="qte" hidden><button class="q-moins" aria-label="Remove one">&#8722;</button><b class="q-n">1</b></span><button class="ajout" aria-label="Add">+</button></span>
+            </li>
+            <li data-nom="Competitive watch" data-mensuel="465">
+              <span><span class="carte-nom">Competitive watch</span><span class="carte-desc">Digital mystery shopping and monthly tracking of your rivals.</span></span>
+              <span class="carte-prix">$465<small>/ month</small></span>
+              <button class="ajout" aria-label="Add">+</button>
+            </li>
+            <li data-nom="Dealership photo and video day" data-unique="1240" data-multi="1" data-unite="day">
+              <span><span class="carte-nom">Dealership photo and video day</span><span class="carte-desc">An image bank of your own, editing billed hourly.</span></span>
+              <span class="carte-prix">$1,240<small>/ day</small></span>
+              <span class="carte-actions"><span class="qte" hidden><button class="q-moins" aria-label="Remove one">&#8722;</button><b class="q-n">1</b></span><button class="ajout" aria-label="Add">+</button></span>
+            </li>
+            <li>
+              <span><span class="carte-nom">PSM Events</span><span class="carte-desc">Launches, open houses, test drive days, managed end to end.</span></span>
+              <span class="carte-prix">Custom quote<small>managed at $155/h</small></span>
+            </li>
           </ul>
         </div>
+
         <p class="meta-note">Any work outside the catalogue is billed at the $155 hourly rate, actuals only. Ad media management: 12% of monthly ad spend, budgets paid directly to the platforms.</p>
       </div>
     </section>
@@ -276,7 +341,7 @@
         <h2 class="giant" style="font-size:clamp(2.25rem,5.5vw,4.5rem);">Pick your grid slot<span class="accent">.</span></h2>
         <p class="intro">A package can also be built to measure, we adjust the block of hours to your market and your brands. Let's talk.</p>
         <div class="hero-actions">
-          <a href="contact.html" class="btn-premium">
+          <a href="/en/contact" class="btn-premium">
             <span class="pdot" aria-hidden="true"></span>
             <span>Book a call</span>
             <span class="arrow" aria-hidden="true">&#8594;</span>
@@ -288,18 +353,42 @@
 
   </main>
 
+  <div class="pitboard" id="pitboard" aria-live="polite">
+    <div class="pb-detail" id="pbDetail" hidden>
+      <div class="container">
+        <ul id="pbListe"></ul>
+        <p class="pb-eq" id="pbEq"></p>
+      </div>
+    </div>
+    <div class="pb-hint" id="pbHint" hidden>
+      <div class="container" id="pbHintTxt"></div>
+    </div>
+    <div class="container">
+      <div class="pb-gauche">
+        <button class="pb-toggle" id="pbToggle" aria-expanded="false" aria-controls="pbDetail">Details<span class="n" id="pbCount">0</span></button>
+        <button class="pb-reset" id="pbReset" aria-label="Reset everything" title="Reset everything">&#8635;</button>
+      </div>
+      <div class="pb-tot">
+        <div class="pb-item">Package<b id="pbForfait">None</b></div>
+        <div class="pb-item">Monthly<b id="pbMensuel">$0</b></div>
+        <div class="pb-item">One-time<b id="pbUnique">$0</b></div>
+      </div>
+      <button class="pb-envoyer" id="pbEnvoyer">Send this selection</button>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top">
         <div>
-          <a href="index.html" class="wordmark">Pista Studio<span class="dot">.</span></a>
+          <a href="/en/" class="wordmark">Pista Studio<span class="dot">.</span></a>
           <p class="tagline">The art of driving brands forward</p>
         </div>
         <ul class="footer-links">
-          <li><a href="services.html">Services</a></li>
-          <li><a href="technique.html">Technical</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="/en/services">Services</a></li>
+          <li><a href="/en/technique">Technical</a></li>
+          <li><a href="/en/about">About</a></li>
+          <li><a href="/en/contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-expertises">
@@ -314,6 +403,279 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=7.8"></script>
+  <script src="../js/main.js?v=8.1"></script>
+  <script>
+  (function () {
+    var fmt = function (n) { return "$" + n.toLocaleString("en-CA"); };
+
+    // ----- Simulator -----
+    var throttle = document.getElementById("throttle");
+    var arc = document.getElementById("arcVal");
+    var aiguille = document.getElementById("aiguille");
+    var simuH = document.getElementById("simuH");
+    var simuPrix = document.getElementById("simuPrix");
+    var simuNote = document.getElementById("simuNote");
+    var LONG = 251.3;
+    arc.style.strokeDasharray = LONG;
+
+    function majSimu() {
+      var h = parseInt(throttle.value, 10);
+      var t = (h - 5) / 45;
+      arc.style.strokeDashoffset = LONG * (1 - t);
+      aiguille.style.transform = "rotate(" + (-90 + 180 * t) + "deg)";
+      simuH.textContent = h;
+      simuPrix.innerHTML = fmt(h * 155) + " <small>/ month</small>";
+      var nom = h <= 12 ? "Trackday" : h <= 32 ? "Podium" : "Champion";
+      simuNote.innerHTML = "At this pace, the <b>" + nom + "</b> package is your racing line.";
+      document.querySelectorAll(".forfait").forEach(function (f) {
+        f.classList.toggle("suggere", f.dataset.forfait === nom && !f.classList.contains("actif"));
+      });
+    }
+    throttle.addEventListener("input", majSimu);
+    majSimu();
+
+    // ----- Catalogue filters -----
+    document.querySelectorAll(".filtre").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        document.querySelectorAll(".filtre").forEach(function (x) { x.classList.remove("actif"); });
+        btn.classList.add("actif");
+        var cat = btn.dataset.cat;
+        document.querySelectorAll(".carte-cat").forEach(function (c) {
+          c.hidden = cat !== "tous" && c.dataset.cat !== cat;
+        });
+      });
+    });
+
+    // ----- Selection -----
+    var etat = { forfait: null, prix: 0, items: [] };
+    var CLE = "pista-pit-en";
+    var board = document.getElementById("pitboard");
+    var pbForfait = document.getElementById("pbForfait");
+    var pbMensuel = document.getElementById("pbMensuel");
+    var pbUnique = document.getElementById("pbUnique");
+    var pbCount = document.getElementById("pbCount");
+    var pbListe = document.getElementById("pbListe");
+    var pbEq = document.getElementById("pbEq");
+    var pbDetail = document.getElementById("pbDetail");
+    var pbToggle = document.getElementById("pbToggle");
+    var pbHint = document.getElementById("pbHint");
+    var pbHintTxt = document.getElementById("pbHintTxt");
+    var forfaits = Array.prototype.slice.call(document.querySelectorAll(".forfait"))
+      .map(function (f) { return { nom: f.dataset.forfait, prix: parseInt(f.dataset.prix, 10), heures: parseInt(f.dataset.heures, 10) }; })
+      .sort(function (a, b) { return a.prix - b.prix; });
+
+    function sauver() {
+      try {
+        localStorage.setItem(CLE, JSON.stringify({
+          f: etat.forfait,
+          i: etat.items.map(function (it) { return [it.li.dataset.nom, it.qte]; })
+        }));
+      } catch (e) {}
+    }
+
+    function libelle(it) {
+      return (it.qte > 1 ? it.qte + " × " : "") + it.li.dataset.nom;
+    }
+
+    function prixItem(it) {
+      var d = [];
+      if (it.li.dataset.unique) d.push(fmt(parseInt(it.li.dataset.unique, 10) * it.qte) + (it.qte > 1 ? "" : " one-time"));
+      if (it.li.dataset.mensuel) d.push(fmt(parseInt(it.li.dataset.mensuel, 10) * it.qte) + "/month");
+      return d.join(" + ");
+    }
+
+    function majHint(mensuel) {
+      var msg = "";
+      if (etat.forfait) {
+        var idx = -1;
+        forfaits.forEach(function (f, i) { if (f.nom === etat.forfait) idx = i; });
+        var next = forfaits[idx + 1];
+        if (next && mensuel >= next.prix) {
+          msg = "For the same budget, the <b>" + next.nom + "</b> package gives you a " + next.heures + "-hour block. Worth a look.";
+        }
+      } else if (etat.items.length) {
+        var meilleur = null;
+        forfaits.forEach(function (f) { if (mensuel >= f.prix) meilleur = f; });
+        if (meilleur) {
+          msg = "Your monthly total already covers the <b>" + meilleur.nom + "</b> package. A bundled block of hours often works harder.";
+        }
+      }
+      pbHint.hidden = !msg;
+      pbHintTxt.innerHTML = msg;
+    }
+
+    function majBoard() {
+      var mensuel = etat.prix;
+      var unique = 0;
+      etat.items.forEach(function (it) {
+        mensuel += parseInt(it.li.dataset.mensuel || 0, 10) * it.qte;
+        unique += parseInt(it.li.dataset.unique || 0, 10) * it.qte;
+      });
+      pbForfait.textContent = etat.forfait || "None";
+      pbMensuel.textContent = fmt(mensuel);
+      pbUnique.textContent = fmt(unique);
+      pbCount.textContent = etat.items.length;
+
+      pbListe.innerHTML = "";
+      if (etat.forfait) {
+        var lf = document.createElement("li");
+        lf.className = "pb-ligne";
+        lf.innerHTML = "<span>" + etat.forfait + " package</span><span class=\"pb-p\">" + fmt(etat.prix) + "/month</span>";
+        pbListe.appendChild(lf);
+      }
+      etat.items.forEach(function (it) {
+        var l = document.createElement("li");
+        l.className = "pb-ligne";
+        l.innerHTML = "<span>" + libelle(it) + "</span><span class=\"pb-p\">" + prixItem(it) +
+          " <button class=\"retirer\" aria-label=\"Remove\">&#215;</button></span>";
+        l.querySelector(".retirer").addEventListener("click", function () { retirer(it.li); });
+        pbListe.appendChild(l);
+      });
+      pbEq.textContent = mensuel > 0 ? "≈ " + Math.round(mensuel / 155) + " track hours per month" : "";
+
+      majHint(mensuel);
+
+      var actif = etat.forfait || etat.items.length;
+      board.classList.toggle("visible", !!actif);
+      document.body.classList.toggle("pb-actif", !!actif);
+      if (!actif) { pbDetail.hidden = true; pbToggle.setAttribute("aria-expanded", "false"); }
+      sauver();
+    }
+
+    function majLigne(li) {
+      var it = null;
+      etat.items.forEach(function (x) { if (x.li === li) it = x; });
+      var qte = li.querySelector(".qte");
+      var ajout = li.querySelector(".ajout");
+      li.classList.toggle("choisi", !!it);
+      if (li.dataset.multi) {
+        if (qte) {
+          qte.hidden = !it;
+          if (it) qte.querySelector(".q-n").textContent = it.qte;
+        }
+        ajout.textContent = "+";
+      } else {
+        ajout.textContent = it ? "✓" : "+";
+      }
+    }
+
+    function retirer(li) {
+      etat.items = etat.items.filter(function (x) { return x.li !== li; });
+      majLigne(li);
+      majBoard();
+    }
+
+    document.querySelectorAll(".forfait").forEach(function (f) {
+      f.querySelector(".choisir").addEventListener("click", function () {
+        var deja = f.classList.contains("actif");
+        document.querySelectorAll(".forfait").forEach(function (x) {
+          x.classList.remove("actif");
+          x.querySelector(".choisir").textContent = "Choose";
+        });
+        if (!deja) {
+          f.classList.add("actif");
+          f.classList.remove("suggere");
+          f.querySelector(".choisir").textContent = "Chosen ✓";
+          etat.forfait = f.dataset.forfait;
+          etat.prix = parseInt(f.dataset.prix, 10);
+          if (f.dataset.heures) { throttle.value = f.dataset.heures; majSimu(); }
+        } else {
+          etat.forfait = null;
+          etat.prix = 0;
+        }
+        majBoard();
+      });
+    });
+
+    document.querySelectorAll(".carte-liste li .ajout").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var li = btn.closest("li");
+        var it = null;
+        etat.items.forEach(function (x) { if (x.li === li) it = x; });
+        if (li.dataset.multi) {
+          if (it) { if (it.qte < 12) it.qte += 1; }
+          else etat.items.push({ li: li, qte: 1 });
+        } else {
+          if (it) etat.items = etat.items.filter(function (x) { return x.li !== li; });
+          else etat.items.push({ li: li, qte: 1 });
+        }
+        majLigne(li);
+        majBoard();
+      });
+    });
+
+    document.querySelectorAll(".carte-liste li .q-moins").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var li = btn.closest("li");
+        var it = null;
+        etat.items.forEach(function (x) { if (x.li === li) it = x; });
+        if (!it) return;
+        it.qte -= 1;
+        if (it.qte < 1) etat.items = etat.items.filter(function (x) { return x.li !== li; });
+        majLigne(li);
+        majBoard();
+      });
+    });
+
+    pbToggle.addEventListener("click", function () {
+      var ouvert = pbDetail.hidden;
+      pbDetail.hidden = !ouvert;
+      pbToggle.setAttribute("aria-expanded", ouvert ? "true" : "false");
+    });
+
+    document.getElementById("pbReset").addEventListener("click", function () {
+      var anciens = etat.items.map(function (x) { return x.li; });
+      etat.forfait = null;
+      etat.prix = 0;
+      etat.items = [];
+      document.querySelectorAll(".forfait").forEach(function (x) {
+        x.classList.remove("actif");
+        x.querySelector(".choisir").textContent = "Choose";
+      });
+      anciens.forEach(majLigne);
+      majSimu();
+      majBoard();
+      try { localStorage.removeItem(CLE); } catch (e) {}
+    });
+
+    document.getElementById("pbEnvoyer").addEventListener("click", function () {
+      var lignes = [];
+      if (etat.forfait) lignes.push(etat.forfait + " package: " + fmt(etat.prix) + "/month");
+      etat.items.forEach(function (it) {
+        lignes.push(libelle(it) + ": " + prixItem(it));
+      });
+      lignes.push("", "Monthly total: " + pbMensuel.textContent, "One-time total: " + pbUnique.textContent);
+      var corps = "Hello Pista Studio,%0D%0A%0D%0AHere is the selection we built together:%0D%0A%0D%0A- " + lignes.join("%0D%0A- ").replace(/%0D%0A- %0D%0A/, "%0D%0A%0D%0A");
+      window.location.href = "mailto:hello@pista.ca?subject=" + encodeURIComponent("My Pista Studio selection") + "&body=" + corps;
+    });
+
+    // ----- Restore the remembered selection -----
+    try {
+      var memo = JSON.parse(localStorage.getItem(CLE) || "null");
+      if (memo) {
+        if (memo.f) {
+          document.querySelectorAll(".forfait").forEach(function (f) {
+            if (f.dataset.forfait === memo.f) {
+              f.classList.add("actif");
+              f.classList.remove("suggere");
+              f.querySelector(".choisir").textContent = "Chosen ✓";
+              etat.forfait = memo.f;
+              etat.prix = parseInt(f.dataset.prix, 10);
+            }
+          });
+        }
+        (memo.i || []).forEach(function (paire) {
+          document.querySelectorAll(".carte-liste li[data-nom]").forEach(function (li) {
+            if (li.dataset.nom === paire[0]) {
+              etat.items.push({ li: li, qte: Math.max(1, parseInt(paire[1], 10) || 1) });
+              majLigne(li);
+            }
+          });
+        });
+        if (etat.forfait || etat.items.length) majBoard();
+      }
+    } catch (e) {}
+  })();
+  </script>
 </body>
 </html>

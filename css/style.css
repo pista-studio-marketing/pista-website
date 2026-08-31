@@ -2029,6 +2029,495 @@ body.nuit .forfait .badge {
 }
 
 /* ------------------------------------------------------------
+   Simulateur d'heures — jauge de tachymètre
+   ------------------------------------------------------------ */
+.simu {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: minmax(240px, 360px) 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .simu {
+    grid-template-columns: 1fr;
+  }
+}
+
+.jauge {
+  width: 100%;
+  max-width: 360px;
+}
+
+.jauge .arc-fond {
+  fill: none;
+  stroke: var(--filet);
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+
+.jauge .arc-val {
+  fill: none;
+  stroke: var(--rouge);
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.15s ease;
+}
+
+.jauge .aiguille {
+  stroke: var(--noir);
+  stroke-width: 3;
+  transform-origin: 100px 100px;
+  transition: transform 0.15s ease;
+}
+
+.jauge .moyeu {
+  fill: var(--rouge);
+}
+
+.simu-heures {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gris-moyen);
+}
+
+.simu-prix {
+  margin-top: 0.5rem;
+  font-size: clamp(2.75rem, 6vw, 4.75rem);
+  font-weight: 200;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.simu-prix small {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--gris-moyen);
+  letter-spacing: 0;
+}
+
+.throttle {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  background: var(--filet);
+  outline: none;
+  margin-top: 2rem;
+}
+
+.throttle::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--rouge);
+  cursor: pointer;
+  border: none;
+}
+
+.throttle::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--rouge);
+  cursor: pointer;
+  border: none;
+}
+
+.simu-note {
+  margin-top: 1.25rem;
+  font-size: 0.9375rem;
+  color: var(--gris-moyen);
+}
+
+.simu-note b {
+  color: var(--noir);
+  font-weight: 500;
+}
+
+/* ------------------------------------------------------------
+   Forfaits sélectionnables et catalogue cliquable
+   ------------------------------------------------------------ */
+.forfait.suggere {
+  border-color: var(--rouge);
+}
+
+.forfait.actif {
+  background: var(--noir);
+  border-color: var(--noir);
+  color: var(--creme);
+}
+
+.forfait.actif .pour,
+.forfait.actif .heures,
+.forfait.actif .prix small {
+  color: var(--gris-clair);
+}
+
+.forfait.actif li {
+  color: var(--gris-clair);
+  border-color: var(--filet-noir);
+}
+
+.forfait.actif li b {
+  color: var(--creme);
+}
+
+.carte-liste li {
+  grid-template-columns: 1fr auto auto;
+}
+
+.ajout {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--gris-clair);
+  background: none;
+  color: var(--noir);
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font);
+  align-self: center;
+}
+
+.ajout:hover {
+  border-color: var(--rouge);
+  color: var(--rouge);
+}
+
+li.choisi .ajout {
+  background: var(--rouge);
+  border-color: var(--rouge);
+  color: #f4f3ee;
+}
+
+@media (max-width: 560px) {
+  .carte-liste li {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+/* ------------------------------------------------------------
+   Pit board — le total qui suit la sélection
+   ------------------------------------------------------------ */
+.pitboard {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #0a0a0a;
+  color: #f4f3ee;
+  z-index: 180;
+  border-top: 2px solid var(--rouge);
+  transform: translateY(110%);
+  transition: transform 0.35s ease;
+}
+
+.pitboard.visible {
+  transform: none;
+}
+
+.pitboard .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.pb-tot {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.pb-item {
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #9b9b97;
+}
+
+.pb-item b {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 1.375rem;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: #f4f3ee;
+}
+
+.pb-envoyer {
+  background: #f4f3ee;
+  color: #0a0a0a;
+  border: none;
+  font-family: var(--font);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pb-envoyer:hover {
+  background: var(--rouge);
+  color: #f4f3ee;
+}
+
+body.pb-actif main {
+  padding-bottom: 110px;
+}
+
+/* ------------------------------------------------------------
+   v8.1 Télémétrie — filtres, quantités, détail du pit board
+   ------------------------------------------------------------ */
+.filtres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+}
+
+.filtre {
+  font-family: var(--font);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gris-moyen);
+  background: none;
+  border: 1px solid var(--filet);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filtre:hover {
+  border-color: var(--rouge);
+  color: var(--rouge);
+}
+
+.filtre.actif {
+  background: var(--noir);
+  border-color: var(--noir);
+  color: var(--creme);
+}
+
+body.nuit .filtre.actif {
+  background: var(--creme);
+  border-color: var(--creme);
+  color: var(--noir);
+}
+
+.carte-cat[hidden] {
+  display: none;
+}
+
+.carte-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.55rem;
+}
+
+.qte {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.qte[hidden] {
+  display: none;
+}
+
+.qte b {
+  font-weight: 500;
+  font-size: 0.95rem;
+  min-width: 1.2em;
+  text-align: center;
+  color: var(--rouge);
+}
+
+.q-moins {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--gris-clair);
+  background: none;
+  color: var(--noir);
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font);
+}
+
+body.nuit .q-moins {
+  color: var(--creme);
+}
+
+.q-moins:hover {
+  border-color: var(--rouge);
+  color: var(--rouge);
+}
+
+.pb-gauche {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pb-toggle {
+  background: none;
+  border: 1px solid rgba(244, 243, 238, 0.3);
+  color: #f4f3ee;
+  font-family: var(--font);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pb-toggle:hover {
+  border-color: var(--rouge);
+}
+
+.pb-toggle .n {
+  display: inline-block;
+  min-width: 1.4em;
+  margin-left: 0.4em;
+  padding: 0.1em 0.35em;
+  border-radius: 999px;
+  background: var(--rouge);
+  color: #f4f3ee;
+  letter-spacing: 0;
+}
+
+.pb-reset {
+  background: none;
+  border: none;
+  color: rgba(244, 243, 238, 0.55);
+  font-family: var(--font);
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0.4rem;
+}
+
+.pb-reset:hover {
+  color: var(--rouge);
+}
+
+.pb-detail {
+  border-bottom: 1px solid rgba(244, 243, 238, 0.15);
+  max-height: 45vh;
+  overflow: auto;
+}
+
+.pb-detail[hidden] {
+  display: none;
+}
+
+.pb-detail .container {
+  display: block;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+}
+
+.pb-detail ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pb-ligne {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 0;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: #f4f3ee;
+  border-bottom: 1px dashed rgba(244, 243, 238, 0.12);
+}
+
+.pb-ligne .pb-p {
+  white-space: nowrap;
+  color: #9b9b97;
+}
+
+.pb-ligne .retirer {
+  background: none;
+  border: none;
+  color: var(--rouge);
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.2rem;
+}
+
+.pb-eq {
+  margin: 0.75rem 0 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(244, 243, 238, 0.55);
+}
+
+.pb-hint {
+  margin: 0;
+  border-top: 1px solid rgba(244, 243, 238, 0.15);
+}
+
+.pb-hint[hidden] {
+  display: none;
+}
+
+.pb-hint .container {
+  display: block;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: #f4f3ee;
+}
+
+.pb-hint b {
+  color: var(--rouge);
+  font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  .pb-gauche {
+    order: 3;
+  }
+}
+
+/* ------------------------------------------------------------
    Animations d'apparition
    ------------------------------------------------------------ */
 .reveal {
