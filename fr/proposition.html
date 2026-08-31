@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="stylesheet" href="../css/style.css?v=8.2">
+  <link rel="stylesheet" href="../css/style.css?v=8.3">
   <meta name="theme-color" content="#F4F3EE">
 </head>
 <body>
@@ -44,6 +44,13 @@
         <span class="kicker">Proposition · Présentation client</span>
         <h1 class="giant">Proposition<span class="accent">.</span></h1>
         <p class="lede"><b>Un plan clair, des chiffres clairs.</b> Jouez avec la jauge, choisissez votre forfait, ajoutez vos produits. Le total vous suit en bas de page.</p>
+        <div class="hero-nav">
+          <a class="filtre" href="#forfaits">Forfaits d'heures</a>
+          <a class="filtre" href="#carte">À la carte</a>
+          <a class="filtre" href="#ecurie">L'écurie</a>
+          <a class="filtre" href="#marche">Le marché</a>
+          <a class="filtre" href="#simulateur">Le simulateur</a>
+        </div>
       </div>
     </section>
 
@@ -64,7 +71,7 @@
       </div>
     </section>
 
-    <section class="section reveal">
+    <section class="section reveal" id="marche">
       <div class="container">
         <span class="label">Le marché</span>
         <h2>Un peu au-dessus de la moyenne, et c'est voulu</h2>
@@ -92,7 +99,7 @@
       </div>
     </section>
 
-    <section class="section reveal">
+    <section class="section reveal" id="simulateur">
       <div class="container">
         <span class="label">Le simulateur</span>
         <h2>Poussez la jauge, trouvez votre rythme</h2>
@@ -113,7 +120,7 @@
       </div>
     </section>
 
-    <section class="section reveal">
+    <section class="section reveal" id="forfaits">
       <div class="container">
         <span class="label">Les forfaits mensuels</span>
         <h2>Trois plans de course, un seul objectif</h2>
@@ -172,7 +179,22 @@
       </div>
     </section>
 
-    <section class="section reveal">
+    <section class="section reveal" id="ecurie">
+      <div class="container">
+        <span class="label">L'écurie</span>
+        <h2>Plusieurs concessions, un seul rabais</h2>
+        <p class="intro">Une concession, c'est une voiture engagée en course. Plusieurs, c'est une écurie. Dites-nous combien de concessions embarquent, le rabais d'écurie s'applique au total de chacune d'elles.</p>
+        <div class="ecurie-choix" id="ecurieChoix">
+          <button class="ech actif" data-nb="1"><span class="n">1</span><small>concession</small><em>&#8212;</em></button>
+          <button class="ech" data-nb="2"><span class="n">2</span><small>concessions</small><em>&#8722;5 %</em></button>
+          <button class="ech" data-nb="3"><span class="n">3</span><small>concessions</small><em>&#8722;10 %</em></button>
+          <button class="ech" data-nb="4"><span class="n">4 +</span><small>concessions</small><em>&#8722;15 %</em></button>
+        </div>
+        <p class="meta-note">Le rabais s'applique au total mensuel et aux installations de chaque concession du groupe. Les budgets publicitaires restent payés directement aux plateformes. Au-delà de quatre concessions, on se parle, le café est déjà prêt.</p>
+      </div>
+    </section>
+
+    <section class="section reveal" id="carte">
       <div class="container">
         <span class="label">À la carte</span>
         <h2>Le catalogue des produits</h2>
@@ -423,6 +445,7 @@
       </div>
       <div class="pb-tot">
         <div class="pb-item">Forfait<b id="pbForfait">Aucun</b></div>
+        <div class="pb-item" id="pbEcurieWrap" hidden>Écurie<b id="pbEcurie">&#215; 2</b></div>
         <div class="pb-item">Mensuel<b id="pbMensuel">0 $</b></div>
         <div class="pb-item">Ponctuel<b id="pbUnique">0 $</b></div>
       </div>
@@ -456,7 +479,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=8.2"></script>
+  <script src="../js/main.js?v=8.3"></script>
   <script>
   (function () {
     var fmt = function (n) { return n.toLocaleString("fr-CA") + " $"; };
@@ -500,8 +523,11 @@
     });
 
     // ----- Sélection -----
-    var etat = { forfait: null, prix: 0, items: [] };
+    var etat = { forfait: null, prix: 0, items: [], nb: 1 };
+    var RABAIS = { 1: 0, 2: 0.05, 3: 0.10, 4: 0.15 };
     var CLE = "pista-pit-fr";
+    var pbEcurie = document.getElementById("pbEcurie");
+    var pbEcurieWrap = document.getElementById("pbEcurieWrap");
     var board = document.getElementById("pitboard");
     var pbForfait = document.getElementById("pbForfait");
     var pbMensuel = document.getElementById("pbMensuel");
@@ -521,6 +547,7 @@
       try {
         localStorage.setItem(CLE, JSON.stringify({
           f: etat.forfait,
+          n: etat.nb,
           i: etat.items.map(function (it) { return [it.li.dataset.nom, it.qte]; })
         }));
       } catch (e) {}
@@ -571,10 +598,15 @@
         mensuel += parseInt(it.li.dataset.mensuel || 0, 10) * it.qte;
         unique += parseInt(it.li.dataset.unique || 0, 10) * it.qte;
       });
+      var r = RABAIS[etat.nb] || 0;
+      var mensGrp = Math.round(mensuel * etat.nb * (1 - r));
+      var uniqGrp = Math.round(unique * etat.nb * (1 - r));
       pbForfait.textContent = etat.forfait || "Aucun";
-      pbMensuel.textContent = fmt(mensuel);
-      pbUnique.textContent = fmt(unique);
+      pbMensuel.textContent = fmt(mensGrp);
+      pbUnique.textContent = fmt(uniqGrp);
       pbCount.textContent = etat.items.length;
+      pbEcurieWrap.hidden = etat.nb < 2;
+      pbEcurie.textContent = "× " + (etat.nb === 4 ? "4 +" : etat.nb) + " · −5 %".replace("5", Math.round(r * 100));
 
       pbListe.innerHTML = "";
       if (etat.forfait) {
@@ -591,7 +623,19 @@
         l.querySelector(".retirer").addEventListener("click", function () { retirer(it.li); });
         pbListe.appendChild(l);
       });
-      pbEq.textContent = mensuel > 0 ? "≈ " + Math.round(mensuel / 155) + " heures de piste par mois" : "";
+      if (etat.nb > 1 && (mensuel > 0 || unique > 0)) {
+        var le = document.createElement("li");
+        le.className = "pb-ligne";
+        le.innerHTML = "<span>Rabais d'écurie, " + (etat.nb === 4 ? "4 concessions et plus" : etat.nb + " concessions") +
+          "</span><span class=\"pb-p\">−" + Math.round(r * 100) + " % pour chacune</span>";
+        pbListe.appendChild(le);
+        var lp = document.createElement("li");
+        lp.className = "pb-ligne";
+        lp.innerHTML = "<span>Par concession, après rabais</span><span class=\"pb-p\">" +
+          fmt(Math.round(mensuel * (1 - r))) + "/mois" + (unique > 0 ? " + " + fmt(Math.round(unique * (1 - r))) + " ponctuel" : "") + "</span>";
+        pbListe.appendChild(lp);
+      }
+      pbEq.textContent = mensuel > 0 ? "≈ " + Math.round(mensuel / 155) + " heures de piste par mois" + (etat.nb > 1 ? ", par concession" : "") : "";
 
       majHint(mensuel);
 
@@ -687,6 +731,20 @@
       });
     });
 
+    function majEcurie(nb) {
+      etat.nb = nb;
+      document.querySelectorAll(".ech").forEach(function (b) {
+        b.classList.toggle("actif", parseInt(b.dataset.nb, 10) === nb);
+      });
+    }
+
+    document.querySelectorAll(".ech").forEach(function (b) {
+      b.addEventListener("click", function () {
+        majEcurie(parseInt(b.dataset.nb, 10));
+        majBoard();
+      });
+    });
+
     pbToggle.addEventListener("click", function () {
       var ouvert = pbDetail.hidden;
       pbDetail.hidden = !ouvert;
@@ -698,6 +756,7 @@
       etat.forfait = null;
       etat.prix = 0;
       etat.items = [];
+      majEcurie(1);
       document.querySelectorAll(".forfait").forEach(function (x) {
         x.classList.remove("actif");
         x.querySelector(".choisir").textContent = "Choisir";
@@ -714,7 +773,10 @@
       etat.items.forEach(function (it) {
         lignes.push(libelle(it) + " : " + prixItem(it));
       });
-      lignes.push("", "Total mensuel : " + pbMensuel.textContent, "Total ponctuel : " + pbUnique.textContent);
+      if (etat.nb > 1) {
+        lignes.push("Écurie : " + (etat.nb === 4 ? "4 concessions et plus" : etat.nb + " concessions") + ", rabais de " + Math.round((RABAIS[etat.nb] || 0) * 100) + " % pour chacune");
+      }
+      lignes.push("", "Total mensuel" + (etat.nb > 1 ? " (groupe)" : "") + " : " + pbMensuel.textContent, "Total ponctuel" + (etat.nb > 1 ? " (groupe)" : "") + " : " + pbUnique.textContent);
       var corps = "Bonjour Pista Studio,%0D%0A%0D%0AVoici la sélection préparée ensemble :%0D%0A%0D%0A- " + lignes.join("%0D%0A- ").replace(/%0D%0A- %0D%0A/, "%0D%0A%0D%0A");
       window.location.href = "mailto:hello@pista.ca?subject=" + encodeURIComponent("Ma sélection Pista Studio") + "&body=" + corps;
     });
@@ -723,6 +785,7 @@
     try {
       var memo = JSON.parse(localStorage.getItem(CLE) || "null");
       if (memo) {
+        if (memo.n && RABAIS[memo.n] !== undefined) majEcurie(memo.n);
         if (memo.f) {
           document.querySelectorAll(".forfait").forEach(function (f) {
             if (f.dataset.forfait === memo.f) {

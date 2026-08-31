@@ -2,6 +2,14 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v8.3 « Écurie » — 31 août 2026
+
+- Rabais d'écurie pour les groupes, 2 concessions −5 %, 3 concessions −10 %, 4 et plus −15 %, appliqué au mensuel et aux installations de chaque concession
+- Sélecteur de concessions sur la page, le pit board affiche le total du groupe, le rabais et le coût par concession après rabais
+- Navigation rapide dans l'entête de la page, cinq boutons qui mènent directement aux forfaits, au catalogue, à l'écurie, au marché et au simulateur
+- Le libellé anglais « Plain talk » devient « In short »
+- Le nombre de concessions est mémorisé avec le reste de la sélection et inclus dans le courriel
+
 ## v8.2 « Pole position » — 31 août 2026
 
 - Chaque produit du catalogue gagne une ligne « En clair », une explication sans jargon pour ceux qui ne parlent pas marketing

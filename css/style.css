@@ -2661,6 +2661,105 @@ body.nuit .marche-item {
 }
 
 /* ------------------------------------------------------------
+   v8.3 Écurie — rabais multi-concessions et navigation rapide
+   ------------------------------------------------------------ */
+.hero-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 2.25rem;
+}
+
+.hero-nav .filtre {
+  text-decoration: none;
+  display: inline-block;
+}
+
+section[id] {
+  scroll-margin-top: 90px;
+}
+
+.ecurie-choix {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--filet);
+  border: 1px solid var(--filet);
+  margin-top: 2rem;
+}
+
+.ech {
+  background: var(--creme);
+  border: none;
+  font-family: var(--font);
+  color: var(--noir);
+  padding: 1.6rem 1rem 1.4rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+body.nuit .ech {
+  background: var(--noir);
+  color: var(--creme);
+}
+
+.ech .n {
+  display: block;
+  font-size: 2.25rem;
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.ech small {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gris-moyen);
+}
+
+.ech em {
+  display: block;
+  margin-top: 0.55rem;
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--rouge);
+}
+
+.ech:hover {
+  background: rgba(224, 35, 26, 0.05);
+}
+
+.ech.actif {
+  background: var(--noir);
+  color: var(--creme);
+}
+
+.ech.actif small {
+  color: rgba(244, 243, 238, 0.6);
+}
+
+body.nuit .ech.actif {
+  background: var(--creme);
+  color: var(--noir);
+}
+
+body.nuit .ech.actif small {
+  color: var(--gris-moyen);
+}
+
+@media (max-width: 640px) {
+  .ecurie-choix {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ------------------------------------------------------------
    Animations d'apparition
    ------------------------------------------------------------ */
 .reveal {
