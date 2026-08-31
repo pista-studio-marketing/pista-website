@@ -2,6 +2,17 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v8.6 « Ravitaillement » — 31 août 2026
+
+- Bouton « Tout remettre à zéro » directement dans la fiche de course, il vide la sélection et les objectifs d'un coup
+- Le quiz d'objectifs et la fiche sont maintenant connectés: les objectifs cochés apparaissent en tête de fiche, dans le courriel et dans le résumé copié
+- Si des éléments recommandés pour vos objectifs manquent à la sélection, la fiche le signale et propose « Ajouter ce qui manque »
+- Suivi en continu dans l'entête du parcours, concessions, objectifs, forfait, produits et total mensuel se mettent à jour à chaque tour
+- Nouvelle carte « Sur mesure » sous les trois forfaits, elle suit la jauge du simulateur de 5 à 50 heures, à la suggestion de l'équipe
+- Annotations au crayon rouge, flèches et encerclements, qui guident le client vers la bonne action dès l'entête, fini le monochrome
+- Le nombre d'heures et les objectifs voyagent aussi dans le lien partageable
+- Les textes parlent maintenant du marché canadien, pas seulement québécois
+
 ## v8.5 « Tour de piste » — 31 août 2026
 
 - La page proposition devient un parcours guidé en cinq tours, une question à la fois, fini le va-et-vient du haut au bas de la page

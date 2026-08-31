@@ -9,8 +9,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="stylesheet" href="../css/style.css?v=8.5">
+  <link rel="stylesheet" href="../css/style.css?v=8.6">
   <meta name="theme-color" content="#F4F3EE">
 </head>
 <body>
@@ -43,7 +44,9 @@
         <div class="lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
         <span class="kicker">Proposition · Présentation client</span>
         <h1 class="giant">Proposition<span class="accent">.</span></h1>
-        <p class="lede"><b>Un plan clair, des chiffres clairs.</b> Cinq tours de piste, une question à la fois, et votre proposition se monte toute seule. Le total vous suit en bas de page.</p>
+        <svg class="souligne" viewBox="0 0 340 18" preserveAspectRatio="none" aria-hidden="true"><path d="M4 12 C 70 5, 270 3, 336 8"/><path d="M22 15 C 100 10, 240 8, 312 12"/></svg>
+        <p class="lede"><b>Un plan clair, des chiffres clairs.</b> <span class="cercle">Cinq tours de piste<svg viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M14 32 C 22 10, 178 4, 191 24 C 199 44, 44 58, 16 44 C 2 36, 46 12, 104 9"/></svg></span>, une question à la fois, et votre proposition se monte toute seule. Le total vous suit en bas de page.</p>
+        <div class="annot annot-hero"><span>Commencez ici, deux minutes chrono</span><svg viewBox="0 0 60 84" aria-hidden="true"><path d="M12 6 C 38 22, 46 46, 34 72"/><path d="M20 60 L 33 75 L 46 58"/></svg></div>
       </div>
     </section>
 
@@ -57,6 +60,7 @@
       <div class="container tour-tete">
         <div class="tour-feux"><button class="feu on" data-tour="1" aria-label="Tour 1"></button><button class="feu" data-tour="2" aria-label="Tour 2"></button><button class="feu" data-tour="3" aria-label="Tour 3"></button><button class="feu" data-tour="4" aria-label="Tour 4"></button><button class="feu" data-tour="5" aria-label="Tour 5"></button></div>
         <span class="label">Tour <b id="tourN">1</b> / 5 &#183; <span id="tourNom">L'écurie</span></span>
+        <span class="label tour-suivi" id="tourSuivi"></span>
       </div>
 
       <div class="etape" data-etape="1">
@@ -96,6 +100,7 @@
           <p id="objResume"></p>
           <div class="hero-actions" style="margin-top:1.5rem;">
             <button class="btn btn-primary" id="objAppliquer">Monter ce plan en un clic</button>
+            <span class="annot annot-btn"><svg viewBox="0 0 90 60" aria-hidden="true"><path d="M84 12 C 56 18, 32 30, 14 44"/><path d="M28 32 L 11 46 L 31 52"/></svg><span>Le raccourci du pro</span></span>
           </div>
           <p class="meta-note">Les produits recommandés porteront une étiquette rouge au tour À la carte. Libre à vous d'ajuster.</p>
         </div>
@@ -129,7 +134,7 @@
       <div class="container">
         <span class="label">Les forfaits mensuels</span>
         <h2>Trois plans de course, un seul objectif</h2>
-        <p class="intro">Chaque forfait est un bloc d'heures mensuel au taux de 155 $. Sans contrat de douze mois, on gagne votre renouvellement chaque mois. Cliquez pour choisir.</p>
+        <p class="intro">Chaque forfait est un bloc d'heures mensuel au taux de 155 $. Sans contrat de douze mois, on gagne votre renouvellement chaque mois. Cliquez pour choisir. Et si aucun ne colle, la carte Sur mesure suit la jauge juste au-dessus.</p>
 
         <div class="forfaits">
 
@@ -175,6 +180,18 @@
               <li><b>Gestion des leads</b>, suivi automatisé CRM, courriel, SMS</li>
               <li><b>Tableau de bord analytics</b> en continu et priorité 24 h</li>
             </ul>
+            <button class="btn btn-secondary choisir">Choisir</button>
+          </article>
+
+          <article class="forfait forfait--mesure" id="f-mesure" data-forfait="Sur mesure" data-prix="3875" data-heures="25">
+            <div class="mesure-txt">
+              <p class="nom">Sur mesure<span class="dot--rouge">.</span></p>
+              <p class="pour">Votre bloc d'heures, à votre image. Réglez la jauge du simulateur, cette carte suit, de 5 à 50 heures par mois.</p>
+            </div>
+            <div class="mesure-chiffres">
+              <p class="prix" id="mesurePrix">3 875 $ <small>/ mois</small></p>
+              <p class="heures">Bloc de <span id="mesureH">25</span> heures</p>
+            </div>
             <button class="btn btn-secondary choisir">Choisir</button>
           </article>
 
@@ -298,7 +315,7 @@
               <button class="ajout" aria-label="Ajouter">+</button>
             </li>
             <li data-nom="Conformité Loi 25 et consentement" data-unique="465">
-              <span><span class="carte-nom">Conformité Loi 25 et consentement</span><span class="carte-desc">Bannière, mode consentement, mesure propre.</span><span class="carte-clair"><b>En clair</b>La bannière de témoins conforme à la loi québécoise, installée proprement, sans risque d'amende.</span></span>
+              <span><span class="carte-nom">Conformité Loi 25 et consentement</span><span class="carte-desc">Bannière, mode consentement, mesure propre.</span><span class="carte-clair"><b>En clair</b>La bannière de témoins conforme à la Loi 25 et aux exigences canadiennes, installée proprement, sans risque d'amende.</span></span>
               <span class="carte-prix">465 $<small>unique</small></span>
               <button class="ajout" aria-label="Ajouter">+</button>
             </li>
@@ -405,15 +422,18 @@
           <div id="ficheContenu" hidden>
             <p class="intro">Voici la proposition montée ensemble. Chaque tour reste ouvert, revenez modifier ce que vous voulez, la fiche suit.</p>
             <ul class="fiche-liste" id="ficheListe"></ul>
+            <p class="fiche-manque" id="ficheManque" hidden><span id="ficheManqueTxt"></span><button class="btn-mini" id="ficheCompleter">Ajouter ce qui manque</button></p>
             <div class="marche">
               <div class="marche-item"><span class="k">Mensuel</span><span class="nous" id="ficheMensuel">0 $</span><span class="note" id="ficheMensNote"></span></div>
               <div class="marche-item"><span class="k">Ponctuel</span><span class="nous" id="ficheUnique">0 $</span><span class="note">Installations et mandats uniques, facturés une seule fois.</span></div>
               <div class="marche-item"><span class="k">Heures de piste</span><span class="nous" id="ficheHeures">0 h</span><span class="note" id="ficheHNote"></span></div>
             </div>
-            <div class="hero-actions" style="margin-top:2.25rem; flex-wrap:wrap;">
+            <div class="annot" style="margin-top:2rem;"><span>Un clic, et tout part</span><svg viewBox="0 0 60 84" aria-hidden="true"><path d="M12 6 C 38 22, 46 46, 34 72"/><path d="M20 60 L 33 75 L 46 58"/></svg></div>
+            <div class="hero-actions" style="margin-top:0.75rem; flex-wrap:wrap;">
               <button class="btn btn-primary" id="ficheEnvoyer">Recevoir cette proposition par courriel</button>
               <button class="btn btn-secondary" id="ficheCopier">Copier le résumé</button>
               <button class="btn btn-secondary" id="ficheLien">Copier un lien</button>
+              <button class="btn btn-secondary" id="ficheReset">Tout remettre à zéro</button>
             </div>
             <p class="meta-note">Prix en dollars canadiens, avant taxes. Gestion du média publicitaire: 15 % du budget mensuel. Tout mandat hors catalogue au taux de 155 $/h.</p>
             <div class="damier" aria-hidden="true"></div>
@@ -424,7 +444,7 @@
 
       <div class="container tour-nav">
         <button id="tourPrec" class="btn btn-secondary" hidden>&#8592; Tour précédent</button>
-        <span></span>
+        <span class="annot annot-nav" id="navAnnot"><span>On continue, la piste est belle</span><svg viewBox="0 0 90 60" aria-hidden="true"><path d="M6 14 C 34 20, 58 30, 76 44"/><path d="M62 32 L 79 46 L 59 52"/></svg></span>
         <button id="tourSuiv" class="btn btn-primary">Tour suivant &#8594;</button>
       </div>
     </div>
@@ -444,7 +464,7 @@
       <div class="container">
         <span class="label">Le marché</span>
         <h2>Un peu au-dessus de la moyenne, et c'est voulu</h2>
-        <p class="intro">Au Québec, une agence facture entre 75 $ et 250 $ de l'heure, selon qu'un junior ou un stratège travaille sur votre compte. Chez Pista, il n'y a pas de junior: chaque heure est une heure d'expert qui ne fait que de l'automobile. Vous payez le taux d'un stratège sénior, jamais celui d'une équipe qui apprend sur votre budget.</p>
+        <p class="intro">Au Canada, une agence facture entre 75 $ et 250 $ de l'heure, selon qu'un junior ou un stratège travaille sur votre compte. Chez Pista, il n'y a pas de junior: chaque heure est une heure d'expert qui ne fait que de l'automobile. Vous payez le taux d'un stratège sénior, jamais celui d'une équipe qui apprend sur votre budget.</p>
         <div class="marche">
           <div class="marche-item">
             <span class="k">Taux horaire</span>
@@ -549,7 +569,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=8.5"></script>
+  <script src="../js/main.js?v=8.6"></script>
   <script>
   (function () {
     var fmt = function (n) { return n.toLocaleString("fr-CA") + " $"; };
@@ -576,6 +596,14 @@
       document.querySelectorAll(".forfait").forEach(function (f) {
         f.classList.toggle("suggere", f.dataset.forfait === nom && !f.classList.contains("actif"));
       });
+      var fm = document.getElementById("f-mesure");
+      if (fm) {
+        fm.dataset.prix = h * 155;
+        fm.dataset.heures = h;
+        document.getElementById("mesurePrix").innerHTML = fmt(h * 155) + " <small>/ mois</small>";
+        document.getElementById("mesureH").textContent = h;
+        if (fm.classList.contains("actif")) { etat.prix = h * 155; majBoard(); }
+      }
     }
     throttle.addEventListener("input", majSimu);
     // Séquence d'allumage: l'aiguille part de zéro et monte au régime
@@ -613,6 +641,7 @@
     var pbHint = document.getElementById("pbHint");
     var pbHintTxt = document.getElementById("pbHintTxt");
     var forfaits = Array.prototype.slice.call(document.querySelectorAll(".forfait"))
+      .filter(function (f) { return f.dataset.forfait !== "Sur mesure"; })
       .map(function (f) { return { nom: f.dataset.forfait, prix: parseInt(f.dataset.prix, 10), heures: parseInt(f.dataset.heures, 10) }; })
       .sort(function (a, b) { return a.prix - b.prix; });
 
@@ -621,6 +650,8 @@
         localStorage.setItem(CLE, JSON.stringify({
           f: etat.forfait,
           n: etat.nb,
+          h: parseInt(throttle.value, 10),
+          o: objSel || [],
           i: etat.items.map(function (it) { return [it.li.dataset.nom, it.qte]; })
         }));
       } catch (e) {}
@@ -649,7 +680,7 @@
       } else if (etat.forfait) {
         var idx = -1;
         forfaits.forEach(function (f, i) { if (f.nom === etat.forfait) idx = i; });
-        var next = forfaits[idx + 1];
+        var next = idx > -1 ? forfaits[idx + 1] : null;
         if (next && mensuel >= next.prix) {
           msg = "Au même budget, le forfait <b>" + next.nom + "</b> vous donne un bloc de " + next.heures + " heures. Jetez-y un œil.";
         }
@@ -880,7 +911,7 @@
     });
 
     document.getElementById("pbLien").addEventListener("click", function () {
-      var m = { f: etat.forfait, n: etat.nb, i: etat.items.map(function (it) { return [it.li.dataset.nom, it.qte]; }) };
+      var m = { f: etat.forfait, n: etat.nb, h: parseInt(throttle.value, 10), o: objSel || [], i: etat.items.map(function (it) { return [it.li.dataset.nom, it.qte]; }) };
       var lien = location.href.split("#")[0] + "#s=" + btoa(encodeURIComponent(JSON.stringify(m)));
       copierVers(this, lien, "Lien copié ✓");
     });
@@ -894,6 +925,7 @@
       if (!memo) memo = JSON.parse(localStorage.getItem(CLE) || "null");
       if (memo) {
         if (memo.n && RABAIS[memo.n] !== undefined) majEcurie(memo.n);
+        if (memo.h) { throttle.value = memo.h; majSimu(); }
         if (memo.f) {
           document.querySelectorAll(".forfait").forEach(function (f) {
             if (f.dataset.forfait === memo.f) {
@@ -1044,6 +1076,8 @@
       document.querySelectorAll(".feu").forEach(function (f, i) { f.classList.toggle("on", i < n); });
       document.getElementById("tourPrec").hidden = n === 1;
       document.getElementById("tourSuiv").hidden = n === 5;
+      var na = document.getElementById("navAnnot");
+      if (na) na.hidden = n === 5;
       if (n === 5) majFiche();
       document.querySelectorAll(".etape .reveal").forEach(function (rv) { rv.classList.add("visible"); });
       if (!sansDefile) {
@@ -1063,10 +1097,86 @@
       copierVers(this, texte, "Copié \u2713");
     });
     document.getElementById("ficheLien").addEventListener("click", function () {
-      var m = { f: etat.forfait, n: etat.nb, i: etat.items.map(function (it) { return [it.li.dataset.nom, it.qte]; }) };
+      var m = { f: etat.forfait, n: etat.nb, h: parseInt(throttle.value, 10), o: objSel || [], i: etat.items.map(function (it) { return [it.li.dataset.nom, it.qte]; }) };
       copierVers(this, location.href.split("#")[0] + "#s=" + btoa(encodeURIComponent(JSON.stringify(m))), "Lien copié \u2713");
     });
     allerTour(1, true);
+
+    // ----- v8.6: liaison quiz-fiche, suivi en continu, remise à zéro -----
+    function objLabels() {
+      return (objSel || []).map(function (id) {
+        var b = document.querySelector('.obj[data-obj="' + id + '"]');
+        return b ? b.textContent : id;
+      });
+    }
+    var resumeBase = resumeLignes;
+    resumeLignes = function () {
+      var l = resumeBase();
+      if (objSel && objSel.length) l.unshift("Objectifs : " + objLabels().join(", "));
+      return l;
+    };
+    var majFicheBase = majFiche;
+    majFiche = function () {
+      majFicheBase();
+      if (!ficheContenu.hidden && objSel.length) {
+        var l = document.createElement("li");
+        l.innerHTML = "<span><b>Objectifs</b>: " + objLabels().join(" \u00b7 ") + "</span><span class=\"fp\"></span>";
+        ficheListe.insertBefore(l, ficheListe.firstChild);
+      }
+      var manque = [];
+      (planReco.produits || []).forEach(function (nom) {
+        var pris = false;
+        etat.items.forEach(function (x) { if (x.li.dataset.nom === nom) pris = true; });
+        if (!pris) manque.push(nom);
+      });
+      if (planReco.forfait && !etat.forfait) manque.unshift("le forfait " + planReco.forfait);
+      var fm2 = document.getElementById("ficheManque");
+      if (objSel.length && manque.length && !ficheContenu.hidden) {
+        fm2.hidden = false;
+        document.getElementById("ficheManqueTxt").innerHTML = "Pour vos objectifs, il reste <b>" + manque.length + "</b> \u00e9l\u00e9ment" + (manque.length > 1 ? "s" : "") + " recommand\u00e9" + (manque.length > 1 ? "s" : "") + " non choisi" + (manque.length > 1 ? "s" : "") + ": " + manque.join(", ") + ".";
+      } else {
+        fm2.hidden = true;
+      }
+    };
+    document.getElementById("ficheCompleter").addEventListener("click", function () {
+      document.getElementById("objAppliquer").click();
+    });
+    document.getElementById("ficheReset").addEventListener("click", function () {
+      document.getElementById("pbReset").click();
+    });
+
+    var tourSuivi = document.getElementById("tourSuivi");
+    function majSuivi() {
+      var p = [];
+      if (etat.nb > 1) p.push((etat.nb === 4 ? "4 +" : etat.nb) + " concessions");
+      if (objSel.length) p.push(objSel.length + " objectif" + (objSel.length > 1 ? "s" : ""));
+      if (etat.forfait) p.push("Forfait " + etat.forfait);
+      if (etat.items.length) p.push(etat.items.length + " produit" + (etat.items.length > 1 ? "s" : ""));
+      if (p.length) p.push("<b>" + pbMensuel.textContent + "/mois</b>");
+      tourSuivi.innerHTML = p.join(" \u00b7 ");
+    }
+    var majBoardSuivi = majBoard;
+    majBoard = function () { majBoardSuivi(); majSuivi(); };
+    var majObjectifsBase = majObjectifs;
+    majObjectifs = function () { majObjectifsBase(); majSuivi(); majFiche(); };
+    document.getElementById("pbReset").addEventListener("click", function () {
+      objSel = [];
+      document.querySelectorAll(".obj").forEach(function (b) { b.classList.remove("actif"); });
+      majObjectifs();
+    });
+    try {
+      if (typeof memo !== "undefined" && memo && memo.o && memo.o.length) {
+        memo.o.forEach(function (id) {
+          if (OBJ[id] && objSel.indexOf(id) === -1) {
+            objSel.push(id);
+            var b = document.querySelector('.obj[data-obj="' + id + '"]');
+            if (b) b.classList.add("actif");
+          }
+        });
+        majObjectifs();
+      }
+    } catch (e) {}
+    majSuivi();
   })();
   </script>
 </body>

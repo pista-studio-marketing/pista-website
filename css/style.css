@@ -2975,6 +2975,169 @@ li.reco {
   opacity: 0.9;
 }
 
+.tour-suivi {
+  margin-left: auto;
+  color: var(--gris-clair);
+  text-align: right;
+}
+
+.tour-suivi b {
+  color: var(--rouge);
+  font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  .tour-suivi {
+    margin-left: 0;
+    flex-basis: 100%;
+    text-align: left;
+  }
+}
+
+.fiche-manque {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--filet);
+  border-left: 2px solid var(--rouge);
+  font-size: 0.92rem;
+  font-weight: 300;
+}
+
+.fiche-manque[hidden] {
+  display: none;
+}
+
+.fiche-manque b {
+  font-weight: 500;
+}
+
+.btn-mini {
+  font-family: var(--font);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--noir);
+  background: none;
+  border: 1px solid var(--gris-clair);
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+body.nuit .btn-mini {
+  color: var(--creme);
+}
+
+.btn-mini:hover {
+  border-color: var(--rouge);
+  color: var(--rouge);
+}
+
+.forfait--mesure {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2.5rem;
+}
+
+.forfait--mesure .mesure-txt {
+  flex: 1 1 320px;
+}
+
+.forfait--mesure .nom,
+.forfait--mesure .pour,
+.forfait--mesure .prix,
+.forfait--mesure .heures {
+  margin: 0;
+}
+
+.forfait--mesure .pour {
+  margin-top: 0.35rem;
+}
+
+.forfait--mesure .mesure-chiffres {
+  text-align: right;
+}
+
+.forfait--mesure .btn {
+  margin: 0;
+}
+
+/* Annotations au crayon — pousser le client au bon endroit */
+.annot {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: "Caveat", "Comic Sans MS", cursive;
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--rouge);
+}
+
+.annot svg {
+  flex: none;
+  width: 60px;
+  height: auto;
+  stroke: var(--rouge);
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.annot-hero {
+  margin-top: 2.25rem;
+  transform: rotate(-2deg);
+}
+
+.annot-btn {
+  transform: rotate(2deg);
+}
+
+.annot-nav {
+  transform: rotate(-2deg);
+}
+
+.cercle {
+  position: relative;
+  display: inline-block;
+  padding: 0 0.12em;
+}
+
+.cercle svg {
+  position: absolute;
+  left: -0.4em;
+  top: -0.3em;
+  width: calc(100% + 0.8em);
+  height: calc(100% + 0.6em);
+  stroke: var(--rouge);
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.souligne {
+  display: block;
+  width: min(340px, 62%);
+  height: 18px;
+  margin: 0.4rem 0 0;
+  stroke: var(--rouge);
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
 body.nuit .damier {
   background-image: conic-gradient(var(--creme) 0 25%, transparent 0 50%, var(--creme) 0 75%, transparent 0);
 }

@@ -9,8 +9,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="stylesheet" href="../css/style.css?v=8.5">
+  <link rel="stylesheet" href="../css/style.css?v=8.6">
   <meta name="theme-color" content="#F4F3EE">
 </head>
 <body>
@@ -43,7 +44,9 @@
         <div class="lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
         <span class="kicker">Proposal · Client presentation</span>
         <h1 class="giant">Proposal<span class="accent">.</span></h1>
-        <p class="lede"><b>A clear plan, clear numbers.</b> Five laps, one question at a time, and your proposal builds itself. The total follows you at the bottom of the page.</p>
+        <svg class="souligne" viewBox="0 0 340 18" preserveAspectRatio="none" aria-hidden="true"><path d="M4 12 C 70 5, 270 3, 336 8"/><path d="M22 15 C 100 10, 240 8, 312 12"/></svg>
+        <p class="lede"><b>A clear plan, clear numbers.</b> <span class="cercle">Five laps<svg viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M14 32 C 22 10, 178 4, 191 24 C 199 44, 44 58, 16 44 C 2 36, 46 12, 104 9"/></svg></span>, one question at a time, and your proposal builds itself. The total follows you at the bottom of the page.</p>
+        <div class="annot annot-hero"><span>Start here, two quick minutes</span><svg viewBox="0 0 60 84" aria-hidden="true"><path d="M12 6 C 38 22, 46 46, 34 72"/><path d="M20 60 L 33 75 L 46 58"/></svg></div>
       </div>
     </section>
 
@@ -57,6 +60,7 @@
       <div class="container tour-tete">
         <div class="tour-feux"><button class="feu on" data-tour="1" aria-label="Lap 1"></button><button class="feu" data-tour="2" aria-label="Lap 2"></button><button class="feu" data-tour="3" aria-label="Lap 3"></button><button class="feu" data-tour="4" aria-label="Lap 4"></button><button class="feu" data-tour="5" aria-label="Lap 5"></button></div>
         <span class="label">Lap <b id="tourN">1</b> / 5 &#183; <span id="tourNom">The team</span></span>
+        <span class="label tour-suivi" id="tourSuivi"></span>
       </div>
 
       <div class="etape" data-etape="1">
@@ -96,6 +100,7 @@
           <p id="objResume"></p>
           <div class="hero-actions" style="margin-top:1.5rem;">
             <button class="btn btn-primary" id="objAppliquer">Build this plan in one click</button>
+            <span class="annot annot-btn"><svg viewBox="0 0 90 60" aria-hidden="true"><path d="M84 12 C 56 18, 32 30, 14 44"/><path d="M28 32 L 11 46 L 31 52"/></svg><span>The pro shortcut</span></span>
           </div>
           <p class="meta-note">The recommended products will carry a red tag in the À la carte lap. Adjust as you wish.</p>
         </div>
@@ -129,7 +134,7 @@
       <div class="container">
         <span class="label">Monthly packages</span>
         <h2>Three race plans, one goal</h2>
-        <p class="intro">Each package is a monthly block of hours at $155. No twelve-month contract, we earn your renewal every month. Click to choose.</p>
+        <p class="intro">Each package is a monthly block of hours at $155. No twelve-month contract, we earn your renewal every month. Click to choose. And if none fits, the Custom card follows the gauge just above.</p>
 
         <div class="forfaits">
 
@@ -175,6 +180,18 @@
               <li><b>Lead management</b>, automated follow-up, CRM, email, SMS</li>
               <li><b>Live analytics dashboard</b> and 24-hour priority</li>
             </ul>
+            <button class="btn btn-secondary choisir">Choose</button>
+          </article>
+
+          <article class="forfait forfait--mesure" id="f-mesure" data-forfait="Custom" data-prix="3875" data-heures="25">
+            <div class="mesure-txt">
+              <p class="nom">Custom<span class="dot--rouge">.</span></p>
+              <p class="pour">Your block of hours, your way. Set the simulator gauge and this card follows, from 5 to 50 hours a month.</p>
+            </div>
+            <div class="mesure-chiffres">
+              <p class="prix" id="mesurePrix">$3,875 <small>/ month</small></p>
+              <p class="heures"><span id="mesureH">25</span>-hour block</p>
+            </div>
             <button class="btn btn-secondary choisir">Choose</button>
           </article>
 
@@ -405,15 +422,18 @@
           <div id="ficheContenu" hidden>
             <p class="intro">Here's the proposal we built together. Every lap stays open, go back and adjust anything, the card follows.</p>
             <ul class="fiche-liste" id="ficheListe"></ul>
+            <p class="fiche-manque" id="ficheManque" hidden><span id="ficheManqueTxt"></span><button class="btn-mini" id="ficheCompleter">Add what's missing</button></p>
             <div class="marche">
               <div class="marche-item"><span class="k">Monthly</span><span class="nous" id="ficheMensuel">$0</span><span class="note" id="ficheMensNote"></span></div>
               <div class="marche-item"><span class="k">One-time</span><span class="nous" id="ficheUnique">$0</span><span class="note">Setups and one-off mandates, billed once.</span></div>
               <div class="marche-item"><span class="k">Track hours</span><span class="nous" id="ficheHeures">0 h</span><span class="note" id="ficheHNote"></span></div>
             </div>
-            <div class="hero-actions" style="margin-top:2.25rem; flex-wrap:wrap;">
+            <div class="annot" style="margin-top:2rem;"><span>One click and it's on its way</span><svg viewBox="0 0 60 84" aria-hidden="true"><path d="M12 6 C 38 22, 46 46, 34 72"/><path d="M20 60 L 33 75 L 46 58"/></svg></div>
+            <div class="hero-actions" style="margin-top:0.75rem; flex-wrap:wrap;">
               <button class="btn btn-primary" id="ficheEnvoyer">Send this proposal by email</button>
               <button class="btn btn-secondary" id="ficheCopier">Copy the summary</button>
               <button class="btn btn-secondary" id="ficheLien">Copy a link</button>
+              <button class="btn btn-secondary" id="ficheReset">Clear the selection</button>
             </div>
             <p class="meta-note">Prices in Canadian dollars, before taxes. Ad media management: 15% of monthly spend. Any work outside the catalogue at the $155 hourly rate.</p>
             <div class="damier" aria-hidden="true"></div>
@@ -424,7 +444,7 @@
 
       <div class="container tour-nav">
         <button id="tourPrec" class="btn btn-secondary" hidden>&#8592; Previous lap</button>
-        <span></span>
+        <span class="annot annot-nav" id="navAnnot"><span>Keep going, the track is clear</span><svg viewBox="0 0 90 60" aria-hidden="true"><path d="M6 14 C 34 20, 58 30, 76 44"/><path d="M62 32 L 79 46 L 59 52"/></svg></span>
         <button id="tourSuiv" class="btn btn-primary">Next lap &#8594;</button>
       </div>
     </div>
@@ -549,7 +569,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=8.5"></script>
+  <script src="../js/main.js?v=8.6"></script>
   <script>
   (function () {
     var fmt = function (n) { return "$" + n.toLocaleString("en-CA"); };
@@ -576,6 +596,14 @@
       document.querySelectorAll(".forfait").forEach(function (f) {
         f.classList.toggle("suggere", f.dataset.forfait === nom && !f.classList.contains("actif"));
       });
+      var fm = document.getElementById("f-mesure");
+      if (fm) {
+        fm.dataset.prix = h * 155;
+        fm.dataset.heures = h;
+        document.getElementById("mesurePrix").innerHTML = fmt(h * 155) + " <small>/ month</small>";
+        document.getElementById("mesureH").textContent = h;
+        if (fm.classList.contains("actif")) { etat.prix = h * 155; majBoard(); }
+      }
     }
     throttle.addEventListener("input", majSimu);
     // Ignition sequence: the needle starts at zero and climbs to pace
@@ -613,6 +641,7 @@
     var pbHint = document.getElementById("pbHint");
     var pbHintTxt = document.getElementById("pbHintTxt");
     var forfaits = Array.prototype.slice.call(document.querySelectorAll(".forfait"))
+      .filter(function (f) { return f.dataset.forfait !== "Custom"; })
       .map(function (f) { return { nom: f.dataset.forfait, prix: parseInt(f.dataset.prix, 10), heures: parseInt(f.dataset.heures, 10) }; })
       .sort(function (a, b) { return a.prix - b.prix; });
 
@@ -621,6 +650,8 @@
         localStorage.setItem(CLE, JSON.stringify({
           f: etat.forfait,
           n: etat.nb,
+          h: parseInt(throttle.value, 10),
+          o: objSel || [],
           i: etat.items.map(function (it) { return [it.li.dataset.nom, it.qte]; })
         }));
       } catch (e) {}
@@ -649,7 +680,7 @@
       } else if (etat.forfait) {
         var idx = -1;
         forfaits.forEach(function (f, i) { if (f.nom === etat.forfait) idx = i; });
-        var next = forfaits[idx + 1];
+        var next = idx > -1 ? forfaits[idx + 1] : null;
         if (next && mensuel >= next.prix) {
           msg = "For the same budget, the <b>" + next.nom + "</b> package gives you a " + next.heures + "-hour block. Worth a look.";
         }
@@ -880,7 +911,7 @@
     });
 
     document.getElementById("pbLien").addEventListener("click", function () {
-      var m = { f: etat.forfait, n: etat.nb, i: etat.items.map(function (it) { return [it.li.dataset.nom, it.qte]; }) };
+      var m = { f: etat.forfait, n: etat.nb, h: parseInt(throttle.value, 10), o: objSel || [], i: etat.items.map(function (it) { return [it.li.dataset.nom, it.qte]; }) };
       var lien = location.href.split("#")[0] + "#s=" + btoa(encodeURIComponent(JSON.stringify(m)));
       copierVers(this, lien, "Link copied ✓");
     });
@@ -894,6 +925,7 @@
       if (!memo) memo = JSON.parse(localStorage.getItem(CLE) || "null");
       if (memo) {
         if (memo.n && RABAIS[memo.n] !== undefined) majEcurie(memo.n);
+        if (memo.h) { throttle.value = memo.h; majSimu(); }
         if (memo.f) {
           document.querySelectorAll(".forfait").forEach(function (f) {
             if (f.dataset.forfait === memo.f) {
@@ -1044,6 +1076,8 @@
       document.querySelectorAll(".feu").forEach(function (f, i) { f.classList.toggle("on", i < n); });
       document.getElementById("tourPrec").hidden = n === 1;
       document.getElementById("tourSuiv").hidden = n === 5;
+      var na = document.getElementById("navAnnot");
+      if (na) na.hidden = n === 5;
       if (n === 5) majFiche();
       document.querySelectorAll(".etape .reveal").forEach(function (rv) { rv.classList.add("visible"); });
       if (!sansDefile) {
@@ -1063,10 +1097,86 @@
       copierVers(this, texte, "Copied \u2713");
     });
     document.getElementById("ficheLien").addEventListener("click", function () {
-      var m = { f: etat.forfait, n: etat.nb, i: etat.items.map(function (it) { return [it.li.dataset.nom, it.qte]; }) };
+      var m = { f: etat.forfait, n: etat.nb, h: parseInt(throttle.value, 10), o: objSel || [], i: etat.items.map(function (it) { return [it.li.dataset.nom, it.qte]; }) };
       copierVers(this, location.href.split("#")[0] + "#s=" + btoa(encodeURIComponent(JSON.stringify(m))), "Link copied \u2713");
     });
     allerTour(1, true);
+
+    // ----- v8.6: quiz-card link, live tracker, reset -----
+    function objLabels() {
+      return (objSel || []).map(function (id) {
+        var b = document.querySelector('.obj[data-obj="' + id + '"]');
+        return b ? b.textContent : id;
+      });
+    }
+    var resumeBase = resumeLignes;
+    resumeLignes = function () {
+      var l = resumeBase();
+      if (objSel && objSel.length) l.unshift("Goals: " + objLabels().join(", "));
+      return l;
+    };
+    var majFicheBase = majFiche;
+    majFiche = function () {
+      majFicheBase();
+      if (!ficheContenu.hidden && objSel.length) {
+        var l = document.createElement("li");
+        l.innerHTML = "<span><b>Goals</b>: " + objLabels().join(" \u00b7 ") + "</span><span class=\"fp\"></span>";
+        ficheListe.insertBefore(l, ficheListe.firstChild);
+      }
+      var manque = [];
+      (planReco.produits || []).forEach(function (nom) {
+        var pris = false;
+        etat.items.forEach(function (x) { if (x.li.dataset.nom === nom) pris = true; });
+        if (!pris) manque.push(nom);
+      });
+      if (planReco.forfait && !etat.forfait) manque.unshift("the " + planReco.forfait + " package");
+      var fm2 = document.getElementById("ficheManque");
+      if (objSel.length && manque.length && !ficheContenu.hidden) {
+        fm2.hidden = false;
+        document.getElementById("ficheManqueTxt").innerHTML = "For your goals, <b>" + manque.length + "</b> recommended item" + (manque.length > 1 ? "s are" : " is") + " still unselected: " + manque.join(", ") + ".";
+      } else {
+        fm2.hidden = true;
+      }
+    };
+    document.getElementById("ficheCompleter").addEventListener("click", function () {
+      document.getElementById("objAppliquer").click();
+    });
+    document.getElementById("ficheReset").addEventListener("click", function () {
+      document.getElementById("pbReset").click();
+    });
+
+    var tourSuivi = document.getElementById("tourSuivi");
+    function majSuivi() {
+      var p = [];
+      if (etat.nb > 1) p.push((etat.nb === 4 ? "4 +" : etat.nb) + " dealerships");
+      if (objSel.length) p.push(objSel.length + " goal" + (objSel.length > 1 ? "s" : ""));
+      if (etat.forfait) p.push(etat.forfait + " package");
+      if (etat.items.length) p.push(etat.items.length + " product" + (etat.items.length > 1 ? "s" : ""));
+      if (p.length) p.push("<b>" + pbMensuel.textContent + "/month</b>");
+      tourSuivi.innerHTML = p.join(" \u00b7 ");
+    }
+    var majBoardSuivi = majBoard;
+    majBoard = function () { majBoardSuivi(); majSuivi(); };
+    var majObjectifsBase = majObjectifs;
+    majObjectifs = function () { majObjectifsBase(); majSuivi(); majFiche(); };
+    document.getElementById("pbReset").addEventListener("click", function () {
+      objSel = [];
+      document.querySelectorAll(".obj").forEach(function (b) { b.classList.remove("actif"); });
+      majObjectifs();
+    });
+    try {
+      if (typeof memo !== "undefined" && memo && memo.o && memo.o.length) {
+        memo.o.forEach(function (id) {
+          if (OBJ[id] && objSel.indexOf(id) === -1) {
+            objSel.push(id);
+            var b = document.querySelector('.obj[data-obj="' + id + '"]');
+            if (b) b.classList.add("actif");
+          }
+        });
+        majObjectifs();
+      }
+    } catch (e) {}
+    majSuivi();
   })();
   </script>
 </body>
