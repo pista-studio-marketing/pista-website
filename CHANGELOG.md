@@ -2,6 +2,12 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v7.8 « Point rouge » — 31 août 2026
+
+- Toutes les pastilles du site deviennent rouges, wordmark compris
+- Les points des surtitres en majuscules espacées, des devises et des signatures deviennent aussi des pastilles rondes rouges
+- Anti-cache sur le CSS et le JS, chaque version force le navigateur à charger les fichiers frais
+
 ## v7.7 « Pastille » — 31 août 2026
 
 - Tous les points signature du site deviennent des pastilles parfaitement rondes, dessinées, conformes aux normes graphiques, la fonte Inter imposait un point rectangulaire

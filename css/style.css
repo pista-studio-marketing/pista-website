@@ -2016,9 +2016,16 @@ body.nuit .forfait .badge {
   width: 0.12em;
   height: 0.12em;
   border-radius: 50%;
-  background: currentColor;
+  background: var(--rouge);
   margin-left: 0.045em;
   vertical-align: baseline;
+}
+
+.prond--txt {
+  width: 0.3em;
+  height: 0.3em;
+  margin-left: 0.12em;
+  margin-right: 0.28em;
 }
 
 /* ------------------------------------------------------------

@@ -10,6 +10,14 @@
     }
   });
 
+  // Les points des surtitres, devises et signatures deviennent aussi des pastilles rouges
+  document.querySelectorAll(".label, .kicker, .devise, .signature").forEach(function (el) {
+    if (el.children.length === 0 && el.textContent.indexOf(".") !== -1) {
+      var t = el.textContent.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      el.innerHTML = t.replace(/\./g, '<span class="prond prond--txt" aria-hidden="true"></span>');
+    }
+  });
+
   // Menu mobile
   var toggle = document.querySelector(".nav-toggle");
   var links = document.querySelector(".nav-links");
