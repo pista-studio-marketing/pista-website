@@ -1138,7 +1138,12 @@ body.nuit .logo-jour {
 }
 
 .cursor-dot.actif {
-  opacity: 0.9;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+}
+
+body.nuit .cursor-dot.actif {
+  mix-blend-mode: screen;
 }
 
 .cursor-dot.grossi {
@@ -3097,6 +3102,7 @@ body.nuit .btn-mini {
 .annot-hero {
   margin-top: 2.25rem;
   transform: rotate(-2deg);
+  width: fit-content;
 }
 
 .annot-btn {
@@ -3116,15 +3122,15 @@ body.nuit .btn-mini {
 
 .cercle svg {
   position: absolute;
-  left: -0.6em;
-  top: -0.48em;
-  width: calc(100% + 1.2em);
-  height: calc(100% + 0.96em);
+  left: -0.7em;
+  top: -0.62em;
+  width: calc(100% + 1.4em);
+  height: calc(100% + 1.24em);
   stroke: var(--rouge);
   fill: none;
-  stroke-width: 2.5;
+  stroke-width: 2.25;
   stroke-linecap: round;
-  opacity: 0.7;
+  opacity: 0.55;
   pointer-events: none;
   z-index: -1;
 }
@@ -3133,12 +3139,12 @@ body.nuit .btn-mini {
   display: block;
   width: min(340px, 62%);
   height: 18px;
-  margin: 1rem 0 0;
+  margin: 1.35rem 0 0;
   stroke: var(--rouge);
   fill: none;
   stroke-width: 3;
   stroke-linecap: round;
-  opacity: 0.85;
+  opacity: 0.8;
 }
 
 /* v8.7 — hero compact et trajectoires d'entrée */
@@ -3258,6 +3264,8 @@ body.nuit .traj.actif .t-det {
 
 .tour-nav .annot {
   font-size: 1.2rem;
+  margin-left: auto;
+  margin-right: 0.75rem;
 }
 
 .tour-nav .annot svg {

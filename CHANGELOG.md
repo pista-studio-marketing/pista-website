@@ -2,6 +2,14 @@
 
 Chaque version porte un nom tiré de la course, comme il se doit.
 
+## v9.2 « Débriefing » — 31 août 2026, merci à l'équipe pour les commentaires
+
+- Le point rouge qui suit la souris devient translucide et se fond dans le texte au lieu de le cacher, en mode jour comme en mode nuit
+- L'encerclement au crayon prend plus de dégagement au-dessus et en dessous des mots, trait plus doux, il ne touche plus les lettres
+- Le soulignement du titre descend davantage sous les jambages
+- La flèche « Choisissez votre trajectoire » colle maintenant à son texte au lieu de flotter à droite
+- La flèche « On continue, la piste est belle » se colle au bouton Tour suivant, elle pointe enfin sur quelque chose
+
 ## v9.1 « Soumission » — 31 août 2026
 
 - La fiche de course crée maintenant une vraie soumission: numéro automatique, date, validité 30 jours, tableau détaillé, conditions et lignes de signature
